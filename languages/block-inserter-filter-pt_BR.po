@@ -1,0 +1,143 @@
+# Portuguese (Brazil) (pt_BR) translation of Block Inserter Filter.
+# Copyright (C) 2026 Jörn Gorres
+# This file is distributed under the same license as the plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: Block Inserter Filter 2.1.1\n"
+"Report-Msgid-Bugs-To: joern@gorres.com\n"
+"POT-Creation-Date: 2026-09-14 12:57+0000\n"
+"PO-Revision-Date: 2026-09-14 12:57+0000\n"
+"Last-Translator: Jörn Gorres <joern@gorres.com>\n"
+"Language-Team: Jörn Gorres <joern@gorres.com>\n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: WP-CLI 2.x\n"
+"X-Domain: block-inserter-filter\n"
+
+#. Plugin Name of the plugin
+#: block-inserter-filter.php
+msgid "Block Inserter Filter"
+msgstr "Block Inserter Filter"
+
+#. Description of the plugin
+#: block-inserter-filter.php
+msgid "Hides individual Gutenberg blocks and embed variations from the block inserter, site-wide. Configurable per block by administrators, with optional GenerateBlocks integration."
+msgstr "Oculta blocos individuais do Gutenberg e variações de incorporação do insersor de blocos em todo o site. Configurável por bloco pelos administradores, com integração opcional ao GenerateBlocks."
+
+#. Author of the plugin
+#: block-inserter-filter.php
+msgid "Jörn Gorres"
+msgstr "Jörn Gorres"
+
+#. Author URI of the plugin
+#: block-inserter-filter.php
+msgid "https://joern.gorres.com"
+msgstr "https://joern.gorres.com"
+
+#: includes/class-jgor-bif-admin-page.php:61
+#: includes/class-jgor-bif-admin-page.php:62
+#: includes/class-jgor-bif-admin-page.php:363
+msgid "Hide Blocks"
+msgstr "Ocultar blocos"
+
+#: includes/class-jgor-bif-admin-page.php:139
+#: includes/class-jgor-bif-admin-page.php:140
+#: includes/class-jgor-bif-admin-page.php:228
+#: includes/class-jgor-bif-admin-page.php:229
+msgid "You do not have permission to do this."
+msgstr "Você não tem permissão para fazer isso."
+
+#: includes/class-jgor-bif-admin-page.php:367
+msgid "Settings saved."
+msgstr "Configurações salvas."
+
+#. translators: 1: number of registered blocks, 2: number of hidden blocks, 3: number of hidden embed variations.
+#: includes/class-jgor-bif-admin-page.php:375
+#, php-format
+msgid "Registered blocks: %1$d. Currently hidden: %2$d blocks and %3$d embed variations."
+msgstr "Blocos registrados: %1$d. Ocultos no momento: %2$d blocos e %3$d variações de incorporação."
+
+#: includes/class-jgor-bif-admin-page.php:384
+msgid "Checked blocks are removed from the block inserter for all users. Existing content using hidden blocks remains visible – only inserting new instances is blocked."
+msgstr "Os blocos marcados são removidos do insersor de blocos para todos os usuários. O conteúdo existente que usa blocos ocultos continua visível – apenas a inserção de novas instâncias é bloqueada."
+
+#: includes/class-jgor-bif-admin-page.php:385
+msgid "Certain core blocks (Paragraph, Heading, List, Image, Group, Columns) always stay available as a safety net and cannot be hidden here."
+msgstr "Alguns blocos principais (Parágrafo, Título, Lista, Imagem, Grupo, Colunas) permanecem sempre disponíveis como rede de segurança e não podem ser ocultados aqui."
+
+#: includes/class-jgor-bif-admin-page.php:390
+msgid "Search blocks"
+msgstr "Pesquisar blocos"
+
+#: includes/class-jgor-bif-admin-page.php:395
+msgid "Search blocks…"
+msgstr "Pesquisar blocos…"
+
+#: includes/class-jgor-bif-admin-page.php:401
+msgid "Choose grouping"
+msgstr "Escolher agrupamento"
+
+#: includes/class-jgor-bif-admin-page.php:404
+msgid "By category"
+msgstr "Por categoria"
+
+#: includes/class-jgor-bif-admin-page.php:408
+msgid "By namespace"
+msgstr "Por namespace"
+
+#: includes/class-jgor-bif-admin-page.php:440
+msgid "No blocks found."
+msgstr "Nenhum bloco encontrado."
+
+#: includes/class-jgor-bif-admin-page.php:443
+msgid "Save Settings"
+msgstr "Salvar configurações"
+
+#. translators: %d: number of hidden blocks in this group.
+#. translators: %d: number of hidden embed variations in this group.
+#: includes/class-jgor-bif-admin-page.php:478
+#: includes/class-jgor-bif-admin-page.php:609
+#, php-format
+msgid "%d hidden"
+msgstr "%d ocultos"
+
+#: includes/class-jgor-bif-admin-page.php:509
+#: includes/class-jgor-bif-admin-page.php:628
+msgid "Toggle all"
+msgstr "Alternar todos"
+
+#: includes/class-jgor-bif-admin-page.php:564
+msgid "GenerateBlocks Pro is active. This core block is hidden from the inserter automatically because GenerateBlocks Pro provides an extended variant. If GenerateBlocks Pro is deactivated, the core block reappears automatically."
+msgstr "O GenerateBlocks Pro está ativo. Este bloco principal é ocultado automaticamente do insersor porque o GenerateBlocks Pro oferece uma variante estendida. Se o GenerateBlocks Pro for desativado, o bloco principal reaparece automaticamente."
+
+#: includes/class-jgor-bif-admin-page.php:565
+msgid "Pro variant active"
+msgstr "Variante Pro ativa"
+
+#: includes/class-jgor-bif-admin-page.php:567
+msgid "protected"
+msgstr "protegido"
+
+#: includes/class-jgor-bif-admin-page.php:574
+#: includes/class-jgor-bif-admin-page.php:655
+msgid "Save"
+msgstr "Salvar"
+
+#: includes/class-jgor-bif-admin-page.php:620
+msgid "Embed variations"
+msgstr "Variações de incorporação"
+
+#: includes/class-jgor-bif-admin-page.php:632
+msgid "Variations of the \"Embed\" block (YouTube, Reddit, Vimeo, …). Checked variations are removed in the editor; the base \"Embed\" block remains available."
+msgstr "Variações do bloco \"Incorporar\" (YouTube, Reddit, Vimeo, …). As variações marcadas são removidas do editor; o bloco base \"Incorporar\" continua disponível."
+
+#: includes/class-jgor-bif-admin-page.php:688
+msgid "Uncategorized"
+msgstr "Sem categoria"
+
+#: includes/class-jgor-bif-plugin.php:192
+msgid "Settings"
+msgstr "Configurações"

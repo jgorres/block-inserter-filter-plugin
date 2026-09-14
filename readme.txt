@@ -60,6 +60,7 @@ These blocks are hard-protected as a safety net — without them the editor woul
 * UI: each group header shows how many blocks of that group are currently hidden ("N hidden"), updated live while ticking checkboxes or using "Toggle all".
 * UI: "Toggle all" is only shown while a group is expanded and is aligned with the second column of the block list; the per-group "Save" button is left-aligned.
 * UI: the intro text no longer contains a hard line break.
+* Translations: added en_GB, it_IT, ja, nl_NL, pl_PL, pt_BR and ru_RU alongside de_DE, es_ES and fr_FR (`.po` templates for translate.wordpress.org).
 
 = 2.1.0 =
 * UI: block groups (category view, namespace view) and the embed variations section are now accordions. All groups start collapsed; a click on the group header opens it. The header is a real button with `aria-expanded` / `aria-controls`, so it works with keyboard and screen readers. Checkboxes in collapsed groups are still submitted with the form.

@@ -1,0 +1,143 @@
+# Japanese (ja) translation of Block Inserter Filter.
+# Copyright (C) 2026 Jörn Gorres
+# This file is distributed under the same license as the plugin.
+msgid ""
+msgstr ""
+"Project-Id-Version: Block Inserter Filter 2.1.1\n"
+"Report-Msgid-Bugs-To: joern@gorres.com\n"
+"POT-Creation-Date: 2026-09-14 12:57+0000\n"
+"PO-Revision-Date: 2026-09-14 12:57+0000\n"
+"Last-Translator: Jörn Gorres <joern@gorres.com>\n"
+"Language-Team: Jörn Gorres <joern@gorres.com>\n"
+"Language: ja\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: WP-CLI 2.x\n"
+"X-Domain: block-inserter-filter\n"
+
+#. Plugin Name of the plugin
+#: block-inserter-filter.php
+msgid "Block Inserter Filter"
+msgstr "Block Inserter Filter"
+
+#. Description of the plugin
+#: block-inserter-filter.php
+msgid "Hides individual Gutenberg blocks and embed variations from the block inserter, site-wide. Configurable per block by administrators, with optional GenerateBlocks integration."
+msgstr "Gutenberg のブロックや埋め込みバリエーションをサイト全体でブロック挿入ツールから非表示にします。管理者がブロックごとに設定でき、GenerateBlocks との連携も任意で利用できます。"
+
+#. Author of the plugin
+#: block-inserter-filter.php
+msgid "Jörn Gorres"
+msgstr "Jörn Gorres"
+
+#. Author URI of the plugin
+#: block-inserter-filter.php
+msgid "https://joern.gorres.com"
+msgstr "https://joern.gorres.com"
+
+#: includes/class-jgor-bif-admin-page.php:61
+#: includes/class-jgor-bif-admin-page.php:62
+#: includes/class-jgor-bif-admin-page.php:363
+msgid "Hide Blocks"
+msgstr "ブロックを非表示"
+
+#: includes/class-jgor-bif-admin-page.php:139
+#: includes/class-jgor-bif-admin-page.php:140
+#: includes/class-jgor-bif-admin-page.php:228
+#: includes/class-jgor-bif-admin-page.php:229
+msgid "You do not have permission to do this."
+msgstr "この操作を行う権限がありません。"
+
+#: includes/class-jgor-bif-admin-page.php:367
+msgid "Settings saved."
+msgstr "設定を保存しました。"
+
+#. translators: 1: number of registered blocks, 2: number of hidden blocks, 3: number of hidden embed variations.
+#: includes/class-jgor-bif-admin-page.php:375
+#, php-format
+msgid "Registered blocks: %1$d. Currently hidden: %2$d blocks and %3$d embed variations."
+msgstr "登録済みブロック: %1$d 件。現在非表示: ブロック %2$d 件、埋め込みバリエーション %3$d 件。"
+
+#: includes/class-jgor-bif-admin-page.php:384
+msgid "Checked blocks are removed from the block inserter for all users. Existing content using hidden blocks remains visible – only inserting new instances is blocked."
+msgstr "チェックしたブロックは、すべてのユーザーのブロック挿入ツールから取り除かれます。非表示ブロックを使用している既存のコンテンツはそのまま表示され、新しいインスタンスの挿入だけがブロックされます。"
+
+#: includes/class-jgor-bif-admin-page.php:385
+msgid "Certain core blocks (Paragraph, Heading, List, Image, Group, Columns) always stay available as a safety net and cannot be hidden here."
+msgstr "一部のコアブロック（段落、見出し、リスト、画像、グループ、カラム）は安全策として常に利用可能で、ここでは非表示にできません。"
+
+#: includes/class-jgor-bif-admin-page.php:390
+msgid "Search blocks"
+msgstr "ブロックを検索"
+
+#: includes/class-jgor-bif-admin-page.php:395
+msgid "Search blocks…"
+msgstr "ブロックを検索…"
+
+#: includes/class-jgor-bif-admin-page.php:401
+msgid "Choose grouping"
+msgstr "グループ化を選択"
+
+#: includes/class-jgor-bif-admin-page.php:404
+msgid "By category"
+msgstr "カテゴリー別"
+
+#: includes/class-jgor-bif-admin-page.php:408
+msgid "By namespace"
+msgstr "名前空間別"
+
+#: includes/class-jgor-bif-admin-page.php:440
+msgid "No blocks found."
+msgstr "ブロックが見つかりません。"
+
+#: includes/class-jgor-bif-admin-page.php:443
+msgid "Save Settings"
+msgstr "設定を保存"
+
+#. translators: %d: number of hidden blocks in this group.
+#. translators: %d: number of hidden embed variations in this group.
+#: includes/class-jgor-bif-admin-page.php:478
+#: includes/class-jgor-bif-admin-page.php:609
+#, php-format
+msgid "%d hidden"
+msgstr "%d 件非表示"
+
+#: includes/class-jgor-bif-admin-page.php:509
+#: includes/class-jgor-bif-admin-page.php:628
+msgid "Toggle all"
+msgstr "すべて切り替え"
+
+#: includes/class-jgor-bif-admin-page.php:564
+msgid "GenerateBlocks Pro is active. This core block is hidden from the inserter automatically because GenerateBlocks Pro provides an extended variant. If GenerateBlocks Pro is deactivated, the core block reappears automatically."
+msgstr "GenerateBlocks Pro が有効です。GenerateBlocks Pro が拡張版を提供するため、このコアブロックは挿入ツールから自動的に非表示になります。GenerateBlocks Pro を無効化すると、コアブロックは自動的に再表示されます。"
+
+#: includes/class-jgor-bif-admin-page.php:565
+msgid "Pro variant active"
+msgstr "Pro 版が有効"
+
+#: includes/class-jgor-bif-admin-page.php:567
+msgid "protected"
+msgstr "保護済み"
+
+#: includes/class-jgor-bif-admin-page.php:574
+#: includes/class-jgor-bif-admin-page.php:655
+msgid "Save"
+msgstr "保存"
+
+#: includes/class-jgor-bif-admin-page.php:620
+msgid "Embed variations"
+msgstr "埋め込みバリエーション"
+
+#: includes/class-jgor-bif-admin-page.php:632
+msgid "Variations of the \"Embed\" block (YouTube, Reddit, Vimeo, …). Checked variations are removed in the editor; the base \"Embed\" block remains available."
+msgstr "「埋め込み」ブロックのバリエーション（YouTube、Reddit、Vimeo など）。チェックしたバリエーションはエディターから取り除かれ、基本の「埋め込み」ブロックは引き続き利用できます。"
+
+#: includes/class-jgor-bif-admin-page.php:688
+msgid "Uncategorized"
+msgstr "未分類"
+
+#: includes/class-jgor-bif-plugin.php:192
+msgid "Settings"
+msgstr "設定"
