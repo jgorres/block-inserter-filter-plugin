@@ -51,6 +51,7 @@ These blocks are hard-protected as a safety net — without them the editor woul
 
 = 1.6.0 =
 * Internationalisation: the source language of all user-facing strings, the Plugin Name and the Description is now English. German (`de_DE`), French (`fr_FR`) and Spanish (`es_ES`) translations are provided in `languages/` (`.pot`, `.po`, `.mo`, `.l10n.php`) and serve as the templates for translate.wordpress.org; translations are loaded through WordPress.org language packs.
+* The settings page slug changed from `jg-gbbf-bloecke-ausblenden` to `jg-gbbf-hide-blocks` (`options-general.php?page=jg-gbbf-hide-blocks`). Bookmarks to the old URL need to be updated; the "Settings" link on the plugins screen already points to the new address.
 * Housekeeping: `@package GB_Block_Filter` in all files, JS globals renamed to `jgGbbfEditorData`, console output removed from `admin.js`, unused `gbbaL10n` localisation removed, tabs instead of spaces in the class files, `.distignore` added for SVN exports.
 * Fix: when another plugin sets `allowed_block_types_all` to `false` (no blocks allowed at all), that restriction is now passed through unchanged instead of being replaced by the full block registry minus the hidden blocks.
 * Removed the `all_plugins` display-name override on `wp-admin/plugins.php`. The plugin is now listed under its real name everywhere.

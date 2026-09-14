@@ -28,8 +28,11 @@ final class JG_GBBF_Admin_Page {
 
 	/**
 	 * Slug der Settings-Seite (Query-Parameter ?page=...).
+	 *
+	 * Seit 1.6.0 englisch; vorher 'jg-gbbf-bloecke-ausblenden'. Alte
+	 * Lesezeichen auf die Settings-Seite laufen deshalb ins Leere.
 	 */
-	public const MENU_SLUG = 'jg-gbbf-bloecke-ausblenden';
+	public const MENU_SLUG = 'jg-gbbf-hide-blocks';
 
 	/**
 	 * Nonce-Action-Name.
