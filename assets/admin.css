@@ -59,23 +59,70 @@
     cursor: pointer;
 }
 
-/* Gruppen-Container */
+/* Gruppen-Container (Accordion). Geschlossen ist nur die Legende
+   sichtbar, deshalb kompaktes Padding; das Panel bringt eigenen
+   Abstand mit. */
 .jgor-bif-admin .jgor-bif-group {
     background: #fff;
     border: 1px solid #c3c4c7;
     border-radius: 4px;
-    padding: 1em 1.25em 1.25em;
-    margin-bottom: 1.25em;
+    padding: 0.5em 1.25em 0.6em;
+    margin-bottom: 0.75em;
 }
 
-.jgor-bif-admin .jgor-bif-group__legend {
+/* Kopfzeile: Accordion-Button links (nimmt die volle Breite), "Toggle all"
+   rechts. Kein <legend> mehr, damit die geschlossene Gruppe als kompakte
+   Zeile im Rahmen sitzt statt als Beschriftung AUF dem Rahmen. */
+.jgor-bif-admin .jgor-bif-group__header {
     display: flex;
     align-items: center;
     gap: 0.75em;
     font-weight: 600;
     font-size: 1.05em;
-    padding: 0 0.5em;
-    width: auto;
+}
+
+/* Accordion-Kopf: als Button, optisch aber Ueberschrift. */
+.jgor-bif-admin .jgor-bif-group__toggle {
+    display: inline-flex;
+    flex: 1 1 auto;
+    align-items: center;
+    gap: 0.6em;
+    margin: 0;
+    padding: 0.35em 0.4em;
+    border: 0;
+    border-radius: 3px;
+    background: transparent;
+    font: inherit;
+    font-weight: 600;
+    color: #1d2327;
+    cursor: pointer;
+    text-align: left;
+}
+
+.jgor-bif-admin .jgor-bif-group__toggle:hover {
+    background: #f0f0f1;
+}
+
+.jgor-bif-admin .jgor-bif-group__toggle:focus-visible {
+    outline: 2px solid #2271b1;
+    outline-offset: 1px;
+}
+
+/* Chevron: rechts = geschlossen, nach unten gedreht = offen. */
+.jgor-bif-admin .jgor-bif-group__chevron {
+    font-size: 16px;
+    width: 16px;
+    height: 16px;
+    color: #50575e;
+    transition: transform 0.15s ease;
+}
+
+.jgor-bif-admin .jgor-bif-group__toggle[aria-expanded="true"] .jgor-bif-group__chevron {
+    transform: rotate(90deg);
+}
+
+.jgor-bif-admin .jgor-bif-group__panel {
+    padding: 0.5em 0 0.4em;
 }
 
 .jgor-bif-admin .jgor-bif-group__title {

@@ -4,7 +4,7 @@ Tags: gutenberg, blocks, block-editor, inserter, admin
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 8.0
-Stable tag: 2.0.0
+Stable tag: 2.1.0
 License: GPL v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -55,6 +55,10 @@ No. Content remains intact and renders normally on the front-end. Only inserting
 These blocks are hard-protected as a safety net — without them the editor would be practically unusable. If you really need to remove them, use the `allowed_block_types_all` filter in your theme or in a custom plugin.
 
 == Changelog ==
+
+= 2.1.0 =
+* UI: block groups (category view, namespace view) and the embed variations section are now accordions. All groups start collapsed; a click on the group header opens it. The header is a real button with `aria-expanded` / `aria-controls`, so it works with keyboard and screen readers. Checkboxes in collapsed groups are still submitted with the form.
+* UI: while searching, groups with matches open automatically; clearing the search collapses them again.
 
 = 2.0.0 =
 * **Rename:** the plugin is now "Block Inserter Filter" (slug, folder, main file and Text Domain `block-inserter-filter`). The previous name "Block Filter for GenerateBlocks" was misleading — the plugin filters any Gutenberg block, GenerateBlocks is only an optional integration. WordPress deactivates the plugin during the folder change; reactivate it under Plugins.
@@ -149,6 +153,9 @@ These blocks are hard-protected as a safety net — without them the editor woul
 * Initial release.
 
 == Upgrade Notice ==
+
+= 2.1.0 =
+Block groups are now collapsible accordions, all collapsed by default. No functional changes to filtering.
 
 = 2.0.0 =
 Renamed to "Block Inserter Filter" with a new slug and option prefix. Settings migrate automatically; reactivate the plugin after the update. English source strings with German, French and Spanish translations. Fixes and WordPress 7.1 compatibility.

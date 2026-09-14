@@ -160,8 +160,51 @@
         } );
 
         /**
+         * Accordion: Panel einer Gruppe oeffnen oder schliessen.
+         *
+         * Zustand liegt ausschliesslich in `aria-expanded` des Kopf-
+         * Buttons und im `hidden`-Attribut des Panels – kein eigener
+         * JS-State, damit Markup und Screenreader immer uebereinstimmen.
+         * Checkboxen in geschlossenen Panels werden weiterhin mit dem
+         * Formular gesendet; `hidden` wirkt nur auf die Darstellung.
+         *
+         * @param {HTMLElement} group  Das .jgor-bif-group-Element.
+         * @param {boolean}     open   true = oeffnen, false = schliessen.
+         */
+        function setGroupOpen( group, open ) {
+            var toggle = group.querySelector( '.jgor-bif-group__toggle' );
+            var panel  = group.querySelector( '.jgor-bif-group__panel' );
+            if ( ! toggle || ! panel ) {
+                return;
+            }
+            toggle.setAttribute( 'aria-expanded', open ? 'true' : 'false' );
+            panel.hidden = ! open;
+        }
+
+        function isGroupOpen( group ) {
+            var toggle = group.querySelector( '.jgor-bif-group__toggle' );
+            return !! toggle && 'true' === toggle.getAttribute( 'aria-expanded' );
+        }
+
+        var allGroups = Array.prototype.slice.call( document.querySelectorAll( '.jgor-bif-group' ) );
+        allGroups.forEach( function ( group ) {
+            var toggle = group.querySelector( '.jgor-bif-group__toggle' );
+            if ( ! toggle ) {
+                return;
+            }
+            toggle.addEventListener( 'click', function () {
+                setGroupOpen( group, ! isGroupOpen( group ) );
+            } );
+        } );
+
+        /**
          * Live-Suche – filtert Items in der aktiven Ansicht UND
          * in der immer sichtbaren Embed-Varianten-Sektion.
+         *
+         * Bei aktiver Suche werden Gruppen mit Treffern automatisch
+         * aufgeklappt, damit die Treffer sichtbar sind; wird die Suche
+         * geleert, gehen alle Gruppen wieder in den Startzustand
+         * (geschlossen).
          */
         function applyFilter() {
             var query        = ( search ? search.value : '' ).toLowerCase().trim();
@@ -201,6 +244,8 @@
             groups.forEach( function ( group ) {
                 var visibleItems = group.querySelectorAll( '.jgor-bif-item:not([hidden])' );
                 group.hidden = 0 === visibleItems.length;
+                // Treffer aufklappen, ohne Suche alles schliessen.
+                setGroupOpen( group, '' !== query && visibleItems.length > 0 );
             } );
 
             if ( noResults ) {

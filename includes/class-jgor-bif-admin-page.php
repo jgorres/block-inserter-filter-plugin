@@ -462,21 +462,40 @@ final class JGOR_BIF_Admin_Page {
 		}
 
 		$list_id  = 'jgor-bif-list-' . sanitize_html_class( $group_slug );
+		$panel_id = 'jgor-bif-panel-' . sanitize_html_class( $group_slug );
 		$is_pro_g = ( 'generateblocks-pro' === $group_raw );
 		?>
-		<fieldset class="jgor-bif-group" data-group="<?php echo esc_attr( $group_slug ); ?>">
-			<legend class="jgor-bif-group__legend">
-				<span class="jgor-bif-group__title"><?php echo esc_html( $group_label ); ?></span>
-				<span class="jgor-bif-group__count"><?php echo (int) count( $blocks ); ?></span>
-				<?php if ( $is_pro_g ) : ?>
-					<span class="jgor-bif-badge jgor-bif-badge--pro">Pro</span>
-				<?php endif; ?>
+		<div class="jgor-bif-group" role="group" data-group="<?php echo esc_attr( $group_slug ); ?>">
+			<div class="jgor-bif-group__header">
+				<?php
+				/*
+				 * Accordion-Kopf: ein echter Button mit aria-expanded /
+				 * aria-controls, damit Tastatur und Screenreader den
+				 * Zustand kennen. Startzustand geschlossen, das Panel
+				 * traegt `hidden`. "Toggle all" steht bewusst NEBEN dem
+				 * Kopf-Button, Buttons duerfen nicht verschachtelt werden.
+				 */
+				?>
+				<button
+					type="button"
+					class="jgor-bif-group__toggle"
+					aria-expanded="false"
+					aria-controls="<?php echo esc_attr( $panel_id ); ?>"
+				>
+					<span class="jgor-bif-group__chevron dashicons dashicons-arrow-right-alt2" aria-hidden="true"></span>
+					<span class="jgor-bif-group__title"><?php echo esc_html( $group_label ); ?></span>
+					<span class="jgor-bif-group__count"><?php echo (int) count( $blocks ); ?></span>
+					<?php if ( $is_pro_g ) : ?>
+						<span class="jgor-bif-badge jgor-bif-badge--pro">Pro</span>
+					<?php endif; ?>
+				</button>
 				<button
 					type="button"
 					class="button button-small jgor-bif-toggle-all"
 					data-target="<?php echo esc_attr( $list_id ); ?>"
 				><?php esc_html_e( 'Toggle all', 'block-inserter-filter' ); ?></button>
-			</legend>
+			</div>
+			<div class="jgor-bif-group__panel" id="<?php echo esc_attr( $panel_id ); ?>" hidden>
 			<ul class="jgor-bif-list" id="<?php echo esc_attr( $list_id ); ?>">
 				<?php foreach ( $blocks as $entry ) : ?>
 					<?php
@@ -541,7 +560,8 @@ final class JGOR_BIF_Admin_Page {
 			<div class="jgor-bif-group__actions">
 				<button type="submit" class="button button-primary"><?php esc_html_e( 'Save', 'block-inserter-filter' ); ?></button>
 			</div>
-		</fieldset>
+			</div>
+		</div>
 		<?php
 	}
 
@@ -569,18 +589,28 @@ final class JGOR_BIF_Admin_Page {
 		// Alphabetisch nach Anzeigename sortieren.
 		asort( $variations, SORT_NATURAL | SORT_FLAG_CASE );
 
-		$list_id = 'jgor-bif-list-embed-variations';
+		$list_id  = 'jgor-bif-list-embed-variations';
+		$panel_id = 'jgor-bif-panel-embed-variations';
 		?>
-		<fieldset class="jgor-bif-group jgor-bif-group--variations" data-group="embed-variations">
-			<legend class="jgor-bif-group__legend">
-				<span class="jgor-bif-group__title"><?php esc_html_e( 'Embed variations', 'block-inserter-filter' ); ?></span>
-				<span class="jgor-bif-group__count"><?php echo (int) count( $variations ); ?></span>
+		<div class="jgor-bif-group jgor-bif-group--variations" role="group" data-group="embed-variations">
+			<div class="jgor-bif-group__header">
+				<button
+					type="button"
+					class="jgor-bif-group__toggle"
+					aria-expanded="false"
+					aria-controls="<?php echo esc_attr( $panel_id ); ?>"
+				>
+					<span class="jgor-bif-group__chevron dashicons dashicons-arrow-right-alt2" aria-hidden="true"></span>
+					<span class="jgor-bif-group__title"><?php esc_html_e( 'Embed variations', 'block-inserter-filter' ); ?></span>
+					<span class="jgor-bif-group__count"><?php echo (int) count( $variations ); ?></span>
+				</button>
 				<button
 					type="button"
 					class="button button-small jgor-bif-toggle-all"
 					data-target="<?php echo esc_attr( $list_id ); ?>"
 				><?php esc_html_e( 'Toggle all', 'block-inserter-filter' ); ?></button>
-			</legend>
+			</div>
+			<div class="jgor-bif-group__panel" id="<?php echo esc_attr( $panel_id ); ?>" hidden>
 			<p class="description jgor-bif-group__hint">
 				<?php esc_html_e( 'Variations of the "Embed" block (YouTube, Reddit, Vimeo, …). Checked variations are removed in the editor; the base "Embed" block remains available.', 'block-inserter-filter' ); ?>
 			</p>
@@ -607,7 +637,8 @@ final class JGOR_BIF_Admin_Page {
 			<div class="jgor-bif-group__actions">
 				<button type="submit" class="button button-primary"><?php esc_html_e( 'Save', 'block-inserter-filter' ); ?></button>
 			</div>
-		</fieldset>
+			</div>
+		</div>
 		<?php
 	}
 
