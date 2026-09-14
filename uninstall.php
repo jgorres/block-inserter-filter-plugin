@@ -14,12 +14,11 @@
  *                                          Migration)
  *   - Legacy-Schluessel aus < 1.5.0 (Pflicht zum Mitloeschen, falls
  *     ein User direkt nach dem Update deinstalliert, bevor die
- *     Migrations-Routine auf admin_init je gelaufen ist - siehe
- *     CLAUDE.md §3.7):
+ *     Migrations-Routine auf admin_init je gelaufen ist):
  *       'gbba_hidden_blocks'
  *       'gbba_hidden_embed_variations'
- *   - defensiv via LIKE: alle uebrigen jg_gbbf_*- UND gbba_*-Eintraege
- *     in wp_options (inkl. eventueller Transients).
+ *   - defensiv via LIKE: alle uebrigen jg_gbbf_*-Eintraege in
+ *     wp_options (inkl. eventueller Transients).
  *
  * Multisite: per-Site-Aufraeumen plus netzwerkweite Sentinel-Option
  * `jg_gbbf_network_swept_v1_5` entfernen.

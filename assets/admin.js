@@ -1,5 +1,5 @@
 /**
- * Admin-JS fuer "GenerateBlocks - Bloecke ausblenden".
+ * Admin-JS fuer "Block Filter for GenerateBlocks".
  *
  * Aufgaben:
  *   - Live-Suche ueber alle Block-Eintraege.
@@ -8,9 +8,8 @@
  *
  * Vanilla JS, keine Abhaengigkeiten. IIFE-gekapselt, strict mode.
  *
- * @package GBBA
+ * @package GB_Block_Filter
  * @author  Jörn Gorres
- * @version 1.3.8
  */
 ( function () {
     'use strict';
@@ -37,10 +36,8 @@
             }
             wp.blockLibrary.registerCoreBlocks();
         } catch ( e ) {
-            // Schluck Fehler – Plugin funktioniert auch ohne Icons weiter.
-            if ( window.console && window.console.warn ) {
-                window.console.warn( 'GBBA: registerCoreBlocks fehlgeschlagen', e );
-            }
+            // Fehler bewusst ignorieren – Icons sind Dekoration, das
+            // Plugin funktioniert auch ohne sie.
         }
     }
 
@@ -96,10 +93,9 @@
             renderInto( createElement( BlockIcon, { icon: blockType.icon, showColors: false } ), container );
         } );
 
-        // Diagnose-Hilfe in der Konsole, falls reihenweise Icons fehlen.
-        if ( missing > 0 && window.console && window.console.info ) {
-            window.console.info( 'GBBA: ' + missing + ' Block-Icons konnten nicht aufgeloest werden (Block clientseitig nicht registriert).' );
-        }
+        // Fehlende Icons (Block clientseitig nicht registriert) werden
+        // still uebergangen; der Zaehler bleibt fuer die Lesbarkeit.
+        void missing;
 
         // ----- Embed-Varianten-Icons -----
         var variations = [];

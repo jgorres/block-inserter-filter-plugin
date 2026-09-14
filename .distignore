@@ -1,0 +1,19 @@
+# Nicht in den SVN-Export / das Release-ZIP uebernehmen
+.git
+.gitignore
+.distignore
+.DS_Store
+Thumbs.db
+*.swp
+.idea
+.vscode
+vendor
+node_modules
+composer.json
+composer.lock
+phpcs.xml
+phpcs.xml.dist
+phpstan.neon
+phpstan.neon.dist
+.phpcs-cache
+*.zip

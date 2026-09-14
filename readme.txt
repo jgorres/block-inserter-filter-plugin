@@ -1,10 +1,10 @@
-=== Block-Filter für GenerateBlocks ===
+=== Block Filter for GenerateBlocks ===
 Contributors: jgorres
 Tags: gutenberg, blocks, generateblocks, block-editor, admin
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 8.0
-Stable tag: 1.5.2
+Stable tag: 1.6.0
 License: GPL v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -16,7 +16,7 @@ This plugin lets administrators globally hide individual Gutenberg blocks (Core,
 
 = Features =
 
-* Clear admin screen under "Settings → Hide blocks".
+* Clear admin screen under "Settings → Hide Blocks".
 * Group blocks either by block category (as in the editor) or by namespace.
 * GenerateBlocks Free and GenerateBlocks Pro are listed in separate groups.
 * Embed variations (YouTube, Reddit, Vimeo, TikTok, Bluesky, …) can be hidden individually.
@@ -35,7 +35,7 @@ Defense in depth: capability check (`manage_options`), nonce validation, whiteli
 
 1. Upload the plugin folder to `wp-content/plugins/` or install the ZIP via Plugins → Add New → Upload Plugin.
 2. Activate the plugin under Plugins.
-3. Configure the plugin under Settings → Hide blocks.
+3. Configure the plugin under Settings → Hide Blocks.
 
 == Frequently Asked Questions ==
 
@@ -49,9 +49,11 @@ These blocks are hard-protected as a safety net — without them the editor woul
 
 == Changelog ==
 
-= 1.5.2 =
+= 1.6.0 =
+* Internationalisation: the source language of all user-facing strings, the Plugin Name and the Description is now English. The former German texts ship as a bundled `de_DE` translation in `languages/` (`.pot`, `.po`, `.mo`, `.l10n.php`); `load_plugin_textdomain()` is called on `init` so the bundled files are used until a language pack exists.
+* Housekeeping: `@package GB_Block_Filter` in all files, JS globals renamed to `jgGbbfEditorData`, console output removed from `admin.js`, unused `gbbaL10n` localisation removed, tabs instead of spaces in the class files, `.distignore` added for SVN exports.
 * Fix: when another plugin sets `allowed_block_types_all` to `false` (no blocks allowed at all), that restriction is now passed through unchanged instead of being replaced by the full block registry minus the hidden blocks.
-* Removed the `all_plugins` display-name override on `wp-admin/plugins.php`. The plugin is now listed under its real name "Block-Filter für GenerateBlocks" everywhere.
+* Removed the `all_plugins` display-name override on `wp-admin/plugins.php`. The plugin is now listed under its real name everywhere.
 * Fix: the plugin's own editor script no longer runs on the plugin's settings page, so icons of hidden embed variations render correctly there.
 * Uninstall: the catch-all `LIKE 'gbba_%'` cleanup was removed; the two known legacy option keys are still deleted by name. The generic four-letter prefix could have matched options of other plugins.
 * Multisite: `get_sites()` calls now pass `number => 0`, so networks with more than 100 sites are fully migrated and cleaned up.
@@ -71,7 +73,7 @@ These blocks are hard-protected as a safety net — without them the editor woul
 
 = 1.4.0 =
 * **Rename:** plugin slug, folder name, main file and Text Domain changed to `gb-block-filter`; the displayed Plugin Name is now "Block-Filter für GenerateBlocks". Existing settings (hidden blocks, hidden embed variations) are preserved because the option names (`gbba_*` prefix) remain unchanged. WordPress may auto-deactivate the plugin during the slug change — reactivate it manually under Plugins.
-* The plugin overview screen (`wp-admin/plugins.php`) showed the plugin as "GenerateBlocks – Block-Filter (Zusatz)" via a scoped `all_plugins` filter, so it sorted directly under "GenerateBlocks". (Removed again in 1.5.2.)
+* The plugin overview screen (`wp-admin/plugins.php`) showed the plugin as "GenerateBlocks – Block-Filter (Zusatz)" via a scoped `all_plugins` filter, so it sorted directly under "GenerateBlocks". (Removed again in 1.6.0.)
 * `uninstall.php`: now also removes the second option `gbba_hidden_embed_variations` (added in v1.1.0 but previously not cleaned up); adds a defensive `LIKE 'gbba_%'` cleanup that covers any future plugin options and `_transient_gbba_*` / `_transient_timeout_gbba_*` entries. Multisite loop preserved.
 * `readme.txt`: Installation, FAQ and the older Changelog entries (v1.0.0 – v1.3.6) translated to English. Non-standard header fields (`Author`, `Author URI`, `Plugin URI`) removed from the readme header block — they belong in the PHP plugin header only. `Contributors` slug switched to the WordPress.org user name `jgorres`. New `== Upgrade Notice ==` section added.
 * `Plugin URI` removed from the main PHP file header (no dedicated plugin landing page).
@@ -137,8 +139,8 @@ These blocks are hard-protected as a safety net — without them the editor woul
 
 == Upgrade Notice ==
 
-= 1.5.2 =
-Fix: respects a `false` value of `allowed_block_types_all` set by other plugins. The renamed entry on the plugins screen is gone, the plugin now appears under its real name. Declares WordPress 7.1 compatibility.
+= 1.6.0 =
+Source strings are now English with a bundled German translation. Fix: respects a `false` value of `allowed_block_types_all` set by other plugins. The renamed entry on the plugins screen is gone. Declares WordPress 7.1 compatibility.
 
 = 1.5.1 =
 Maintenance release: declares WordPress 7.0 compatibility. No functional changes.

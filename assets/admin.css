@@ -1,11 +1,10 @@
 /**
- * Admin-Styles fuer "GenerateBlocks - Bloecke ausblenden".
+ * Admin-Styles fuer "Block Filter for GenerateBlocks".
  *
  * BEM-Notation: .jg-gbbf-{block}__{element}--{modifier}
  *
- * @package GBBA
+ * @package GB_Block_Filter
  * @author  Jörn Gorres
- * @version 1.3.3
  */
 
 /* Wrapper */

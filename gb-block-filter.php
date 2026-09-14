@@ -1,8 +1,8 @@
 <?php
 /**
- * Plugin Name:       Block-Filter für GenerateBlocks
- * Description:       Blendet einzelne Gutenberg-Blöcke (Core, GenerateBlocks Free, GenerateBlocks Pro, Theme- und Plugin-Blöcke) global aus dem Block-Inserter aus. Konfigurierbar pro Block durch Administratoren.
- * Version:           1.5.2
+ * Plugin Name:       Block Filter for GenerateBlocks
+ * Description:       Hides individual Gutenberg blocks (Core, GenerateBlocks Free, GenerateBlocks Pro, theme and plugin blocks) globally from the block inserter. Configurable per block by administrators.
+ * Version:           1.6.0
  * Requires at least: 6.0
  * Requires PHP:      8.0
  * Tested up to:      7.1
@@ -13,9 +13,9 @@
  * Text Domain:       gb-block-filter
  * Domain Path:       /languages
  *
- * @package GBBA
+ * @package GB_Block_Filter
  * @author  Jörn Gorres
- * @version 1.5.2
+ * @version 1.6.0
  */
 
 /*
@@ -30,7 +30,7 @@ defined( 'ABSPATH' ) || exit;
  * Zugriff auf Version, Pfad und URL, ohne staendig __FILE__ und
  * plugin_dir_*() neu auswerten zu muessen.
  */
-define( 'JG_GBBF_VERSION', '1.5.2' );
+define( 'JG_GBBF_VERSION', '1.6.0' );
 define( 'JG_GBBF_PLUGIN_FILE', __FILE__ );
 define( 'JG_GBBF_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'JG_GBBF_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
@@ -45,6 +45,21 @@ define( 'JG_GBBF_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 require_once JG_GBBF_PLUGIN_DIR . 'includes/class-jg-gbbf-plugin.php';
 require_once JG_GBBF_PLUGIN_DIR . 'includes/class-jg-gbbf-block-filter.php';
 require_once JG_GBBF_PLUGIN_DIR . 'includes/class-jg-gbbf-admin-page.php';
+
+/*
+ * Textdomain laden. Fuer Sprachpakete von translate.wordpress.org ist
+ * der Aufruf seit WP 4.6 nicht noetig, wohl aber fuer die im Plugin
+ * mitgelieferten Uebersetzungen unter languages/ (Quellsprache der
+ * Strings ist Englisch, Deutsch liegt als de_DE bei).
+ */
+function jg_gbbf_load_textdomain(): void {
+	load_plugin_textdomain(
+		'gb-block-filter',
+		false,
+		dirname( plugin_basename( JG_GBBF_PLUGIN_FILE ) ) . '/languages'
+	);
+}
+add_action( 'init', 'jg_gbbf_load_textdomain' );
 
 /*
  * Plugin starten, sobald alle aktiven Plugins geladen sind. Das
