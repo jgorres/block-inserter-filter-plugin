@@ -170,17 +170,6 @@ final class JG_GBBF_Plugin {
             'plugin_action_links_' . plugin_basename( JG_GBBF_PLUGIN_FILE ),
             array( $this, 'add_settings_link' )
         );
-
-        // Anzeigenamen auf wp-admin/plugins.php so umbiegen, dass das
-        // Plugin direkt unter "GenerateBlocks" sortiert wird. Der echte
-        // Plugin-Header-Name ("Block-Filter fuer GenerateBlocks") bleibt
-        // ueberall sonst aktiv (WP-CLI, REST, Updates, get_plugins()).
-        // Hook ist auf load-plugins.php gescoped, damit der Filter nur
-        // dort feuert.
-        add_action(
-            'load-plugins.php',
-            array( $this, 'register_plugins_screen_display_name_filter' )
-        );
     }
 
     /**
@@ -205,39 +194,6 @@ final class JG_GBBF_Plugin {
         array_unshift( $links, $settings_link );
 
         return $links;
-    }
-
-    /**
-     * Haengt den `all_plugins`-Filter nur waehrend des Aufbaus der
-     * Plugin-Uebersichts-Seite ein (wp-admin/plugins.php).
-     *
-     * Wird ueber den Hook `load-plugins.php` aufgerufen, also bevor die
-     * Plugin-Liste aufgebaut wird. Damit beeinflussen wir ausschliesslich
-     * die Darstellung auf dieser einen Seite – Updates, WP-CLI, REST und
-     * andere Aufrufer von `get_plugins()` sehen weiterhin den echten
-     * Plugin-Namen aus dem Header.
-     */
-    public function register_plugins_screen_display_name_filter(): void {
-        add_filter( 'all_plugins', array( $this, 'filter_display_name_on_plugins_screen' ) );
-    }
-
-    /**
-     * Liefert den Anzeigenamen auf wp-admin/plugins.php so zurueck, dass
-     * das Plugin alphabetisch direkt unter "GenerateBlocks" einsortiert
-     * wird (vor "GenerateBlocks Pro"). Der echte `Plugin Name:`-Header
-     * bleibt "Block-Filter fuer GenerateBlocks" – die hier ueberschriebene
-     * Anzeige ist rein kosmetisch und greift nur auf der Plugin-
-     * Uebersichts-Seite.
-     *
-     * @param array<string, array<string, string>> $plugins Plugin-Liste keyed by basename.
-     * @return array<string, array<string, string>>
-     */
-    public function filter_display_name_on_plugins_screen( array $plugins ): array {
-        $basename = plugin_basename( JG_GBBF_PLUGIN_FILE );
-        if ( isset( $plugins[ $basename ] ) && is_array( $plugins[ $basename ] ) ) {
-            $plugins[ $basename ]['Name'] = 'GenerateBlocks – Block-Filter (Zusatz)';
-        }
-        return $plugins;
     }
 
     /**

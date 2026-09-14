@@ -37,6 +37,11 @@ final class JG_GBBF_Block_Filter {
      * Verhalten:
      *   - Sind keine Bloecke ausgeblendet, wird der Eingangswert
      *     unveraendert zurueckgegeben.
+     *   - Liefert ein vorheriger Filter `false` (= gar keine Bloecke
+     *     erlaubt, z. B. durch ein Rollen-Restriktions-Plugin), wird
+     *     dieser Wert unveraendert durchgereicht. Wir heben fremde
+     *     Sperren nicht auf, denn eine Teilmenge von "nichts" bleibt
+     *     "nichts".
      *   - Liefert ein vorheriger Filter `true` (= alle Bloecke
      *     erlaubt), bauen wir die volle Liste aus dem Block-Type-
      *     Registry auf, bevor wir ausblenden.
@@ -63,6 +68,13 @@ final class JG_GBBF_Block_Filter {
         $effective_hidden = array_values( array_unique( array_merge( $hidden, $auto_hidden ) ) );
 
         if ( empty( $effective_hidden ) ) {
+            return $allowed;
+        }
+
+        // Fremde Komplettsperre (false) unangetastet lassen. Nur bei
+        // `true` (oder einem Nicht-Array als Defensivfall) wird die
+        // vollstaendige Liste aus der Registry aufgebaut.
+        if ( false === $allowed ) {
             return $allowed;
         }
 
