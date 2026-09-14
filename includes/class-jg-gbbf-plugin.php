@@ -420,9 +420,11 @@ final class JG_GBBF_Plugin {
         if ( is_multisite() && is_main_site() ) {
             $network_sentinel = 'jg_gbbf_network_swept_v1_5';
             if ( ! get_site_option( $network_sentinel ) ) {
+                // 'number' => 0 hebt das Standardlimit von 100 Sites auf.
                 $site_ids = get_sites(
                     array(
                         'fields'     => 'ids',
+                        'number'     => 0,
                         'network_id' => get_current_network_id(),
                     )
                 );

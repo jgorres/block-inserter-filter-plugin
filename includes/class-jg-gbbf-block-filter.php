@@ -96,6 +96,18 @@ final class JG_GBBF_Block_Filter {
      * wurden – sonst null Overhead im Editor.
      */
     public function enqueue_editor_assets(): void {
+        // Die eigene Settings-Seite loest `enqueue_block_editor_assets`
+        // selbst aus, um Block-Icons aufzuloesen. Dort duerfen die
+        // ausgeblendeten Embed-Varianten NICHT deregistriert werden,
+        // sonst fehlen genau deren Icons in der Auswahlliste.
+        if ( is_admin() && function_exists( 'get_current_screen' ) ) {
+            $screen = get_current_screen();
+            if ( $screen instanceof WP_Screen
+                && 'settings_page_' . JG_GBBF_Admin_Page::MENU_SLUG === $screen->id ) {
+                return;
+            }
+        }
+
         $hidden = JG_GBBF_Plugin::get_hidden_embed_variations();
         if ( empty( $hidden ) ) {
             return;

@@ -102,7 +102,11 @@ final class JG_GBBF_Admin_Page {
          * aber den Editor-Kontext, damit andere Plugins/Themes ihre
          * Block-Assets registrieren. Ein eigener jg_gbbf_*-Hook waere
          * funktional unsinnig, weil sich keine externen Plugins
-         * daran anhaengen wuerden.
+         * daran anhaengen wuerden. Core selbst feuert den Hook ebenfalls
+         * ausserhalb des Post-Editors (Widgets-Screen, Site-Editor).
+         * Das plugineigene editor.js erkennt diese Seite ueber
+         * get_current_screen() und laedt hier nicht (siehe
+         * JG_GBBF_Block_Filter::enqueue_editor_assets()).
          */
         // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Core-Hook bewusst: andere Plugins/Themes sollen ihre Block-Assets registrieren.
         do_action( 'enqueue_block_editor_assets' );

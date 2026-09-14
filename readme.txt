@@ -52,6 +52,9 @@ These blocks are hard-protected as a safety net — without them the editor woul
 = 1.5.2 =
 * Fix: when another plugin sets `allowed_block_types_all` to `false` (no blocks allowed at all), that restriction is now passed through unchanged instead of being replaced by the full block registry minus the hidden blocks.
 * Removed the `all_plugins` display-name override on `wp-admin/plugins.php`. The plugin is now listed under its real name "Block-Filter für GenerateBlocks" everywhere.
+* Fix: the plugin's own editor script no longer runs on the plugin's settings page, so icons of hidden embed variations render correctly there.
+* Uninstall: the catch-all `LIKE 'gbba_%'` cleanup was removed; the two known legacy option keys are still deleted by name. The generic four-letter prefix could have matched options of other plugins.
+* Multisite: `get_sites()` calls now pass `number => 0`, so networks with more than 100 sites are fully migrated and cleaned up.
 * Declared compatibility with WordPress 7.1 (`Tested up to`).
 
 = 1.5.1 =

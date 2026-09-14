@@ -58,7 +58,9 @@ function jg_gbbf_uninstall_cleanup_current_site(): void {
 		delete_option( $jg_gbbf_option );
 	}
 
-	// Legacy-Keys (< 1.5.0). Doppelt-Reinigung gemaess CLAUDE.md §3.7.
+	// Legacy-Keys (< 1.5.0) namentlich entfernen. Bewusst KEIN
+	// LIKE 'gbba_%': das kurze Praefix ist nicht eindeutig genug und
+	// koennte Optionen fremder Plugins treffen.
 	$jg_gbbf_legacy_options = array(
 		'gbba_hidden_blocks',
 		'gbba_hidden_embed_variations',
@@ -67,10 +69,11 @@ function jg_gbbf_uninstall_cleanup_current_site(): void {
 		delete_option( $jg_gbbf_legacy_option );
 	}
 
-	// 2) Defensiv: saemtliche uebrigen jg_gbbf_*- UND gbba_*-
-	//    Eintraege aus wp_options via LIKE entfernen. Deckt eventuelle
-	//    kuenftige Optionen sowie Transients
-	//    (`_transient_<prefix>_%` / `_transient_timeout_<prefix>_%`) ab.
+	// 2) Defensiv: saemtliche uebrigen jg_gbbf_*-Eintraege aus
+	//    wp_options via LIKE entfernen. Deckt eventuelle kuenftige
+	//    Optionen sowie Transients (`_transient_jg_gbbf_%` /
+	//    `_transient_timeout_jg_gbbf_%`) ab. Das Praefix jg_gbbf_ ist
+	//    plugin-eindeutig, ein Treffer in fremden Daten ist ausgeschlossen.
 	//    $wpdb->esc_like() escaped die "_"-Wildcards im Plugin-Praefix;
 	//    $wpdb->prepare() bindet die Patterns sauber als Strings.
 	//
@@ -80,26 +83,28 @@ function jg_gbbf_uninstall_cleanup_current_site(): void {
 			"DELETE FROM {$wpdb->options}
 			 WHERE option_name LIKE %s
 				OR option_name LIKE %s
-				OR option_name LIKE %s
-				OR option_name LIKE %s
-				OR option_name LIKE %s
 				OR option_name LIKE %s",
 			$wpdb->esc_like( '_transient_jg_gbbf_' ) . '%',
 			$wpdb->esc_like( '_transient_timeout_jg_gbbf_' ) . '%',
-			$wpdb->esc_like( 'jg_gbbf_' ) . '%',
-			$wpdb->esc_like( '_transient_gbba_' ) . '%',
-			$wpdb->esc_like( '_transient_timeout_gbba_' ) . '%',
-			$wpdb->esc_like( 'gbba_' ) . '%'
+			$wpdb->esc_like( 'jg_gbbf_' ) . '%'
 		)
 	);
 	// phpcs:enable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+
+	// Persistenter Object Cache: geloeschte Optionen/Transients koennten
+	// dort noch liegen. Nur die bekannten Keys gezielt verwerfen.
+	foreach ( array_merge( $jg_gbbf_options, $jg_gbbf_legacy_options ) as $jg_gbbf_cache_key ) {
+		wp_cache_delete( $jg_gbbf_cache_key, 'options' );
+	}
 }
 
 if ( is_multisite() ) {
 	// In Multisite die Aufraeumarbeiten pro Site wiederholen.
+	// 'number' => 0 hebt das Standardlimit von 100 Sites auf.
 	$jg_gbbf_sites = get_sites(
 		array(
 			'fields'     => 'ids',
+			'number'     => 0,
 			'network_id' => get_current_network_id(),
 		)
 	);
