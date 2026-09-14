@@ -5,7 +5,7 @@
  * Verhindert, dass Server, die Directory-Listing aktiviert haben, den
  * Inhalt des Ordners offenlegen.
  *
- * @package GB_Block_Filter
+ * @package Block_Inserter_Filter
  */
 
 defined( 'ABSPATH' ) || exit;

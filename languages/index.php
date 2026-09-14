@@ -8,7 +8,7 @@
  * zeigt; hier liegen die .pot-Vorlage und die Uebersetzungen (.po/.mo)
  * als Import-Vorlagen fuer translate.wordpress.org.
  *
- * @package GB_Block_Filter
+ * @package Block_Inserter_Filter
  */
 
 defined( 'ABSPATH' ) || exit;

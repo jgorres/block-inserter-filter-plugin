@@ -1,5 +1,5 @@
 /**
- * Admin-JS fuer "Block Filter for GenerateBlocks".
+ * Admin-JS fuer "Block Inserter Filter".
  *
  * Aufgaben:
  *   - Live-Suche ueber alle Block-Eintraege.
@@ -8,7 +8,7 @@
  *
  * Vanilla JS, keine Abhaengigkeiten. IIFE-gekapselt, strict mode.
  *
- * @package GB_Block_Filter
+ * @package Block_Inserter_Filter
  * @author  Jörn Gorres
  */
 ( function () {
@@ -44,7 +44,7 @@
     /**
      * Rendert die Block-Icons in die vorbereiteten Span-Container.
      *
-     * Pro `.jg-gbbf-item__icon[data-block-name]` wird der Block-Typ aus
+     * Pro `.jgor-bif-item__icon[data-block-name]` wird der Block-Typ aus
      * `wp.blocks.getBlockType` geholt und sein Icon ueber die
      * `BlockIcon`-Komponente von `wp.blockEditor` gerendert. Fuer
      * Embed-Varianten werden analog `wp.blocks.getBlockVariations`
@@ -79,7 +79,7 @@
 
         // ----- Block-Icons -----
         var missing = 0;
-        var blockContainers = document.querySelectorAll( '.jg-gbbf-item__icon[data-block-name]' );
+        var blockContainers = document.querySelectorAll( '.jgor-bif-item__icon[data-block-name]' );
         Array.prototype.forEach.call( blockContainers, function ( container ) {
             var name = container.getAttribute( 'data-block-name' );
             if ( ! name ) {
@@ -103,7 +103,7 @@
             variations = wp.blocks.getBlockVariations( 'core/embed' ) || [];
         }
         if ( variations.length ) {
-            var variationContainers = document.querySelectorAll( '.jg-gbbf-item__icon[data-variation-name]' );
+            var variationContainers = document.querySelectorAll( '.jgor-bif-item__icon[data-variation-name]' );
             Array.prototype.forEach.call( variationContainers, function ( container ) {
                 var slug = container.getAttribute( 'data-variation-name' );
                 if ( ! slug ) {
@@ -128,11 +128,11 @@
 
     document.addEventListener( 'DOMContentLoaded', function () {
 
-        var search        = document.getElementById( 'jg-gbbf-search' );
-        var noResults     = document.querySelector( '.jg-gbbf-no-results' );
-        var viewRadios    = document.querySelectorAll( 'input[name="jg_gbbf_view"]' );
-        var viewCategory  = document.querySelector( '.jg-gbbf-view--category' );
-        var viewNamespace = document.querySelector( '.jg-gbbf-view--namespace' );
+        var search        = document.getElementById( 'jgor-bif-search' );
+        var noResults     = document.querySelector( '.jgor-bif-no-results' );
+        var viewRadios    = document.querySelectorAll( 'input[name="jgor_bif_view"]' );
+        var viewCategory  = document.querySelector( '.jgor-bif-view--category' );
+        var viewNamespace = document.querySelector( '.jgor-bif-view--namespace' );
 
         /**
          * Aktive Ansicht (Kategorie / Namespace) umschalten.
@@ -165,17 +165,17 @@
          */
         function applyFilter() {
             var query        = ( search ? search.value : '' ).toLowerCase().trim();
-            var activeView   = document.querySelector( '.jg-gbbf-view:not([hidden])' );
-            var variationGrp = document.querySelector( '.jg-gbbf-group--variations' );
+            var activeView   = document.querySelector( '.jgor-bif-view:not([hidden])' );
+            var variationGrp = document.querySelector( '.jgor-bif-group--variations' );
 
             // Items aus der aktiven Block-Ansicht ...
             var items = [];
             if ( activeView ) {
-                items = items.concat( Array.prototype.slice.call( activeView.querySelectorAll( '.jg-gbbf-item' ) ) );
+                items = items.concat( Array.prototype.slice.call( activeView.querySelectorAll( '.jgor-bif-item' ) ) );
             }
             // ... plus die immer sichtbare Embed-Varianten-Liste.
             if ( variationGrp ) {
-                items = items.concat( Array.prototype.slice.call( variationGrp.querySelectorAll( '.jg-gbbf-item' ) ) );
+                items = items.concat( Array.prototype.slice.call( variationGrp.querySelectorAll( '.jgor-bif-item' ) ) );
             }
 
             var visibleCount = 0;
@@ -193,13 +193,13 @@
             // Leere Gruppen ausblenden – aufgeraeumte Optik bei aktiver Suche.
             var groups = [];
             if ( activeView ) {
-                groups = groups.concat( Array.prototype.slice.call( activeView.querySelectorAll( '.jg-gbbf-group' ) ) );
+                groups = groups.concat( Array.prototype.slice.call( activeView.querySelectorAll( '.jgor-bif-group' ) ) );
             }
             if ( variationGrp ) {
                 groups.push( variationGrp );
             }
             groups.forEach( function ( group ) {
-                var visibleItems = group.querySelectorAll( '.jg-gbbf-item:not([hidden])' );
+                var visibleItems = group.querySelectorAll( '.jgor-bif-item:not([hidden])' );
                 group.hidden = 0 === visibleItems.length;
             } );
 
@@ -278,7 +278,7 @@
          * – sonst wuerde die unsichtbare Ansicht beim Speichern den
          * alten Stand mitliefern.
          */
-        var toggleButtons = document.querySelectorAll( '.jg-gbbf-toggle-all' );
+        var toggleButtons = document.querySelectorAll( '.jgor-bif-toggle-all' );
         Array.prototype.forEach.call( toggleButtons, function ( btn ) {
             btn.addEventListener( 'click', function () {
                 var targetId = btn.getAttribute( 'data-target' );

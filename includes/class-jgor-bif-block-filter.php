@@ -6,12 +6,12 @@
  * Block-Gruppen aus der erlaubten Liste heraus:
  *
  *   1. vom Administrator manuell ausgeblendete Bloecke
- *      (Option 'jg_gbbf_hidden_blocks'),
+ *      (Option 'jgor_bif_hidden_blocks'),
  *   2. Core-Bloecke, die durch eine GenerateBlocks-Pro-Variante
  *      ersetzt werden, sobald GB Pro aktiv ist
- *      (JG_GBBF_Plugin::get_pro_replaced_blocks()).
+ *      (JGOR_BIF_Plugin::get_pro_replaced_blocks()).
  *
- * @package GB_Block_Filter
+ * @package Block_Inserter_Filter
  * @author  Jörn Gorres
  */
 
@@ -22,7 +22,7 @@ defined( 'ABSPATH' ) || exit;
  * Inserter erlaubten Bloecke und entfernt per Editor-Skript die
  * ausgeblendeten Embed-Varianten.
  */
-final class JG_GBBF_Block_Filter {
+final class JGOR_BIF_Block_Filter {
 
 	/**
 	 * Konstruktor – haengt den Filter mit spaeter Prioritaet ein, damit
@@ -59,8 +59,8 @@ final class JG_GBBF_Block_Filter {
 	public function filter_blocks( $allowed, $context ) {
 		unset( $context ); // Bewusst ungenutzt – wir filtern global.
 
-		$hidden      = JG_GBBF_Plugin::get_hidden_blocks();
-		$auto_hidden = JG_GBBF_Plugin::get_pro_replaced_blocks();
+		$hidden      = JGOR_BIF_Plugin::get_hidden_blocks();
+		$auto_hidden = JGOR_BIF_Plugin::get_pro_replaced_blocks();
 
 		// Effektive Hide-Liste:
 		// - $hidden        : explizit vom Redakteur per UI ausgeblendet.
@@ -107,27 +107,27 @@ final class JG_GBBF_Block_Filter {
 		if ( is_admin() && function_exists( 'get_current_screen' ) ) {
 			$screen = get_current_screen();
 			if ( $screen instanceof WP_Screen
-				&& 'settings_page_' . JG_GBBF_Admin_Page::MENU_SLUG === $screen->id ) {
+				&& 'settings_page_' . JGOR_BIF_Admin_Page::MENU_SLUG === $screen->id ) {
 				return;
 			}
 		}
 
-		$hidden = JG_GBBF_Plugin::get_hidden_embed_variations();
+		$hidden = JGOR_BIF_Plugin::get_hidden_embed_variations();
 		if ( empty( $hidden ) ) {
 			return;
 		}
 
 		wp_enqueue_script(
-			'jg-gbbf-editor',
-			JG_GBBF_PLUGIN_URL . 'assets/editor.js',
+			'jgor-bif-editor',
+			JGOR_BIF_PLUGIN_URL . 'assets/editor.js',
 			array( 'wp-blocks', 'wp-dom-ready' ),
-			JG_GBBF_VERSION,
+			JGOR_BIF_VERSION,
 			true
 		);
 
 		wp_localize_script(
-			'jg-gbbf-editor',
-			'jgGbbfEditorData',
+			'jgor-bif-editor',
+			'jgorBifEditorData',
 			array(
 				'hiddenEmbedVariations' => array_values( $hidden ),
 			)

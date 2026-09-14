@@ -1,8 +1,8 @@
 <?php
 /**
- * Plugin Name:       Block Filter for GenerateBlocks
- * Description:       Hides individual Gutenberg blocks (Core, GenerateBlocks Free, GenerateBlocks Pro, theme and plugin blocks) globally from the block inserter. Configurable per block by administrators.
- * Version:           1.6.0
+ * Plugin Name:       Block Inserter Filter
+ * Description:       Hides individual Gutenberg blocks and embed variations from the block inserter, site-wide. Configurable per block by administrators, with optional GenerateBlocks integration.
+ * Version:           2.0.0
  * Requires at least: 6.0
  * Requires PHP:      8.0
  * Tested up to:      7.1
@@ -10,12 +10,12 @@
  * Author URI:        https://joern.gorres.com
  * License:           GPL v2 or later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       gb-block-filter
+ * Text Domain:       block-inserter-filter
  * Domain Path:       /languages
  *
- * @package GB_Block_Filter
+ * @package Block_Inserter_Filter
  * @author  Jörn Gorres
- * @version 1.6.0
+ * @version 2.0.0
  */
 
 /*
@@ -30,10 +30,10 @@ defined( 'ABSPATH' ) || exit;
  * Zugriff auf Version, Pfad und URL, ohne staendig __FILE__ und
  * plugin_dir_*() neu auswerten zu muessen.
  */
-define( 'JG_GBBF_VERSION', '1.6.0' );
-define( 'JG_GBBF_PLUGIN_FILE', __FILE__ );
-define( 'JG_GBBF_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
-define( 'JG_GBBF_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
+define( 'JGOR_BIF_VERSION', '2.0.0' );
+define( 'JGOR_BIF_PLUGIN_FILE', __FILE__ );
+define( 'JGOR_BIF_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+define( 'JGOR_BIF_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
 /*
  * Klassen einbinden.
@@ -42,9 +42,9 @@ define( 'JG_GBBF_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
  * Hilfsfunktionen), danach Filter und Admin-UI, die auf der
  * Hauptklasse aufbauen.
  */
-require_once JG_GBBF_PLUGIN_DIR . 'includes/class-jg-gbbf-plugin.php';
-require_once JG_GBBF_PLUGIN_DIR . 'includes/class-jg-gbbf-block-filter.php';
-require_once JG_GBBF_PLUGIN_DIR . 'includes/class-jg-gbbf-admin-page.php';
+require_once JGOR_BIF_PLUGIN_DIR . 'includes/class-jgor-bif-plugin.php';
+require_once JGOR_BIF_PLUGIN_DIR . 'includes/class-jgor-bif-block-filter.php';
+require_once JGOR_BIF_PLUGIN_DIR . 'includes/class-jgor-bif-admin-page.php';
 
 /**
  * Plugin starten, sobald alle aktiven Plugins geladen sind. Das
@@ -52,11 +52,11 @@ require_once JG_GBBF_PLUGIN_DIR . 'includes/class-jg-gbbf-admin-page.php';
  * registriert sind, wenn wir auf den Block-Type-Registry zugreifen.
  *
  * Eigene Funktion ohne Rueckgabewert, weil ein Action-Callback nichts
- * zurueckgeben soll (JG_GBBF_Plugin::instance() liefert die Instanz).
+ * zurueckgeben soll (JGOR_BIF_Plugin::instance() liefert die Instanz).
  *
  * @return void
  */
-function jg_gbbf_init(): void {
-	JG_GBBF_Plugin::instance();
+function jgor_bif_init(): void {
+	JGOR_BIF_Plugin::instance();
 }
-add_action( 'plugins_loaded', 'jg_gbbf_init' );
+add_action( 'plugins_loaded', 'jgor_bif_init' );

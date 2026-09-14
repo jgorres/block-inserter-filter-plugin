@@ -7,23 +7,22 @@
  * saemtliche persistierten Daten - auch in Multisite-Installationen.
  *
  * Aufgeraeumt werden:
- *   - 'jg_gbbf_hidden_blocks'             (manuell ausgeblendete Bloecke)
- *   - 'jg_gbbf_hidden_embed_variations'   (ausgeblendete Embed-Varianten,
+ *   - 'jgor_bif_hidden_blocks'             (manuell ausgeblendete Bloecke)
+ *   - 'jgor_bif_hidden_embed_variations'   (ausgeblendete Embed-Varianten,
  *                                          seit v1.1.0)
- *   - 'jg_gbbf_migrated_v1_5'             (Sentinel der Legacy-Prefix-
+ *   - 'jgor_bif_migrated_v2'               (Sentinel der Legacy-Prefix-
  *                                          Migration)
- *   - Legacy-Schluessel aus < 1.5.0 (Pflicht zum Mitloeschen, falls
- *     ein User direkt nach dem Update deinstalliert, bevor die
- *     Migrations-Routine auf admin_init je gelaufen ist):
- *       'gbba_hidden_blocks'
- *       'gbba_hidden_embed_variations'
- *   - defensiv via LIKE: alle uebrigen jg_gbbf_*-Eintraege in
- *     wp_options (inkl. eventueller Transients).
+ *   - Legacy-Schluessel aus 1.5.x (jg_gbbf_*) und < 1.5.0 (gbba_*),
+ *     Pflicht zum Mitloeschen, falls ein User direkt nach dem Update
+ *     deinstalliert, bevor die Migrations-Routine auf admin_init je
+ *     gelaufen ist.
+ *   - defensiv via LIKE: alle uebrigen jgor_bif_*- und jg_gbbf_*-
+ *     Eintraege in wp_options (inkl. eventueller Transients).
  *
- * Multisite: per-Site-Aufraeumen plus netzwerkweite Sentinel-Option
- * `jg_gbbf_network_swept_v1_5` entfernen.
+ * Multisite: per-Site-Aufraeumen plus netzwerkweite Sentinel-Optionen
+ * `jgor_bif_network_swept_v2` und `jg_gbbf_network_swept_v1_5` entfernen.
  *
- * @package GB_Block_Filter
+ * @package Block_Inserter_Filter
  * @author  Jörn Gorres
  */
 
@@ -41,37 +40,40 @@ defined( 'WP_UNINSTALL_PLUGIN' ) || exit;
  *
  * @return void
  */
-function jg_gbbf_uninstall_cleanup_current_site(): void {
+function jgor_bif_uninstall_cleanup_current_site(): void {
 	global $wpdb;
 
 	// 1) Statisch benannte Optionen sauber via WP-API entfernen,
 	// damit ein evtl. persistenter Object-Cache mit-invalidiert
 	// wird (raw DELETE wuerde das nicht tun).
-	// Aktuelle (jg_gbbf_*) Keys.
-	$jg_gbbf_options = array(
+	// Aktuelle (jgor_bif_*) Keys.
+	$jgor_bif_options = array(
+		'jgor_bif_hidden_blocks',
+		'jgor_bif_hidden_embed_variations',
+		'jgor_bif_migrated_v2',
+	);
+	foreach ( $jgor_bif_options as $jgor_bif_option ) {
+		delete_option( $jgor_bif_option );
+	}
+
+	// Legacy-Keys (1.5.x: jg_gbbf_*, < 1.5.0: gbba_*) namentlich
+	// entfernen. Bewusst KEIN LIKE 'gbba_%': das kurze Praefix ist nicht
+	// eindeutig genug und koennte Optionen fremder Plugins treffen.
+	$jgor_bif_legacy_options = array(
 		'jg_gbbf_hidden_blocks',
 		'jg_gbbf_hidden_embed_variations',
 		'jg_gbbf_migrated_v1_5',
-	);
-	foreach ( $jg_gbbf_options as $jg_gbbf_option ) {
-		delete_option( $jg_gbbf_option );
-	}
-
-	// Legacy-Keys (< 1.5.0) namentlich entfernen. Bewusst KEIN
-	// LIKE 'gbba_%': das kurze Praefix ist nicht eindeutig genug und
-	// koennte Optionen fremder Plugins treffen.
-	$jg_gbbf_legacy_options = array(
 		'gbba_hidden_blocks',
 		'gbba_hidden_embed_variations',
 	);
-	foreach ( $jg_gbbf_legacy_options as $jg_gbbf_legacy_option ) {
-		delete_option( $jg_gbbf_legacy_option );
+	foreach ( $jgor_bif_legacy_options as $jgor_bif_legacy_option ) {
+		delete_option( $jgor_bif_legacy_option );
 	}
 
-	// 2) Defensiv: saemtliche uebrigen jg_gbbf_*-Eintraege aus
-	// wp_options via LIKE entfernen. Deckt eventuelle kuenftige
-	// Optionen sowie Transients (`_transient_jg_gbbf_%` /
-	// `_transient_timeout_jg_gbbf_%`) ab. Das Praefix jg_gbbf_ ist
+	// 2) Defensiv: saemtliche uebrigen jgor_bif_*- und jg_gbbf_*-
+	// Eintraege aus wp_options via LIKE entfernen. Deckt eventuelle
+	// kuenftige Optionen sowie Transients (`_transient_<prefix>%` /
+	// `_transient_timeout_<prefix>%`) ab. Beide Praefixe sind
 	// plugin-eindeutig, ein Treffer in fremden Daten ist ausgeschlossen.
 	// $wpdb->esc_like() escaped die "_"-Wildcards im Plugin-Praefix;
 	// $wpdb->prepare() bindet die Patterns sauber als Strings.
@@ -82,7 +84,13 @@ function jg_gbbf_uninstall_cleanup_current_site(): void {
 			"DELETE FROM {$wpdb->options}
 			 WHERE option_name LIKE %s
 				OR option_name LIKE %s
+				OR option_name LIKE %s
+				OR option_name LIKE %s
+				OR option_name LIKE %s
 				OR option_name LIKE %s",
+			$wpdb->esc_like( '_transient_jgor_bif_' ) . '%',
+			$wpdb->esc_like( '_transient_timeout_jgor_bif_' ) . '%',
+			$wpdb->esc_like( 'jgor_bif_' ) . '%',
 			$wpdb->esc_like( '_transient_jg_gbbf_' ) . '%',
 			$wpdb->esc_like( '_transient_timeout_jg_gbbf_' ) . '%',
 			$wpdb->esc_like( 'jg_gbbf_' ) . '%'
@@ -92,29 +100,30 @@ function jg_gbbf_uninstall_cleanup_current_site(): void {
 
 	// Persistenter Object Cache: geloeschte Optionen/Transients koennten
 	// dort noch liegen. Nur die bekannten Keys gezielt verwerfen.
-	foreach ( array_merge( $jg_gbbf_options, $jg_gbbf_legacy_options ) as $jg_gbbf_cache_key ) {
-		wp_cache_delete( $jg_gbbf_cache_key, 'options' );
+	foreach ( array_merge( $jgor_bif_options, $jgor_bif_legacy_options ) as $jgor_bif_cache_key ) {
+		wp_cache_delete( $jgor_bif_cache_key, 'options' );
 	}
 }
 
 if ( is_multisite() ) {
 	// In Multisite die Aufraeumarbeiten pro Site wiederholen.
 	// 'number' => 0 hebt das Standardlimit von 100 Sites auf.
-	$jg_gbbf_sites = get_sites(
+	$jgor_bif_sites = get_sites(
 		array(
 			'fields'     => 'ids',
 			'number'     => 0,
 			'network_id' => get_current_network_id(),
 		)
 	);
-	foreach ( $jg_gbbf_sites as $jg_gbbf_site_id ) {
-		switch_to_blog( (int) $jg_gbbf_site_id );
-		jg_gbbf_uninstall_cleanup_current_site();
+	foreach ( $jgor_bif_sites as $jgor_bif_site_id ) {
+		switch_to_blog( (int) $jgor_bif_site_id );
+		jgor_bif_uninstall_cleanup_current_site();
 		restore_current_blog();
 	}
 
-	// Netzwerkweiter Sweep-Sentinel der Legacy-Migration.
+	// Netzwerkweite Sweep-Sentinels der Legacy-Migrationen.
+	delete_site_option( 'jgor_bif_network_swept_v2' );
 	delete_site_option( 'jg_gbbf_network_swept_v1_5' );
 } else {
-	jg_gbbf_uninstall_cleanup_current_site();
+	jgor_bif_uninstall_cleanup_current_site();
 }

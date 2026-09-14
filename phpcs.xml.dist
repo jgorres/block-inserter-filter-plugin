@@ -3,7 +3,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/PHPCSStandards/PHP_CodeSniffer/master/phpcs.xsd">
 
-	<description>WordPress Coding Standards für das Plugin Block Filter for GenerateBlocks (Prefix jg_gbbf).</description>
+	<description>WordPress Coding Standards für das Plugin Block Inserter Filter (Prefix jgor_bif).</description>
 
 	<!-- Zu prüfende Dateien: das Plugin selbst -->
 	<file>.</file>
@@ -34,12 +34,12 @@
 	<!-- PHP-Kompatibilität ab testVersion -->
 	<rule ref="PHPCompatibilityWP"/>
 
-	<!-- Prefix-Prüfung: Funktionen jg_gbbf_, Klassen JG_GBBF_, Konstanten JG_GBBF_,
-	     Hooks/Optionen jg_gbbf_, Handles jg-gbbf- -->
+	<!-- Prefix-Prüfung: Funktionen jgor_bif_, Klassen JGOR_BIF_, Konstanten JGOR_BIF_,
+	     Hooks/Optionen jgor_bif_, Handles jgor-bif- -->
 	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
 		<properties>
 			<property name="prefixes" type="array">
-				<element value="jg_gbbf"/>
+				<element value="jgor_bif"/>
 			</property>
 		</properties>
 	</rule>
@@ -48,7 +48,7 @@
 	<rule ref="WordPress.WP.I18n">
 		<properties>
 			<property name="text_domain" type="array">
-				<element value="gb-block-filter"/>
+				<element value="block-inserter-filter"/>
 			</property>
 		</properties>
 	</rule>

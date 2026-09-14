@@ -1,14 +1,14 @@
 /**
- * Admin-Styles fuer "Block Filter for GenerateBlocks".
+ * Admin-Styles fuer "Block Inserter Filter".
  *
- * BEM-Notation: .jg-gbbf-{block}__{element}--{modifier}
+ * BEM-Notation: .jgor-bif-{block}__{element}--{modifier}
  *
- * @package GB_Block_Filter
+ * @package Block_Inserter_Filter
  * @author  Jörn Gorres
  */
 
 /* Wrapper */
-.jg-gbbf-admin .jg-gbbf-intro {
+.jgor-bif-admin .jgor-bif-intro {
     font-size: 14px;
     margin: 1em 0 0.5em;
     display: flex;
@@ -17,13 +17,13 @@
     gap: 0.75em;
 }
 
-.jg-gbbf-admin > .description {
+.jgor-bif-admin > .description {
     max-width: 70em;
     margin-bottom: 1em;
 }
 
 /* Toolbar (Suche + View-Switch) */
-.jg-gbbf-admin .jg-gbbf-toolbar {
+.jgor-bif-admin .jgor-bif-toolbar {
     display: flex;
     gap: 1.5rem;
     align-items: center;
@@ -35,19 +35,19 @@
     border-radius: 4px;
 }
 
-.jg-gbbf-admin .jg-gbbf-search-label {
+.jgor-bif-admin .jgor-bif-search-label {
     flex: 1 1 320px;
     min-width: 200px;
     display: block;
 }
 
-.jg-gbbf-admin .jg-gbbf-search {
+.jgor-bif-admin .jgor-bif-search {
     width: 100%;
     padding: 6px 10px;
     font-size: 14px;
 }
 
-.jg-gbbf-admin .jg-gbbf-view-switch {
+.jgor-bif-admin .jgor-bif-view-switch {
     border: 0;
     padding: 0;
     margin: 0;
@@ -55,12 +55,12 @@
     gap: 1em;
 }
 
-.jg-gbbf-admin .jg-gbbf-view-switch label {
+.jgor-bif-admin .jgor-bif-view-switch label {
     cursor: pointer;
 }
 
 /* Gruppen-Container */
-.jg-gbbf-admin .jg-gbbf-group {
+.jgor-bif-admin .jgor-bif-group {
     background: #fff;
     border: 1px solid #c3c4c7;
     border-radius: 4px;
@@ -68,7 +68,7 @@
     margin-bottom: 1.25em;
 }
 
-.jg-gbbf-admin .jg-gbbf-group__legend {
+.jgor-bif-admin .jgor-bif-group__legend {
     display: flex;
     align-items: center;
     gap: 0.75em;
@@ -78,11 +78,11 @@
     width: auto;
 }
 
-.jg-gbbf-admin .jg-gbbf-group__title {
+.jgor-bif-admin .jgor-bif-group__title {
     color: #1d2327;
 }
 
-.jg-gbbf-admin .jg-gbbf-group__count {
+.jgor-bif-admin .jgor-bif-group__count {
     background: #f0f0f1;
     color: #50575e;
     border-radius: 10px;
@@ -96,7 +96,7 @@
    auto-fill mit minmax fuellt die volle Breite mit so vielen Spalten,
    wie reinpassen – auf 1920er-Monitoren typischerweise 6, auf 1440er 4,
    auf 1280er 4, auf Tablets 2, auf Mobil 1 (Media-Query unten). */
-.jg-gbbf-admin .jg-gbbf-list {
+.jgor-bif-admin .jgor-bif-list {
     list-style: none;
     margin: 0.75em 0 0;
     padding: 0;
@@ -105,12 +105,12 @@
     gap: 6px 1em;
 }
 
-.jg-gbbf-admin .jg-gbbf-item {
+.jgor-bif-admin .jgor-bif-item {
     margin: 0;
     padding: 4px 0;
 }
 
-.jg-gbbf-admin .jg-gbbf-item label {
+.jgor-bif-admin .jgor-bif-item label {
     display: flex;
     align-items: baseline;
     gap: 0.5em;
@@ -118,19 +118,19 @@
     flex-wrap: wrap;
 }
 
-.jg-gbbf-admin .jg-gbbf-item--protected label {
+.jgor-bif-admin .jgor-bif-item--protected label {
     cursor: not-allowed;
     opacity: 0.7;
 }
 
-.jg-gbbf-admin .jg-gbbf-item input[type="checkbox"] {
+.jgor-bif-admin .jgor-bif-item input[type="checkbox"] {
     flex: 0 0 auto;
     margin-top: 0;
 }
 
 /* Block-Icon zwischen Checkbox und Block-Titel.
    Wird per JS via wp.blockEditor.BlockIcon befuellt. */
-.jg-gbbf-admin .jg-gbbf-item__icon {
+.jgor-bif-admin .jgor-bif-item__icon {
     flex: 0 0 auto;
     display: inline-flex;
     align-items: center;
@@ -141,32 +141,32 @@
     line-height: 1;
 }
 
-.jg-gbbf-admin .jg-gbbf-item__icon:empty {
+.jgor-bif-admin .jgor-bif-item__icon:empty {
     /* Kein Icon verfuegbar: Platz freihalten, damit die Spalten
        der Liste optisch nicht "springen". */
     visibility: hidden;
 }
 
-.jg-gbbf-admin .jg-gbbf-item__icon svg {
+.jgor-bif-admin .jgor-bif-item__icon svg {
     width: 20px;
     height: 20px;
     fill: currentColor;
 }
 
-.jg-gbbf-admin .jg-gbbf-item__icon .dashicons,
-.jg-gbbf-admin .jg-gbbf-item__icon .dashicon {
+.jgor-bif-admin .jgor-bif-item__icon .dashicons,
+.jgor-bif-admin .jgor-bif-item__icon .dashicon {
     width: 20px;
     height: 20px;
     font-size: 20px;
     line-height: 1;
 }
 
-.jg-gbbf-admin .jg-gbbf-item__title {
+.jgor-bif-admin .jgor-bif-item__title {
     font-weight: 500;
     color: #1d2327;
 }
 
-.jg-gbbf-admin .jg-gbbf-item__name {
+.jgor-bif-admin .jgor-bif-item__name {
     font-size: 11px;
     color: #646970;
     background: #f6f7f7;
@@ -179,12 +179,12 @@
    (Kategorie-Header sagt schon, wohin der Block gehoert). In der
    Namespace-Ansicht und in der Embed-Varianten-Sektion bleibt er
    sichtbar. */
-.jg-gbbf-admin .jg-gbbf-view--category .jg-gbbf-item__name {
+.jgor-bif-admin .jgor-bif-view--category .jgor-bif-item__name {
     display: none;
 }
 
 /* Badges */
-.jg-gbbf-admin .jg-gbbf-badge {
+.jgor-bif-admin .jgor-bif-badge {
     font-size: 10px;
     padding: 1px 6px;
     border-radius: 3px;
@@ -195,12 +195,12 @@
     white-space: nowrap;
 }
 
-.jg-gbbf-admin .jg-gbbf-badge--pro {
+.jgor-bif-admin .jgor-bif-badge--pro {
     background: #6c2eb9;
     color: #fff;
 }
 
-.jg-gbbf-admin .jg-gbbf-badge--protected {
+.jgor-bif-admin .jgor-bif-badge--protected {
     background: #fef8ee;
     color: #8a4b00;
     border: 1px solid #f0c891;
@@ -217,7 +217,7 @@
  * macht visuell deutlich, dass der vollstaendige Erklaerungstext
  * im title-Attribut steht.
  */
-.jg-gbbf-admin .jg-gbbf-badge--pro-replacement {
+.jgor-bif-admin .jgor-bif-badge--pro-replacement {
     background: #f4eaff;
     color:      #6c2eb9;
     border:     1px solid #d4b8f1;
@@ -225,14 +225,14 @@
 }
 
 /* Hinweistext innerhalb einer Gruppe (z. B. Embed-Varianten) */
-.jg-gbbf-admin .jg-gbbf-group__hint {
+.jgor-bif-admin .jgor-bif-group__hint {
     margin: 0.5em 0 0.25em;
     color: #50575e;
 }
 
 /* Aktionsleiste am Ende jeder Gruppe – enthaelt den lokalen
    "Speichern"-Button. Rechtsbuendig, dezent abgetrennt. */
-.jg-gbbf-admin .jg-gbbf-group__actions {
+.jgor-bif-admin .jgor-bif-group__actions {
     display: flex;
     justify-content: flex-end;
     margin-top: 1em;
@@ -242,18 +242,18 @@
 
 /* Embed-Varianten-Sektion: optisch deutlich abtrennen, da sie
    ansichtsuebergreifend immer sichtbar ist. */
-.jg-gbbf-admin .jg-gbbf-group--variations {
+.jgor-bif-admin .jgor-bif-group--variations {
     border-top: 3px solid #2271b1;
     margin-top: 2em;
     background: #f6f9fc;
 }
 
-.jg-gbbf-admin .jg-gbbf-group--variations .jg-gbbf-group__title {
+.jgor-bif-admin .jgor-bif-group--variations .jgor-bif-group__title {
     color: #2271b1;
 }
 
 /* Leere-Suche-Hinweis */
-.jg-gbbf-admin .jg-gbbf-no-results {
+.jgor-bif-admin .jgor-bif-no-results {
     text-align: center;
     padding: 2em;
     color: #50575e;
@@ -261,11 +261,11 @@
 
 /* Responsive */
 @media (max-width: 782px) {
-    .jg-gbbf-admin .jg-gbbf-toolbar {
+    .jgor-bif-admin .jgor-bif-toolbar {
         flex-direction: column;
         align-items: stretch;
     }
-    .jg-gbbf-admin .jg-gbbf-list {
+    .jgor-bif-admin .jgor-bif-list {
         grid-template-columns: 1fr;
     }
 }

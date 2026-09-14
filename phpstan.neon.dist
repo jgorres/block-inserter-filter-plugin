@@ -1,5 +1,5 @@
 # ==================================================
-# PHPStan-Konfiguration für Block Filter for GenerateBlocks
+# PHPStan-Konfiguration für Block Inserter Filter
 # Autor: Jörn Gorres
 # Level 6, WordPress-Stubs über szepeviktor/phpstan-wordpress.
 # ==================================================
@@ -11,7 +11,7 @@ parameters:
 	level: 6
 
 	paths:
-		- gb-block-filter.php
+		- block-inserter-filter.php
 		- uninstall.php
 		- includes
 

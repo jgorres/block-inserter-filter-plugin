@@ -6,7 +6,7 @@
  * und gemeinsame Hilfsfunktionen (Optionen lesen, geschuetzte Bloecke,
  * Pro-Erkennung) bereitstellt.
  *
- * @package GB_Block_Filter
+ * @package Block_Inserter_Filter
  * @author  Jörn Gorres
  */
 
@@ -17,7 +17,7 @@ defined( 'ABSPATH' ) || exit;
  * stellt die gemeinsamen Hilfsfunktionen (Optionen, Schutzliste,
  * Pro-Erkennung, Legacy-Migration) bereit.
  */
-final class JG_GBBF_Plugin {
+final class JGOR_BIF_Plugin {
 
 	/**
 	 * Singleton-Instanz.
@@ -30,13 +30,13 @@ final class JG_GBBF_Plugin {
 	 * Name der WP-Option, in der die ausgeblendeten Bloecke gespeichert
 	 * werden (Array von Block-Namen, z. B. 'core/verse').
 	 */
-	public const OPTION_NAME = 'jg_gbbf_hidden_blocks';
+	public const OPTION_NAME = 'jgor_bif_hidden_blocks';
 
 	/**
 	 * Name der WP-Option fuer ausgeblendete Embed-Varianten
 	 * (Array von Variation-Slugs, z. B. 'twitter', 'youtube').
 	 */
-	public const OPTION_EMBED_VARIATIONS = 'jg_gbbf_hidden_embed_variations';
+	public const OPTION_EMBED_VARIATIONS = 'jgor_bif_hidden_embed_variations';
 
 	/**
 	 * Bekannte Embed-Varianten von WordPress Core.
@@ -44,7 +44,7 @@ final class JG_GBBF_Plugin {
 	 * Variations werden in WordPress JS-seitig registriert und sind
 	 * darum nicht im PHP-Block-Type-Registry sichtbar. Wir pflegen
 	 * deshalb eine statische Liste, die ueber den Filter
-	 * `jg_gbbf_embed_variations` erweitert/ueberschrieben werden kann.
+	 * `jgor_bif_embed_variations` erweitert/ueberschrieben werden kann.
 	 *
 	 * Wenn eine hier gelistete Variante im aktuellen WP-Build nicht
 	 * existiert (z. B. 'screencast'), bleibt das harmlos: das
@@ -98,7 +98,7 @@ final class JG_GBBF_Plugin {
 	 * unbedienbar.
 	 *
 	 * Achtung: NICHT direkt verwenden! Stattdessen
-	 * JG_GBBF_Plugin::get_protected_blocks() aufrufen, da der Schutz
+	 * JGOR_BIF_Plugin::get_protected_blocks() aufrufen, da der Schutz
 	 * fuer einzelne Bloecke ('core/heading', 'core/image') aufgehoben
 	 * wird, sobald GenerateBlocks Pro aktiv ist und damit eine
 	 * erweiterte Variante zur Verfuegung stellt.
@@ -157,21 +157,20 @@ final class JG_GBBF_Plugin {
 		/*
 		 * Legacy-Prefix-Migration mit Prio 1, damit der nachfolgende
 		 * Admin-Code (Settings-Lesen, Block-Filter) bereits die
-		 * jg_gbbf_-Schluessel sieht. Lauft idempotent einmal pro Site.
-		 * Schema-Wechsel: gbba_* -> jg_gbbf_* (alter Code "GBBA"
-		 * stammt aus dem alten Plugin-Slug "generateblocks-bloecke-
-		 * ausblenden"; neuer Code "GBBF" passt zum aktuellen Slug
-		 * "gb-block-filter").
+		 * jgor_bif_-Schluessel sieht. Laeuft idempotent einmal pro Site.
+		 * Schema-Wechsel: gbba_* (< 1.5.0, Slug "generateblocks-bloecke-
+		 * ausblenden") -> jg_gbbf_* (1.5.x, Slug "gb-block-filter")
+		 * -> jgor_bif_* (ab 2.0.0, Slug "block-inserter-filter").
 		 */
-		add_action( 'admin_init', array( __CLASS__, 'migrate_legacy_v1_5' ), 1 );
+		add_action( 'admin_init', array( __CLASS__, 'migrate_legacy' ), 1 );
 
 		// Sub-Module initialisieren.
-		new JG_GBBF_Block_Filter();
-		new JG_GBBF_Admin_Page();
+		new JGOR_BIF_Block_Filter();
+		new JGOR_BIF_Admin_Page();
 
 		// "Einstellungen"-Link in der WP-Plugin-Liste anzeigen.
 		add_filter(
-			'plugin_action_links_' . plugin_basename( JG_GBBF_PLUGIN_FILE ),
+			'plugin_action_links_' . plugin_basename( JGOR_BIF_PLUGIN_FILE ),
 			array( $this, 'add_settings_link' )
 		);
 	}
@@ -186,11 +185,11 @@ final class JG_GBBF_Plugin {
 	 * @return string[]
 	 */
 	public function add_settings_link( array $links ): array {
-		$url           = admin_url( 'options-general.php?page=' . JG_GBBF_Admin_Page::MENU_SLUG );
+		$url           = admin_url( 'options-general.php?page=' . JGOR_BIF_Admin_Page::MENU_SLUG );
 		$settings_link = sprintf(
 			'<a href="%s">%s</a>',
 			esc_url( $url ),
-			esc_html__( 'Settings', 'gb-block-filter' )
+			esc_html__( 'Settings', 'block-inserter-filter' )
 		);
 
 		// Vor die bestehenden Links setzen, damit "Settings" als
@@ -265,7 +264,7 @@ final class JG_GBBF_Plugin {
 	 *      wurde, OHNE dass das Hide-Setting des Redakteurs angefasst
 	 *      werden muss.
 	 *
-	 *   2. Der Block-Inserter-Filter (JG_GBBF_Block_Filter::filter_blocks)
+	 *   2. Der Block-Inserter-Filter (JGOR_BIF_Block_Filter::filter_blocks)
 	 *      nimmt diese Bloecke zusaetzlich zur user-konfigurierten Hide-
 	 *      Liste aus dem Inserter. Damit greift das Auto-Hide auch dann,
 	 *      wenn der User die Settings-Seite nie aufgerufen hat.
@@ -323,7 +322,7 @@ final class JG_GBBF_Plugin {
 		 *
 		 * @param array<string, string> $variations Slug => Anzeigename.
 		 */
-		$filtered = apply_filters( 'jg_gbbf_embed_variations', $variations );
+		$filtered = apply_filters( 'jgor_bif_embed_variations', $variations );
 
 		if ( ! is_array( $filtered ) ) {
 			return $variations;
@@ -393,28 +392,27 @@ final class JG_GBBF_Plugin {
 	}
 
 	/**
-	 * Einmalige Legacy-Prefix-Migration (gbba_* -> jg_gbbf_*).
+	 * Einmalige Legacy-Prefix-Migration (gbba_* / jg_gbbf_* -> jgor_bif_*).
 	 *
-	 * Wird beim ersten admin_init nach dem Update auf 1.5.0 ausgefuehrt.
-	 * Sentinel-Option `jg_gbbf_migrated_v1_5` verhindert Mehrfachlauf.
+	 * Wird beim ersten admin_init nach dem Update auf 2.0.0 ausgefuehrt.
+	 * Sentinel-Option `jgor_bif_migrated_v2` verhindert Mehrfachlauf.
 	 *
 	 * Schritte:
 	 *   1. Sentinel pruefen - bereits gelaufen? Abbruch.
-	 *   2. Legacy-Optionen `gbba_hidden_blocks` und
-	 *      `gbba_hidden_embed_variations` auf die neuen Keys umkopieren,
-	 *      aber nur, wenn der jeweilige neue Key noch leer ist
-	 *      (Strict-Vergleich gegen false).
-	 *   3. Legacy-Optionen loeschen.
+	 *   2. Je Einstellung den neuesten vorhandenen Legacy-Wert
+	 *      uebernehmen (zuerst jg_gbbf_*, sonst gbba_*), aber nur,
+	 *      wenn der neue Key noch leer ist (Strict-Vergleich gegen false).
+	 *   3. Alle Legacy-Optionen samt altem Sentinel loeschen.
 	 *   4. Sentinel setzen.
 	 *
 	 * Multisite-Sweep: vom Hauptsite-Admin aus iterieren wir ueber
 	 * alle Subsites und fuehren die Site-lokale Migration je einmal
-	 * aus. Netzwerk-Sentinel `jg_gbbf_network_swept_v1_5` schuetzt
-	 * vor doppeltem Sweep.
+	 * aus. Netzwerk-Sentinel `jgor_bif_network_swept_v2` schuetzt
+	 * vor doppeltem Sweep; der alte Netzwerk-Sentinel wird entfernt.
 	 *
 	 * @return void
 	 */
-	public static function migrate_legacy_v1_5(): void {
+	public static function migrate_legacy(): void {
 
 		// Per-Site Migration.
 		self::do_legacy_migration_current_site();
@@ -422,7 +420,7 @@ final class JG_GBBF_Plugin {
 		// Multisite-Netzwerk-Sweep - genau einmal pro Netzwerk vom
 		// Hauptsite-Admin aus (admin_init feuert pro Subsite).
 		if ( is_multisite() && is_main_site() ) {
-			$network_sentinel = 'jg_gbbf_network_swept_v1_5';
+			$network_sentinel = 'jgor_bif_network_swept_v2';
 			if ( ! get_site_option( $network_sentinel ) ) {
 				// 'number' => 0 hebt das Standardlimit von 100 Sites auf.
 				$site_ids = get_sites(
@@ -437,7 +435,8 @@ final class JG_GBBF_Plugin {
 					self::do_legacy_migration_current_site();
 					restore_current_blog();
 				}
-				update_site_option( $network_sentinel, JG_GBBF_VERSION );
+				update_site_option( $network_sentinel, JGOR_BIF_VERSION );
+				delete_site_option( 'jg_gbbf_network_swept_v1_5' );
 			}
 		}
 	}
@@ -448,27 +447,34 @@ final class JG_GBBF_Plugin {
 	 * @return void
 	 */
 	private static function do_legacy_migration_current_site(): void {
-		$sentinel = 'jg_gbbf_migrated_v1_5';
+		$sentinel = 'jgor_bif_migrated_v2';
 		if ( get_option( $sentinel ) ) {
 			return;
 		}
 
-		$key_pairs = array(
-			'gbba_hidden_blocks'           => 'jg_gbbf_hidden_blocks',
-			'gbba_hidden_embed_variations' => 'jg_gbbf_hidden_embed_variations',
+		// Neuer Key => Legacy-Keys in absteigender Aktualitaet.
+		$key_map = array(
+			'jgor_bif_hidden_blocks'           => array( 'jg_gbbf_hidden_blocks', 'gbba_hidden_blocks' ),
+			'jgor_bif_hidden_embed_variations' => array( 'jg_gbbf_hidden_embed_variations', 'gbba_hidden_embed_variations' ),
 		);
 
-		foreach ( $key_pairs as $legacy_key => $new_key ) {
-			$legacy_value = get_option( $legacy_key, false );
-			if ( false !== $legacy_value ) {
-				$new_existing = get_option( $new_key, false );
-				if ( false === $new_existing ) {
-					update_option( $new_key, $legacy_value );
+		foreach ( $key_map as $new_key => $legacy_keys ) {
+			$new_existing = get_option( $new_key, false );
+			foreach ( $legacy_keys as $legacy_key ) {
+				$legacy_value = get_option( $legacy_key, false );
+				if ( false !== $legacy_value ) {
+					if ( false === $new_existing ) {
+						update_option( $new_key, $legacy_value );
+						$new_existing = $legacy_value;
+					}
+					delete_option( $legacy_key );
 				}
-				delete_option( $legacy_key );
 			}
 		}
 
-		update_option( $sentinel, JG_GBBF_VERSION );
+		// Sentinel der Migration 1.5 ist ueberfluessig geworden.
+		delete_option( 'jg_gbbf_migrated_v1_5' );
+
+		update_option( $sentinel, JGOR_BIF_VERSION );
 	}
 }

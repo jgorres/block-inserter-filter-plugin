@@ -1,31 +1,38 @@
-=== Block Filter for GenerateBlocks ===
+=== Block Inserter Filter ===
 Contributors: jgorres
-Tags: gutenberg, blocks, generateblocks, block-editor, admin
+Tags: gutenberg, blocks, block-editor, inserter, admin
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 8.0
-Stable tag: 1.6.0
+Stable tag: 2.0.0
 License: GPL v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Hide individual Gutenberg blocks site-wide from the block inserter.
+Hide individual Gutenberg blocks and embed variations from the block inserter, site-wide.
 
 == Description ==
 
-This plugin lets administrators globally hide individual Gutenberg blocks (Core, GenerateBlocks Free, GenerateBlocks Pro, theme blocks and other plugin blocks) from the block inserter — without writing any code.
+Block Inserter Filter lets administrators hide individual Gutenberg blocks from the block inserter for the whole site — Core blocks, theme blocks and blocks of any plugin — without writing any code. It controls what editors can *insert*; it does not touch existing content and has no effect on the front end.
 
 = Features =
 
 * Clear admin screen under "Settings → Hide Blocks".
+* Works with every registered block type: Core, theme and plugin blocks.
 * Group blocks either by block category (as in the editor) or by namespace.
-* GenerateBlocks Free and GenerateBlocks Pro are listed in separate groups.
 * Embed variations (YouTube, Reddit, Vimeo, TikTok, Bluesky, …) can be hidden individually.
 * Live search across all blocks and embed variations.
 * "Toggle all" per group.
-* Automatic detection of GenerateBlocks Pro blocks, marked with a Pro badge.
 * Protection list: core blocks (paragraph, heading, list, image, group, columns) are always available as a safety net and cannot be hidden.
 * Existing content using hidden blocks remains visible — only the insertion of new instances is blocked.
 * No external dependencies, no tracking, no front-end database load.
+
+= Optional GenerateBlocks integration =
+
+GenerateBlocks is not required. If it is installed, the plugin adds a few conveniences:
+
+* GenerateBlocks and GenerateBlocks Pro blocks are listed in separate groups.
+* GenerateBlocks Pro blocks are marked with a Pro badge.
+* Core blocks that GenerateBlocks Pro replaces with an extended variant are hidden automatically while Pro is active and reappear when it is deactivated.
 
 = Security =
 
@@ -49,10 +56,13 @@ These blocks are hard-protected as a safety net — without them the editor woul
 
 == Changelog ==
 
-= 1.6.0 =
+= 2.0.0 =
+* **Rename:** the plugin is now "Block Inserter Filter" (slug, folder, main file and Text Domain `block-inserter-filter`). The previous name "Block Filter for GenerateBlocks" was misleading — the plugin filters any Gutenberg block, GenerateBlocks is only an optional integration. WordPress deactivates the plugin during the folder change; reactivate it under Plugins.
+* **Prefix:** all globals renamed from `jg_gbbf_` / `JG_GBBF_` / `.jg-gbbf-*` to `jgor_bif_` / `JGOR_BIF_` / `.jgor-bif-*`. A one-shot migration on `admin_init` copies the settings from the previous option keys (`jg_gbbf_*`, or `gbba_*` from versions before 1.5.0) to `jgor_bif_hidden_blocks` and `jgor_bif_hidden_embed_variations` and removes the old keys; Multisite networks get a network-wide sweep. No data loss.
+* Settings page slug is now `jgor-bif-hide-blocks` (`options-general.php?page=jgor-bif-hide-blocks`).
+* Uninstall removes the current keys, both legacy key families and the migration sentinels.
 * Internationalisation: the source language of all user-facing strings, the Plugin Name and the Description is now English. German (`de_DE`), French (`fr_FR`) and Spanish (`es_ES`) translations are provided in `languages/` (`.pot`, `.po`, `.mo`, `.l10n.php`) and serve as the templates for translate.wordpress.org; translations are loaded through WordPress.org language packs.
-* The settings page slug changed from `jg-gbbf-bloecke-ausblenden` to `jg-gbbf-hide-blocks` (`options-general.php?page=jg-gbbf-hide-blocks`). Bookmarks to the old URL need to be updated; the "Settings" link on the plugins screen already points to the new address.
-* Housekeeping: `@package GB_Block_Filter` in all files, JS globals renamed to `jgGbbfEditorData`, console output removed from `admin.js`, unused `gbbaL10n` localisation removed, tabs instead of spaces in the class files, `.distignore` added for SVN exports.
+* Housekeeping: JS global `jgorBifEditorData`, console output removed from `admin.js`, unused localisation removed, tabs instead of spaces in the class files, `.distignore` added for SVN exports.
 * Fix: when another plugin sets `allowed_block_types_all` to `false` (no blocks allowed at all), that restriction is now passed through unchanged instead of being replaced by the full block registry minus the hidden blocks.
 * Removed the `all_plugins` display-name override on `wp-admin/plugins.php`. The plugin is now listed under its real name everywhere.
 * Fix: the plugin's own editor script no longer runs on the plugin's settings page, so icons of hidden embed variations render correctly there.
@@ -140,8 +150,8 @@ These blocks are hard-protected as a safety net — without them the editor woul
 
 == Upgrade Notice ==
 
-= 1.6.0 =
-Source strings are now English; German, French and Spanish translations are provided. Fix: respects a `false` value of `allowed_block_types_all` set by other plugins. The renamed entry on the plugins screen is gone. Declares WordPress 7.1 compatibility.
+= 2.0.0 =
+Renamed to "Block Inserter Filter" with a new slug and option prefix. Settings migrate automatically; reactivate the plugin after the update. English source strings with German, French and Spanish translations. Fixes and WordPress 7.1 compatibility.
 
 = 1.5.1 =
 Maintenance release: declares WordPress 7.0 compatibility. No functional changes.

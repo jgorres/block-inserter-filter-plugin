@@ -6,15 +6,15 @@
  * `wp.blocks.unregisterBlockVariation('core/embed', name)` auf.
  *
  * Die Liste kommt vom Server via `wp_localize_script` als
- * `window.jgGbbfEditorData.hiddenEmbedVariations`.
+ * `window.jgorBifEditorData.hiddenEmbedVariations`.
  *
- * @package GB_Block_Filter
+ * @package Block_Inserter_Filter
  * @author  Jörn Gorres
  */
 ( function () {
     'use strict';
 
-    var data   = window.jgGbbfEditorData || {};
+    var data   = window.jgorBifEditorData || {};
     var hidden = data.hiddenEmbedVariations;
 
     if ( ! hidden || ! hidden.length ) {

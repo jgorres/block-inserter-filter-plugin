@@ -14,7 +14,7 @@
  *     werden hart aussortiert.
  *   - Output durchgaengig escaped.
  *
- * @package GB_Block_Filter
+ * @package Block_Inserter_Filter
  * @author  Jörn Gorres
  */
 
@@ -24,25 +24,25 @@ defined( 'ABSPATH' ) || exit;
  * Admin-UI: Settings-Seite unter "Settings" mit der Block- und
  * Embed-Varianten-Auswahl, Formularverarbeitung und Asset-Einbindung.
  */
-final class JG_GBBF_Admin_Page {
+final class JGOR_BIF_Admin_Page {
 
 	/**
 	 * Slug der Settings-Seite (Query-Parameter ?page=...).
 	 *
-	 * Seit 1.6.0 englisch; vorher 'jg-gbbf-bloecke-ausblenden'. Alte
+	 * Seit 1.6.0 englisch; vorher 'jgor-bif-bloecke-ausblenden'. Alte
 	 * Lesezeichen auf die Settings-Seite laufen deshalb ins Leere.
 	 */
-	public const MENU_SLUG = 'jg-gbbf-hide-blocks';
+	public const MENU_SLUG = 'jgor-bif-hide-blocks';
 
 	/**
 	 * Nonce-Action-Name.
 	 */
-	public const NONCE_ACTION = 'jg_gbbf_save_blocks';
+	public const NONCE_ACTION = 'jgor_bif_save_blocks';
 
 	/**
 	 * `action`-Wert fuer admin-post.php.
 	 */
-	public const FORM_ACTION = 'jg_gbbf_save';
+	public const FORM_ACTION = 'jgor_bif_save';
 
 	/**
 	 * Konstruktor – haengt die Hooks ein.
@@ -58,8 +58,8 @@ final class JG_GBBF_Admin_Page {
 	 */
 	public function register_menu(): void {
 		add_options_page(
-			__( 'Hide Blocks', 'gb-block-filter' ),
-			__( 'Hide Blocks', 'gb-block-filter' ),
+			__( 'Hide Blocks', 'block-inserter-filter' ),
+			__( 'Hide Blocks', 'block-inserter-filter' ),
 			'manage_options',
 			self::MENU_SLUG,
 			array( $this, 'render_page' )
@@ -86,10 +86,10 @@ final class JG_GBBF_Admin_Page {
 
 		// Eigene Styles.
 		wp_enqueue_style(
-			'jg-gbbf-admin',
-			JG_GBBF_PLUGIN_URL . 'assets/admin.css',
+			'jgor-bif-admin',
+			JGOR_BIF_PLUGIN_URL . 'assets/admin.css',
 			array(),
-			JG_GBBF_VERSION
+			JGOR_BIF_VERSION
 		);
 
 		// Block-Editor-Assets fuer die Icon-Aufloesung.
@@ -106,22 +106,22 @@ final class JG_GBBF_Admin_Page {
 		 * Bewusst der Core-Hook 'enqueue_block_editor_assets' – die
 		 * Settings-Seite ist zwar keine echte Editor-Seite, simuliert
 		 * aber den Editor-Kontext, damit andere Plugins/Themes ihre
-		 * Block-Assets registrieren. Ein eigener jg_gbbf_*-Hook waere
+		 * Block-Assets registrieren. Ein eigener jgor_bif_*-Hook waere
 		 * funktional unsinnig, weil sich keine externen Plugins
 		 * daran anhaengen wuerden. Core selbst feuert den Hook ebenfalls
 		 * ausserhalb des Post-Editors (Widgets-Screen, Site-Editor).
 		 * Das plugineigene editor.js erkennt diese Seite ueber
 		 * get_current_screen() und laedt hier nicht (siehe
-		 * JG_GBBF_Block_Filter::enqueue_editor_assets()).
+		 * JGOR_BIF_Block_Filter::enqueue_editor_assets()).
 		 */
 		// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- Core-Hook bewusst: andere Plugins/Themes sollen ihre Block-Assets registrieren.
 		do_action( 'enqueue_block_editor_assets' );
 
 		wp_enqueue_script(
-			'jg-gbbf-admin',
-			JG_GBBF_PLUGIN_URL . 'assets/admin.js',
+			'jgor-bif-admin',
+			JGOR_BIF_PLUGIN_URL . 'assets/admin.js',
 			array( 'wp-blocks', 'wp-block-library', 'wp-block-editor', 'wp-element', 'wp-dom-ready' ),
-			JG_GBBF_VERSION,
+			JGOR_BIF_VERSION,
 			true
 		);
 	}
@@ -136,8 +136,8 @@ final class JG_GBBF_Admin_Page {
 	public function handle_save(): void {
 		if ( ! current_user_can( 'manage_options' ) ) {
 			wp_die(
-				esc_html__( 'You do not have permission to do this.', 'gb-block-filter' ),
-				esc_html__( 'You do not have permission to do this.', 'gb-block-filter' ),
+				esc_html__( 'You do not have permission to do this.', 'block-inserter-filter' ),
+				esc_html__( 'You do not have permission to do this.', 'block-inserter-filter' ),
 				array( 'response' => 403 )
 			);
 		}
@@ -166,10 +166,10 @@ final class JG_GBBF_Admin_Page {
 			if ( ! is_string( $name ) ) {
 				continue;
 			}
-			if ( ! JG_GBBF_Plugin::is_valid_block_name( $name ) ) {
+			if ( ! JGOR_BIF_Plugin::is_valid_block_name( $name ) ) {
 				continue;
 			}
-			if ( in_array( $name, JG_GBBF_Plugin::get_protected_blocks(), true ) ) {
+			if ( in_array( $name, JGOR_BIF_Plugin::get_protected_blocks(), true ) ) {
 				continue;
 			}
 			if ( ! in_array( $name, $valid_keys, true ) ) {
@@ -179,7 +179,7 @@ final class JG_GBBF_Admin_Page {
 		}
 		$sanitized_blocks = array_values( array_unique( $sanitized_blocks ) );
 
-		update_option( JG_GBBF_Plugin::OPTION_NAME, $sanitized_blocks );
+		update_option( JGOR_BIF_Plugin::OPTION_NAME, $sanitized_blocks );
 
 		// ----- 2) Embed-Varianten -----
 		// Sanitization analog zum Block-Array oben; Validierung gegen die
@@ -189,13 +189,13 @@ final class JG_GBBF_Admin_Page {
 			? array_map( 'sanitize_text_field', wp_unslash( $_POST['hidden_embed'] ) )
 			: array();
 
-		$known_variations     = array_keys( JG_GBBF_Plugin::get_embed_variations() );
+		$known_variations     = array_keys( JGOR_BIF_Plugin::get_embed_variations() );
 		$sanitized_variations = array();
 		foreach ( $submitted_vars as $slug ) {
 			if ( ! is_string( $slug ) ) {
 				continue;
 			}
-			if ( ! JG_GBBF_Plugin::is_valid_variation_name( $slug ) ) {
+			if ( ! JGOR_BIF_Plugin::is_valid_variation_name( $slug ) ) {
 				continue;
 			}
 			if ( ! in_array( $slug, $known_variations, true ) ) {
@@ -205,7 +205,7 @@ final class JG_GBBF_Admin_Page {
 		}
 		$sanitized_variations = array_values( array_unique( $sanitized_variations ) );
 
-		update_option( JG_GBBF_Plugin::OPTION_EMBED_VARIATIONS, $sanitized_variations );
+		update_option( JGOR_BIF_Plugin::OPTION_EMBED_VARIATIONS, $sanitized_variations );
 
 		wp_safe_redirect(
 			add_query_arg(
@@ -225,14 +225,14 @@ final class JG_GBBF_Admin_Page {
 	public function render_page(): void {
 		if ( ! current_user_can( 'manage_options' ) ) {
 			wp_die(
-				esc_html__( 'You do not have permission to do this.', 'gb-block-filter' ),
-				esc_html__( 'You do not have permission to do this.', 'gb-block-filter' ),
+				esc_html__( 'You do not have permission to do this.', 'block-inserter-filter' ),
+				esc_html__( 'You do not have permission to do this.', 'block-inserter-filter' ),
 				array( 'response' => 403 )
 			);
 		}
 
 		$registered = WP_Block_Type_Registry::get_instance()->get_all_registered();
-		$hidden     = JG_GBBF_Plugin::get_hidden_blocks();
+		$hidden     = JGOR_BIF_Plugin::get_hidden_blocks();
 		$hidden_map = array_fill_keys( $hidden, true );
 
 		// Block-Kategorien (Slug => Anzeigename) holen.
@@ -315,8 +315,8 @@ final class JG_GBBF_Admin_Page {
 			$entry = array(
 				'name'         => $name_str,
 				'title'        => $title,
-				'protected'    => in_array( $name_str, JG_GBBF_Plugin::get_protected_blocks(), true ),
-				'pro_replaced' => in_array( $name_str, JG_GBBF_Plugin::get_pro_replaced_blocks(), true ),
+				'protected'    => in_array( $name_str, JGOR_BIF_Plugin::get_protected_blocks(), true ),
+				'pro_replaced' => in_array( $name_str, JGOR_BIF_Plugin::get_pro_replaced_blocks(), true ),
 				'is_pro'       => $is_pro,
 			);
 
@@ -356,23 +356,23 @@ final class JG_GBBF_Admin_Page {
 		$updated          = isset( $_GET['updated'] );
 		$total_count      = count( $registered );
 		$hidden_count     = count( $hidden );
-		$hidden_var_count = count( JG_GBBF_Plugin::get_hidden_embed_variations() );
+		$hidden_var_count = count( JGOR_BIF_Plugin::get_hidden_embed_variations() );
 
 		?>
-		<div class="wrap jg-gbbf-admin">
-			<h1><?php esc_html_e( 'Hide Blocks', 'gb-block-filter' ); ?></h1>
+		<div class="wrap jgor-bif-admin">
+			<h1><?php esc_html_e( 'Hide Blocks', 'block-inserter-filter' ); ?></h1>
 
 			<?php if ( $updated ) : ?>
 				<div class="notice notice-success is-dismissible">
-					<p><?php esc_html_e( 'Settings saved.', 'gb-block-filter' ); ?></p>
+					<p><?php esc_html_e( 'Settings saved.', 'block-inserter-filter' ); ?></p>
 				</div>
 			<?php endif; ?>
 
-			<p class="jg-gbbf-intro">
+			<p class="jgor-bif-intro">
 				<?php
 				printf(
 					/* translators: 1: number of registered blocks, 2: number of hidden blocks, 3: number of hidden embed variations. */
-					esc_html__( 'Registered blocks: %1$d. Currently hidden: %2$d blocks and %3$d embed variations.', 'gb-block-filter' ),
+					esc_html__( 'Registered blocks: %1$d. Currently hidden: %2$d blocks and %3$d embed variations.', 'block-inserter-filter' ),
 					(int) $total_count,
 					(int) $hidden_count,
 					(int) $hidden_var_count
@@ -381,41 +381,41 @@ final class JG_GBBF_Admin_Page {
 			</p>
 
 			<p class="description">
-				<?php esc_html_e( 'Checked blocks are removed from the block inserter for all users. Existing content using hidden blocks remains visible – only inserting new instances is blocked.', 'gb-block-filter' ); ?>
+				<?php esc_html_e( 'Checked blocks are removed from the block inserter for all users. Existing content using hidden blocks remains visible – only inserting new instances is blocked.', 'block-inserter-filter' ); ?>
 				<br>
-				<?php esc_html_e( 'Certain core blocks (Paragraph, Heading, List, Image, Group, Columns) always stay available as a safety net and cannot be hidden here.', 'gb-block-filter' ); ?>
+				<?php esc_html_e( 'Certain core blocks (Paragraph, Heading, List, Image, Group, Columns) always stay available as a safety net and cannot be hidden here.', 'block-inserter-filter' ); ?>
 			</p>
 
-			<div class="jg-gbbf-toolbar">
-				<label class="jg-gbbf-search-label" for="jg-gbbf-search">
-					<span class="screen-reader-text"><?php esc_html_e( 'Search blocks', 'gb-block-filter' ); ?></span>
+			<div class="jgor-bif-toolbar">
+				<label class="jgor-bif-search-label" for="jgor-bif-search">
+					<span class="screen-reader-text"><?php esc_html_e( 'Search blocks', 'block-inserter-filter' ); ?></span>
 					<input
 						type="search"
-						id="jg-gbbf-search"
-						class="jg-gbbf-search"
-						placeholder="<?php esc_attr_e( 'Search blocks…', 'gb-block-filter' ); ?>"
+						id="jgor-bif-search"
+						class="jgor-bif-search"
+						placeholder="<?php esc_attr_e( 'Search blocks…', 'block-inserter-filter' ); ?>"
 						autocomplete="off"
 					>
 				</label>
 
-				<fieldset class="jg-gbbf-view-switch">
-					<legend class="screen-reader-text"><?php esc_html_e( 'Choose grouping', 'gb-block-filter' ); ?></legend>
+				<fieldset class="jgor-bif-view-switch">
+					<legend class="screen-reader-text"><?php esc_html_e( 'Choose grouping', 'block-inserter-filter' ); ?></legend>
 					<label>
-						<input type="radio" name="jg_gbbf_view" value="category" checked>
-						<?php esc_html_e( 'By category', 'gb-block-filter' ); ?>
+						<input type="radio" name="jgor_bif_view" value="category" checked>
+						<?php esc_html_e( 'By category', 'block-inserter-filter' ); ?>
 					</label>
 					<label>
-						<input type="radio" name="jg_gbbf_view" value="namespace">
-						<?php esc_html_e( 'By namespace', 'gb-block-filter' ); ?>
+						<input type="radio" name="jgor_bif_view" value="namespace">
+						<?php esc_html_e( 'By namespace', 'block-inserter-filter' ); ?>
 					</label>
 				</fieldset>
 			</div>
 
-			<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" class="jg-gbbf-form">
+			<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" class="jgor-bif-form">
 				<input type="hidden" name="action" value="<?php echo esc_attr( self::FORM_ACTION ); ?>">
 				<?php wp_nonce_field( self::NONCE_ACTION ); ?>
 
-				<div class="jg-gbbf-view jg-gbbf-view--category" data-view="category">
+				<div class="jgor-bif-view jgor-bif-view--category" data-view="category">
 					<?php foreach ( $cat_slugs as $cat_slug ) : ?>
 						<?php
 						$blocks_for_cat = $by_category[ $cat_slug ];
@@ -425,7 +425,7 @@ final class JG_GBBF_Admin_Page {
 					<?php endforeach; ?>
 				</div>
 
-				<div class="jg-gbbf-view jg-gbbf-view--namespace" data-view="namespace" hidden>
+				<div class="jgor-bif-view jgor-bif-view--namespace" data-view="namespace" hidden>
 					<?php foreach ( $namespaces as $ns ) : ?>
 						<?php
 						// Label = roher Namespace; das Pro-Badge in der
@@ -437,11 +437,11 @@ final class JG_GBBF_Admin_Page {
 
 				<?php $this->render_embed_variations_section(); ?>
 
-				<p class="jg-gbbf-no-results" hidden>
-					<em><?php esc_html_e( 'No blocks found.', 'gb-block-filter' ); ?></em>
+				<p class="jgor-bif-no-results" hidden>
+					<em><?php esc_html_e( 'No blocks found.', 'block-inserter-filter' ); ?></em>
 				</p>
 
-				<?php submit_button( __( 'Save Settings', 'gb-block-filter' ) ); ?>
+				<?php submit_button( __( 'Save Settings', 'block-inserter-filter' ) ); ?>
 			</form>
 		</div>
 		<?php
@@ -461,23 +461,23 @@ final class JG_GBBF_Admin_Page {
 			return;
 		}
 
-		$list_id  = 'jg-gbbf-list-' . sanitize_html_class( $group_slug );
+		$list_id  = 'jgor-bif-list-' . sanitize_html_class( $group_slug );
 		$is_pro_g = ( 'generateblocks-pro' === $group_raw );
 		?>
-		<fieldset class="jg-gbbf-group" data-group="<?php echo esc_attr( $group_slug ); ?>">
-			<legend class="jg-gbbf-group__legend">
-				<span class="jg-gbbf-group__title"><?php echo esc_html( $group_label ); ?></span>
-				<span class="jg-gbbf-group__count"><?php echo (int) count( $blocks ); ?></span>
+		<fieldset class="jgor-bif-group" data-group="<?php echo esc_attr( $group_slug ); ?>">
+			<legend class="jgor-bif-group__legend">
+				<span class="jgor-bif-group__title"><?php echo esc_html( $group_label ); ?></span>
+				<span class="jgor-bif-group__count"><?php echo (int) count( $blocks ); ?></span>
 				<?php if ( $is_pro_g ) : ?>
-					<span class="jg-gbbf-badge jg-gbbf-badge--pro">Pro</span>
+					<span class="jgor-bif-badge jgor-bif-badge--pro">Pro</span>
 				<?php endif; ?>
 				<button
 					type="button"
-					class="button button-small jg-gbbf-toggle-all"
+					class="button button-small jgor-bif-toggle-all"
 					data-target="<?php echo esc_attr( $list_id ); ?>"
-				><?php esc_html_e( 'Toggle all', 'gb-block-filter' ); ?></button>
+				><?php esc_html_e( 'Toggle all', 'block-inserter-filter' ); ?></button>
 			</legend>
-			<ul class="jg-gbbf-list" id="<?php echo esc_attr( $list_id ); ?>">
+			<ul class="jgor-bif-list" id="<?php echo esc_attr( $list_id ); ?>">
 				<?php foreach ( $blocks as $entry ) : ?>
 					<?php
 					/*
@@ -493,7 +493,7 @@ final class JG_GBBF_Admin_Page {
 					 *                     mitbringt UND Pro ist aktiv.
 					 *                     Der Block wird automatisch aus
 					 *                     dem Inserter genommen (via
-					 *                     JG_GBBF_Block_Filter::filter_blocks).
+					 *                     JGOR_BIF_Block_Filter::filter_blocks).
 					 *                     Visuell wird die Checkbox
 					 *                     angehakt + gesperrt dargestellt –
 					 *                     das macht klar, dass der Block
@@ -508,9 +508,9 @@ final class JG_GBBF_Admin_Page {
 					$is_user_hidden = isset( $hidden_map[ $entry['name'] ] );
 					$is_hidden      = $is_user_hidden || $pro_replaced;
 					$disabled       = (bool) $entry['protected'] || $pro_replaced;
-					$item_class     = 'jg-gbbf-item'
-						. ( $disabled ? ' jg-gbbf-item--protected' : '' )
-						. ( $pro_replaced ? ' jg-gbbf-item--pro-replaced' : '' );
+					$item_class     = 'jgor-bif-item'
+						. ( $disabled ? ' jgor-bif-item--protected' : '' )
+						. ( $pro_replaced ? ' jgor-bif-item--pro-replaced' : '' );
 					?>
 					<li class="<?php echo esc_attr( $item_class ); ?>"
 						data-name="<?php echo esc_attr( $entry['name'] ); ?>"
@@ -523,23 +523,23 @@ final class JG_GBBF_Admin_Page {
 								<?php checked( $is_hidden ); ?>
 								<?php disabled( $disabled ); ?>
 							>
-							<span class="jg-gbbf-item__icon" data-block-name="<?php echo esc_attr( $entry['name'] ); ?>" aria-hidden="true"></span>
-							<span class="jg-gbbf-item__title"><?php echo esc_html( $entry['title'] ); ?></span>
-							<code class="jg-gbbf-item__name"><?php echo esc_html( $entry['name'] ); ?></code>
+							<span class="jgor-bif-item__icon" data-block-name="<?php echo esc_attr( $entry['name'] ); ?>" aria-hidden="true"></span>
+							<span class="jgor-bif-item__title"><?php echo esc_html( $entry['title'] ); ?></span>
+							<code class="jgor-bif-item__name"><?php echo esc_html( $entry['name'] ); ?></code>
 							<?php if ( $pro_replaced ) : ?>
 								<span
-									class="jg-gbbf-badge jg-gbbf-badge--pro-replacement"
-									title="<?php esc_attr_e( 'GenerateBlocks Pro is active. This core block is hidden from the inserter automatically because GenerateBlocks Pro provides an extended variant. If GenerateBlocks Pro is deactivated, the core block reappears automatically.', 'gb-block-filter' ); ?>"
-								><?php esc_html_e( 'Pro variant active', 'gb-block-filter' ); ?></span>
+									class="jgor-bif-badge jgor-bif-badge--pro-replacement"
+									title="<?php esc_attr_e( 'GenerateBlocks Pro is active. This core block is hidden from the inserter automatically because GenerateBlocks Pro provides an extended variant. If GenerateBlocks Pro is deactivated, the core block reappears automatically.', 'block-inserter-filter' ); ?>"
+								><?php esc_html_e( 'Pro variant active', 'block-inserter-filter' ); ?></span>
 							<?php elseif ( $disabled ) : ?>
-								<span class="jg-gbbf-badge jg-gbbf-badge--protected"><?php esc_html_e( 'protected', 'gb-block-filter' ); ?></span>
+								<span class="jgor-bif-badge jgor-bif-badge--protected"><?php esc_html_e( 'protected', 'block-inserter-filter' ); ?></span>
 							<?php endif; ?>
 						</label>
 					</li>
 				<?php endforeach; ?>
 			</ul>
-			<div class="jg-gbbf-group__actions">
-				<button type="submit" class="button button-primary"><?php esc_html_e( 'Save', 'gb-block-filter' ); ?></button>
+			<div class="jgor-bif-group__actions">
+				<button type="submit" class="button button-primary"><?php esc_html_e( 'Save', 'block-inserter-filter' ); ?></button>
 			</div>
 		</fieldset>
 		<?php
@@ -558,36 +558,36 @@ final class JG_GBBF_Admin_Page {
 	 * Namespace-View).
 	 */
 	private function render_embed_variations_section(): void {
-		$variations = JG_GBBF_Plugin::get_embed_variations();
+		$variations = JGOR_BIF_Plugin::get_embed_variations();
 		if ( empty( $variations ) ) {
 			return;
 		}
 
-		$hidden_variations = JG_GBBF_Plugin::get_hidden_embed_variations();
+		$hidden_variations = JGOR_BIF_Plugin::get_hidden_embed_variations();
 		$hidden_map        = array_fill_keys( $hidden_variations, true );
 
 		// Alphabetisch nach Anzeigename sortieren.
 		asort( $variations, SORT_NATURAL | SORT_FLAG_CASE );
 
-		$list_id = 'jg-gbbf-list-embed-variations';
+		$list_id = 'jgor-bif-list-embed-variations';
 		?>
-		<fieldset class="jg-gbbf-group jg-gbbf-group--variations" data-group="embed-variations">
-			<legend class="jg-gbbf-group__legend">
-				<span class="jg-gbbf-group__title"><?php esc_html_e( 'Embed variations', 'gb-block-filter' ); ?></span>
-				<span class="jg-gbbf-group__count"><?php echo (int) count( $variations ); ?></span>
+		<fieldset class="jgor-bif-group jgor-bif-group--variations" data-group="embed-variations">
+			<legend class="jgor-bif-group__legend">
+				<span class="jgor-bif-group__title"><?php esc_html_e( 'Embed variations', 'block-inserter-filter' ); ?></span>
+				<span class="jgor-bif-group__count"><?php echo (int) count( $variations ); ?></span>
 				<button
 					type="button"
-					class="button button-small jg-gbbf-toggle-all"
+					class="button button-small jgor-bif-toggle-all"
 					data-target="<?php echo esc_attr( $list_id ); ?>"
-				><?php esc_html_e( 'Toggle all', 'gb-block-filter' ); ?></button>
+				><?php esc_html_e( 'Toggle all', 'block-inserter-filter' ); ?></button>
 			</legend>
-			<p class="description jg-gbbf-group__hint">
-				<?php esc_html_e( 'Variations of the "Embed" block (YouTube, Reddit, Vimeo, …). Checked variations are removed in the editor; the base "Embed" block remains available.', 'gb-block-filter' ); ?>
+			<p class="description jgor-bif-group__hint">
+				<?php esc_html_e( 'Variations of the "Embed" block (YouTube, Reddit, Vimeo, …). Checked variations are removed in the editor; the base "Embed" block remains available.', 'block-inserter-filter' ); ?>
 			</p>
-			<ul class="jg-gbbf-list" id="<?php echo esc_attr( $list_id ); ?>">
+			<ul class="jgor-bif-list" id="<?php echo esc_attr( $list_id ); ?>">
 				<?php foreach ( $variations as $slug => $label ) : ?>
 					<?php $is_hidden = isset( $hidden_map[ $slug ] ); ?>
-					<li class="jg-gbbf-item jg-gbbf-item--variation"
+					<li class="jgor-bif-item jgor-bif-item--variation"
 						data-name="<?php echo esc_attr( $slug ); ?>"
 						data-title="<?php echo esc_attr( $label ); ?>">
 						<label>
@@ -597,15 +597,15 @@ final class JG_GBBF_Admin_Page {
 								value="<?php echo esc_attr( $slug ); ?>"
 								<?php checked( $is_hidden ); ?>
 							>
-							<span class="jg-gbbf-item__icon" data-variation-name="<?php echo esc_attr( $slug ); ?>" aria-hidden="true"></span>
-							<span class="jg-gbbf-item__title"><?php echo esc_html( $label ); ?></span>
-							<code class="jg-gbbf-item__name"><?php echo esc_html( $slug ); ?></code>
+							<span class="jgor-bif-item__icon" data-variation-name="<?php echo esc_attr( $slug ); ?>" aria-hidden="true"></span>
+							<span class="jgor-bif-item__title"><?php echo esc_html( $label ); ?></span>
+							<code class="jgor-bif-item__name"><?php echo esc_html( $slug ); ?></code>
 						</label>
 					</li>
 				<?php endforeach; ?>
 			</ul>
-			<div class="jg-gbbf-group__actions">
-				<button type="submit" class="button button-primary"><?php esc_html_e( 'Save', 'gb-block-filter' ); ?></button>
+			<div class="jgor-bif-group__actions">
+				<button type="submit" class="button button-primary"><?php esc_html_e( 'Save', 'block-inserter-filter' ); ?></button>
 			</div>
 		</fieldset>
 		<?php
@@ -637,7 +637,7 @@ final class JG_GBBF_Admin_Page {
 
 		// Fallback fuer den Edge-Case 'uncategorized'.
 		if ( ! isset( $map['uncategorized'] ) ) {
-			$map['uncategorized'] = __( 'Uncategorized', 'gb-block-filter' );
+			$map['uncategorized'] = __( 'Uncategorized', 'block-inserter-filter' );
 		}
 
 		return $map;

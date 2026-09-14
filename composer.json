@@ -1,6 +1,6 @@
 {
-    "name": "jgorres/gb-block-filter",
-    "description": "Block Filter for GenerateBlocks – WordPress-Plugin (Prüfwerkzeuge PHPCS/WPCS und PHPStan)",
+    "name": "jgorres/block-inserter-filter",
+    "description": "Block Inserter Filter – WordPress-Plugin (Prüfwerkzeuge PHPCS/WPCS und PHPStan)",
     "type": "wordpress-plugin",
     "license": "GPL-2.0-or-later",
     "authors": [

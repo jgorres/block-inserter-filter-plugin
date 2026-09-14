@@ -1,12 +1,12 @@
-# German (de_DE) translation of Block Filter for GenerateBlocks.
+# German (de_DE) translation of Block Inserter Filter.
 # Copyright (C) 2026 Jörn Gorres
 # This file is distributed under the same license as the plugin.
 msgid ""
 msgstr ""
-"Project-Id-Version: Block Filter for GenerateBlocks 1.6.0\n"
+"Project-Id-Version: Block Inserter Filter 2.0.0\n"
 "Report-Msgid-Bugs-To: joern@gorres.com\n"
-"POT-Creation-Date: 2026-09-14 10:57+0000\n"
-"PO-Revision-Date: 2026-09-14 10:57+0000\n"
+"POT-Creation-Date: 2026-09-14 11:26+0000\n"
+"PO-Revision-Date: 2026-09-14 11:26+0000\n"
 "Last-Translator: Jörn Gorres <joern@gorres.com>\n"
 "Language-Team: Jörn Gorres <joern@gorres.com>\n"
 "Language: de_DE\n"
@@ -15,121 +15,121 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: WP-CLI 2.x\n"
-"X-Domain: gb-block-filter\n"
+"X-Domain: block-inserter-filter\n"
 
 #. Plugin Name of the plugin
-#: gb-block-filter.php
-msgid "Block Filter for GenerateBlocks"
-msgstr "Block-Filter für GenerateBlocks"
+#: block-inserter-filter.php
+msgid "Block Inserter Filter"
+msgstr "Block Inserter Filter"
 
 #. Description of the plugin
-#: gb-block-filter.php
-msgid "Hides individual Gutenberg blocks (Core, GenerateBlocks Free, GenerateBlocks Pro, theme and plugin blocks) globally from the block inserter. Configurable per block by administrators."
-msgstr "Blendet einzelne Gutenberg-Blöcke (Core, GenerateBlocks Free, GenerateBlocks Pro, Theme- und Plugin-Blöcke) global aus dem Block-Inserter aus. Konfigurierbar pro Block durch Administratoren."
+#: block-inserter-filter.php
+msgid "Hides individual Gutenberg blocks and embed variations from the block inserter, site-wide. Configurable per block by administrators, with optional GenerateBlocks integration."
+msgstr "Blendet einzelne Gutenberg-Blöcke und Embed-Varianten websiteweit aus dem Block-Inserter aus. Konfigurierbar pro Block durch Administratoren, mit optionaler GenerateBlocks-Integration."
 
 #. Author of the plugin
-#: gb-block-filter.php
+#: block-inserter-filter.php
 msgid "Jörn Gorres"
 msgstr "Jörn Gorres"
 
 #. Author URI of the plugin
-#: gb-block-filter.php
+#: block-inserter-filter.php
 msgid "https://joern.gorres.com"
 msgstr "https://joern.gorres.com"
 
-#: includes/class-jg-gbbf-admin-page.php:54
-#: includes/class-jg-gbbf-admin-page.php:55
-#: includes/class-jg-gbbf-admin-page.php:356
+#: includes/class-jgor-bif-admin-page.php:61
+#: includes/class-jgor-bif-admin-page.php:62
+#: includes/class-jgor-bif-admin-page.php:363
 msgid "Hide Blocks"
 msgstr "Blöcke ausblenden"
 
-#: includes/class-jg-gbbf-admin-page.php:132
-#: includes/class-jg-gbbf-admin-page.php:133
-#: includes/class-jg-gbbf-admin-page.php:221
-#: includes/class-jg-gbbf-admin-page.php:222
+#: includes/class-jgor-bif-admin-page.php:139
+#: includes/class-jgor-bif-admin-page.php:140
+#: includes/class-jgor-bif-admin-page.php:228
+#: includes/class-jgor-bif-admin-page.php:229
 msgid "You do not have permission to do this."
 msgstr "Sie haben keine Berechtigung für diese Aktion."
 
-#: includes/class-jg-gbbf-admin-page.php:360
+#: includes/class-jgor-bif-admin-page.php:367
 msgid "Settings saved."
 msgstr "Einstellungen gespeichert."
 
 #. translators: 1: number of registered blocks, 2: number of hidden blocks, 3: number of hidden embed variations.
-#: includes/class-jg-gbbf-admin-page.php:368
+#: includes/class-jgor-bif-admin-page.php:375
 #, php-format
 msgid "Registered blocks: %1$d. Currently hidden: %2$d blocks and %3$d embed variations."
 msgstr "Insgesamt registriert: %1$d Blöcke. Aktuell ausgeblendet: %2$d Blöcke und %3$d Embed-Varianten."
 
-#: includes/class-jg-gbbf-admin-page.php:377
+#: includes/class-jgor-bif-admin-page.php:384
 msgid "Checked blocks are removed from the block inserter for all users. Existing content using hidden blocks remains visible – only inserting new instances is blocked."
 msgstr "Markierte Blöcke werden für alle Nutzer aus dem Block-Inserter entfernt. Bestehende Inhalte mit ausgeblendeten Blöcken bleiben sichtbar – nur das Einfügen neuer Instanzen ist gesperrt."
 
-#: includes/class-jg-gbbf-admin-page.php:379
+#: includes/class-jgor-bif-admin-page.php:386
 msgid "Certain core blocks (Paragraph, Heading, List, Image, Group, Columns) always stay available as a safety net and cannot be hidden here."
 msgstr "Bestimmte Kern-Blöcke (Absatz, Überschrift, Liste, Bild, Gruppe, Spalten) sind als Sicherheitsnetz immer aktiv und können hier nicht deaktiviert werden."
 
-#: includes/class-jg-gbbf-admin-page.php:384
+#: includes/class-jgor-bif-admin-page.php:391
 msgid "Search blocks"
 msgstr "Blöcke durchsuchen"
 
-#: includes/class-jg-gbbf-admin-page.php:389
+#: includes/class-jgor-bif-admin-page.php:396
 msgid "Search blocks…"
 msgstr "Blöcke durchsuchen…"
 
-#: includes/class-jg-gbbf-admin-page.php:395
+#: includes/class-jgor-bif-admin-page.php:402
 msgid "Choose grouping"
 msgstr "Gruppierung wählen"
 
-#: includes/class-jg-gbbf-admin-page.php:398
+#: includes/class-jgor-bif-admin-page.php:405
 msgid "By category"
 msgstr "Nach Kategorie"
 
-#: includes/class-jg-gbbf-admin-page.php:402
+#: includes/class-jgor-bif-admin-page.php:409
 msgid "By namespace"
 msgstr "Nach Namespace"
 
-#: includes/class-jg-gbbf-admin-page.php:434
+#: includes/class-jgor-bif-admin-page.php:441
 msgid "No blocks found."
 msgstr "Keine Blöcke gefunden."
 
-#: includes/class-jg-gbbf-admin-page.php:437
+#: includes/class-jgor-bif-admin-page.php:444
 msgid "Save Settings"
 msgstr "Einstellungen speichern"
 
-#: includes/class-jg-gbbf-admin-page.php:471
-#: includes/class-jg-gbbf-admin-page.php:575
+#: includes/class-jgor-bif-admin-page.php:478
+#: includes/class-jgor-bif-admin-page.php:582
 msgid "Toggle all"
 msgstr "Alle umschalten"
 
-#: includes/class-jg-gbbf-admin-page.php:525
+#: includes/class-jgor-bif-admin-page.php:532
 msgid "GenerateBlocks Pro is active. This core block is hidden from the inserter automatically because GenerateBlocks Pro provides an extended variant. If GenerateBlocks Pro is deactivated, the core block reappears automatically."
 msgstr "GenerateBlocks Pro ist aktiv. Dieser Core-Block wird automatisch aus dem Inserter ausgeblendet, weil GenerateBlocks Pro eine erweiterte Variante mitbringt. Wird GenerateBlocks Pro deaktiviert, erscheint der Core-Block automatisch wieder."
 
-#: includes/class-jg-gbbf-admin-page.php:526
+#: includes/class-jgor-bif-admin-page.php:533
 msgid "Pro variant active"
 msgstr "Pro-Variante aktiv"
 
-#: includes/class-jg-gbbf-admin-page.php:528
+#: includes/class-jgor-bif-admin-page.php:535
 msgid "protected"
 msgstr "geschützt"
 
-#: includes/class-jg-gbbf-admin-page.php:535
-#: includes/class-jg-gbbf-admin-page.php:601
+#: includes/class-jgor-bif-admin-page.php:542
+#: includes/class-jgor-bif-admin-page.php:608
 msgid "Save"
 msgstr "Speichern"
 
-#: includes/class-jg-gbbf-admin-page.php:569
+#: includes/class-jgor-bif-admin-page.php:576
 msgid "Embed variations"
 msgstr "Embed-Varianten"
 
-#: includes/class-jg-gbbf-admin-page.php:578
+#: includes/class-jgor-bif-admin-page.php:585
 msgid "Variations of the \"Embed\" block (YouTube, Reddit, Vimeo, …). Checked variations are removed in the editor; the base \"Embed\" block remains available."
 msgstr "Varianten des Blocks „Einbettungen“ (YouTube, Reddit, Vimeo, …). Markierte Varianten werden im Editor entfernt; der Basis-Block „Einbettungen“ bleibt verfügbar."
 
-#: includes/class-jg-gbbf-admin-page.php:633
+#: includes/class-jgor-bif-admin-page.php:640
 msgid "Uncategorized"
 msgstr "Ohne Kategorie"
 
-#: includes/class-jg-gbbf-plugin.php:186
+#: includes/class-jgor-bif-plugin.php:192
 msgid "Settings"
 msgstr "Einstellungen"
