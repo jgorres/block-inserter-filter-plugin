@@ -1,0 +1,16 @@
+# Betriebssystem / Editor
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# Werkzeuge (nicht Teil des Plugins)
+vendor/
+node_modules/
+composer.lock
+.phpcs-cache
+.phpunit.result.cache
+
+# Build-Artefakte
+*.zip
