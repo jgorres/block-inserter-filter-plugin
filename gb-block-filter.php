@@ -47,21 +47,6 @@ require_once JG_GBBF_PLUGIN_DIR . 'includes/class-jg-gbbf-block-filter.php';
 require_once JG_GBBF_PLUGIN_DIR . 'includes/class-jg-gbbf-admin-page.php';
 
 /*
- * Textdomain laden. Fuer Sprachpakete von translate.wordpress.org ist
- * der Aufruf seit WP 4.6 nicht noetig, wohl aber fuer die im Plugin
- * mitgelieferten Uebersetzungen unter languages/ (Quellsprache der
- * Strings ist Englisch, Deutsch liegt als de_DE bei).
- */
-function jg_gbbf_load_textdomain(): void {
-	load_plugin_textdomain(
-		'gb-block-filter',
-		false,
-		dirname( plugin_basename( JG_GBBF_PLUGIN_FILE ) ) . '/languages'
-	);
-}
-add_action( 'init', 'jg_gbbf_load_textdomain' );
-
-/*
  * Plugin starten, sobald alle aktiven Plugins geladen sind. Das
  * stellt sicher, dass GenerateBlocks/GenerateBlocks Pro bereits
  * registriert sind, wenn wir auf den Block-Type-Registry zugreifen.

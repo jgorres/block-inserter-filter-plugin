@@ -1,0 +1,47 @@
+{
+    "name": "jgorres/gb-block-filter",
+    "description": "Block Filter for GenerateBlocks – WordPress-Plugin (Prüfwerkzeuge PHPCS/WPCS und PHPStan)",
+    "type": "wordpress-plugin",
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "Jörn Gorres",
+            "email": "joern@gorres.com",
+            "homepage": "https://joern.gorres.com"
+        }
+    ],
+    "require": {
+        "php": ">=8.0"
+    },
+    "require-dev": {
+        "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+        "php-stubs/wordpress-stubs": "^6.7",
+        "phpcompatibility/phpcompatibility-wp": "^2.1",
+        "phpcsstandards/phpcsextra": "^1.2",
+        "phpstan/phpstan": "^2.1",
+        "szepeviktor/phpstan-wordpress": "^2.0",
+        "wp-coding-standards/wpcs": "^3.1"
+    },
+    "config": {
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        },
+        "optimize-autoloader": true,
+        "sort-packages": true
+    },
+    "scripts": {
+        "lint": "phpcs",
+        "lint:fix": "phpcbf",
+        "analyse": "phpstan analyse --memory-limit=1G",
+        "check": [
+            "@lint",
+            "@analyse"
+        ]
+    },
+    "scripts-descriptions": {
+        "lint": "PHPCS mit WordPress Coding Standards ausführen",
+        "lint:fix": "Automatisch behebbare PHPCS-Befunde korrigieren",
+        "analyse": "PHPStan (Level 6) ausführen",
+        "check": "lint und analyse nacheinander ausführen"
+    }
+}

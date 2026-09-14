@@ -50,7 +50,7 @@ These blocks are hard-protected as a safety net — without them the editor woul
 == Changelog ==
 
 = 1.6.0 =
-* Internationalisation: the source language of all user-facing strings, the Plugin Name and the Description is now English. The former German texts ship as a bundled `de_DE` translation in `languages/` (`.pot`, `.po`, `.mo`, `.l10n.php`); `load_plugin_textdomain()` is called on `init` so the bundled files are used until a language pack exists.
+* Internationalisation: the source language of all user-facing strings, the Plugin Name and the Description is now English. German (`de_DE`), French (`fr_FR`) and Spanish (`es_ES`) translations are provided in `languages/` (`.pot`, `.po`, `.mo`, `.l10n.php`) and serve as the templates for translate.wordpress.org; translations are loaded through WordPress.org language packs.
 * Housekeeping: `@package GB_Block_Filter` in all files, JS globals renamed to `jgGbbfEditorData`, console output removed from `admin.js`, unused `gbbaL10n` localisation removed, tabs instead of spaces in the class files, `.distignore` added for SVN exports.
 * Fix: when another plugin sets `allowed_block_types_all` to `false` (no blocks allowed at all), that restriction is now passed through unchanged instead of being replaced by the full block registry minus the hidden blocks.
 * Removed the `all_plugins` display-name override on `wp-admin/plugins.php`. The plugin is now listed under its real name everywhere.
@@ -140,7 +140,7 @@ These blocks are hard-protected as a safety net — without them the editor woul
 == Upgrade Notice ==
 
 = 1.6.0 =
-Source strings are now English with a bundled German translation. Fix: respects a `false` value of `allowed_block_types_all` set by other plugins. The renamed entry on the plugins screen is gone. Declares WordPress 7.1 compatibility.
+Source strings are now English; German, French and Spanish translations are provided. Fix: respects a `false` value of `allowed_block_types_all` set by other plugins. The renamed entry on the plugins screen is gone. Declares WordPress 7.1 compatibility.
 
 = 1.5.1 =
 Maintenance release: declares WordPress 7.0 compatibility. No functional changes.

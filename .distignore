@@ -15,5 +15,6 @@ phpcs.xml
 phpcs.xml.dist
 phpstan.neon
 phpstan.neon.dist
+phpstan-bootstrap.php
 .phpcs-cache
 *.zip

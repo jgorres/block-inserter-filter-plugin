@@ -142,9 +142,11 @@ final class JG_GBBF_Plugin {
 	 * Konstruktor – privat, damit das Singleton-Pattern eingehalten
 	 * wird. Initialisiert die Sub-Module.
 	 *
-	 * Hinweis zur Internationalisierung: Die Textdomain wird in der
-	 * Hauptdatei auf `init` geladen (jg_gbbf_load_textdomain), damit
-	 * die mitgelieferte de_DE-Uebersetzung aus languages/ greift.
+	 * Hinweis zur Internationalisierung: Quellsprache der Strings ist
+	 * Englisch. Uebersetzungen kommen als Sprachpakete von
+	 * translate.wordpress.org (Core laedt sie seit 4.6 automatisch,
+	 * load_plugin_textdomain() ist nicht noetig). Die .po-Dateien unter
+	 * languages/ sind die Vorlagen fuer den Import in GlotPress.
 	 */
 	private function __construct() {
 		/*

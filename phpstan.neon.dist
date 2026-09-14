@@ -1,0 +1,34 @@
+# ==================================================
+# PHPStan-Konfiguration für Block Filter for GenerateBlocks
+# Autor: Jörn Gorres
+# Level 6, WordPress-Stubs über szepeviktor/phpstan-wordpress.
+# ==================================================
+
+includes:
+	- vendor/szepeviktor/phpstan-wordpress/extension.neon
+
+parameters:
+	level: 6
+
+	paths:
+		- gb-block-filter.php
+		- uninstall.php
+		- includes
+
+	excludePaths:
+		- vendor
+		- languages
+
+	# Konstanten, die die Hauptdatei zur Laufzeit definiert
+	bootstrapFiles:
+		- phpstan-bootstrap.php
+
+	# Verhindert Fehlalarme bei WordPress-typischen Rückgabetypen
+	treatPhpDocTypesAsCertain: false
+
+	# Ignorierte Muster dürfen auch ohne Treffer bleiben
+	reportUnmatchedIgnoredErrors: false
+
+	ignoreErrors:
+		# array ohne Wertetyp auf Level 6 tolerieren (WordPress-typisch)
+		- identifier: missingType.iterableValue

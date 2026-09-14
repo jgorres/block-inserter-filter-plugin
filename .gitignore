@@ -10,6 +10,8 @@ vendor/
 node_modules/
 composer.lock
 .phpcs-cache
+phpcs.xml
+phpstan.neon
 .phpunit.result.cache
 
 # Build-Artefakte
