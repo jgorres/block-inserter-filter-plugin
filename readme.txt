@@ -63,7 +63,7 @@ These blocks are hard-protected as a safety net — without them the editor woul
 * UI: each group header shows how many blocks of that group are currently hidden ("N hidden"), updated live while ticking checkboxes or using "Toggle all".
 * UI: "Toggle all" is only shown while a group is expanded and is aligned with the second column of the block list; the per-group "Save" button is left-aligned.
 * UI: the intro text no longer contains a hard line break.
-* Translations: added en_GB, it_IT, ja, nl_NL, pl_PL, pt_BR and ru_RU alongside de_DE, es_ES and fr_FR (`.po` templates for translate.wordpress.org).
+* Translations: German (`de_DE`) and British English (`en_GB`) ship with the plugin; further languages (es_ES, fr_FR, it_IT, ja, nl_NL, pl_PL, pt_BR, ru_RU) are maintained in the development repository and submitted through translate.wordpress.org, where language packs are generated.
 
 = 2.1.0 =
 * UI: block groups (category view, namespace view) and the embed variations section are now accordions. All groups start collapsed; a click on the group header opens it. The header is a real button with `aria-expanded` / `aria-controls`, so it works with keyboard and screen readers. Checkboxes in collapsed groups are still submitted with the form.
@@ -74,7 +74,7 @@ These blocks are hard-protected as a safety net — without them the editor woul
 * **Prefix:** all globals renamed from `jg_gbbf_` / `JG_GBBF_` / `.jg-gbbf-*` to `jgor_bif_` / `JGOR_BIF_` / `.jgor-bif-*`. A one-shot migration on `admin_init` copies the settings from the previous option keys (`jg_gbbf_*`, or `gbba_*` from versions before 1.5.0) to `jgor_bif_hidden_blocks` and `jgor_bif_hidden_embed_variations` and removes the old keys; Multisite networks get a network-wide sweep. No data loss.
 * Settings page slug is now `jgor-bif-hide-blocks` (`options-general.php?page=jgor-bif-hide-blocks`).
 * Uninstall removes the current keys, both legacy key families and the migration sentinels.
-* Internationalisation: the source language of all user-facing strings, the Plugin Name and the Description is now English. German (`de_DE`), French (`fr_FR`) and Spanish (`es_ES`) translations are provided in `languages/` (`.pot`, `.po`, `.mo`, `.l10n.php`) and serve as the templates for translate.wordpress.org. WordPress 6.7 and newer load the bundled files automatically via the `Domain Path` header; WordPress.org language packs take precedence once they exist.
+* Internationalisation: the source language of all user-facing strings, the Plugin Name and the Description is now English. A German (`de_DE`) translation is provided in `languages/` (`.pot`, `.po`, `.mo`, `.l10n.php`). WordPress 6.7 and newer load the bundled files automatically via the `Domain Path` header; WordPress.org language packs take precedence once they exist.
 * Housekeeping: JS global `jgorBifEditorData`, console output removed from `admin.js`, unused localisation removed, tabs instead of spaces in the class files, `.distignore` added for SVN exports.
 * Fix: when another plugin sets `allowed_block_types_all` to `false` (no blocks allowed at all), that restriction is now passed through unchanged instead of being replaced by the full block registry minus the hidden blocks.
 * Removed the `all_plugins` display-name override on `wp-admin/plugins.php`. The plugin is now listed under its real name everywhere.
