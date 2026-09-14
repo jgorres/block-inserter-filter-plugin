@@ -352,8 +352,10 @@ final class JGOR_BIF_Admin_Page {
 		$namespaces = array_keys( $by_namespace );
 		sort( $namespaces );
 
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Nur Anzeige des Erfolgshinweises, keine Datenmutation.
-		$updated          = isset( $_GET['updated'] );
+		// Der Erfolgshinweis nach dem Speichern kommt von WordPress selbst:
+		// wp-admin/options-head.php zeigt bei ?updated=1 auf Unterseiten von
+		// "Einstellungen" die Meldung "Settings saved." an. Eine eigene
+		// Meldung wuerde doppelt erscheinen.
 		$total_count      = count( $registered );
 		$hidden_count     = count( $hidden );
 		$hidden_var_count = count( JGOR_BIF_Plugin::get_hidden_embed_variations() );
@@ -361,12 +363,6 @@ final class JGOR_BIF_Admin_Page {
 		?>
 		<div class="wrap jgor-bif-admin">
 			<h1><?php esc_html_e( 'Hide Blocks', 'block-inserter-filter' ); ?></h1>
-
-			<?php if ( $updated ) : ?>
-				<div class="notice notice-success is-dismissible">
-					<p><?php esc_html_e( 'Settings saved.', 'block-inserter-filter' ); ?></p>
-				</div>
-			<?php endif; ?>
 
 			<p class="jgor-bif-intro">
 				<?php
