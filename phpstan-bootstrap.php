@@ -6,6 +6,8 @@
  * @package GB_Block_Filter
  */
 
+defined( 'ABSPATH' ) || define( 'ABSPATH', __DIR__ . '/' );
+
 if ( ! defined( 'JG_GBBF_VERSION' ) ) {
 	define( 'JG_GBBF_VERSION', '1.6.0' );
 }
@@ -16,7 +18,7 @@ if ( ! defined( 'JG_GBBF_PLUGIN_DIR' ) ) {
 	define( 'JG_GBBF_PLUGIN_DIR', __DIR__ . '/' );
 }
 if ( ! defined( 'JG_GBBF_PLUGIN_URL' ) ) {
-	define( 'JG_GBBF_PLUGIN_URL', 'https://example.local/wp-content/plugins/gb-block-filter/' );
+	define( 'JG_GBBF_PLUGIN_URL', 'https://example.com/wp-content/plugins/gb-block-filter/' );
 }
 if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 	define( 'WP_UNINSTALL_PLUGIN', true );

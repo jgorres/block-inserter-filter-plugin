@@ -46,9 +46,17 @@ require_once JG_GBBF_PLUGIN_DIR . 'includes/class-jg-gbbf-plugin.php';
 require_once JG_GBBF_PLUGIN_DIR . 'includes/class-jg-gbbf-block-filter.php';
 require_once JG_GBBF_PLUGIN_DIR . 'includes/class-jg-gbbf-admin-page.php';
 
-/*
+/**
  * Plugin starten, sobald alle aktiven Plugins geladen sind. Das
  * stellt sicher, dass GenerateBlocks/GenerateBlocks Pro bereits
  * registriert sind, wenn wir auf den Block-Type-Registry zugreifen.
+ *
+ * Eigene Funktion ohne Rueckgabewert, weil ein Action-Callback nichts
+ * zurueckgeben soll (JG_GBBF_Plugin::instance() liefert die Instanz).
+ *
+ * @return void
  */
-add_action( 'plugins_loaded', array( 'JG_GBBF_Plugin', 'instance' ) );
+function jg_gbbf_init(): void {
+	JG_GBBF_Plugin::instance();
+}
+add_action( 'plugins_loaded', 'jg_gbbf_init' );

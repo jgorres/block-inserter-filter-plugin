@@ -12,6 +12,11 @@
 
 defined( 'ABSPATH' ) || exit;
 
+/**
+ * Hauptklasse: Singleton, initialisiert Block-Filter und Admin-UI und
+ * stellt die gemeinsamen Hilfsfunktionen (Optionen, Schutzliste,
+ * Pro-Erkennung, Legacy-Migration) bereit.
+ */
 final class JG_GBBF_Plugin {
 
 	/**

@@ -20,6 +20,10 @@
 
 defined( 'ABSPATH' ) || exit;
 
+/**
+ * Admin-UI: Settings-Seite unter "Settings" mit der Block- und
+ * Embed-Varianten-Auswahl, Formularverarbeitung und Asset-Einbindung.
+ */
 final class JG_GBBF_Admin_Page {
 
 	/**
@@ -182,7 +186,7 @@ final class JG_GBBF_Admin_Page {
 			? array_map( 'sanitize_text_field', wp_unslash( $_POST['hidden_embed'] ) )
 			: array();
 
-		$known_variations    = array_keys( JG_GBBF_Plugin::get_embed_variations() );
+		$known_variations     = array_keys( JG_GBBF_Plugin::get_embed_variations() );
 		$sanitized_variations = array();
 		foreach ( $submitted_vars as $slug ) {
 			if ( ! is_string( $slug ) ) {
@@ -443,11 +447,11 @@ final class JG_GBBF_Admin_Page {
 	/**
 	 * Rendert eine einzelne Block-Gruppe (Kategorie oder Namespace).
 	 *
-	 * @param string                                 $group_slug Eindeutiger Slug fuer DOM-IDs.
-	 * @param string                                 $group_label Anzeigetitel der Gruppe.
-	 * @param string                                 $group_raw   Roher Slug ohne Prefix.
-	 * @param array<int, array<string, mixed>>       $blocks      Block-Eintraege der Gruppe.
-	 * @param array<string, bool>                    $hidden_map  Map ausgeblendeter Bloecke (name => true).
+	 * @param string                           $group_slug Eindeutiger Slug fuer DOM-IDs.
+	 * @param string                           $group_label Anzeigetitel der Gruppe.
+	 * @param string                           $group_raw   Roher Slug ohne Prefix.
+	 * @param array<int, array<string, mixed>> $blocks      Block-Eintraege der Gruppe.
+	 * @param array<string, bool>              $hidden_map  Map ausgeblendeter Bloecke (name => true).
 	 */
 	private function render_group( string $group_slug, string $group_label, string $group_raw, array $blocks, array $hidden_map ): void {
 		if ( empty( $blocks ) ) {
@@ -497,12 +501,12 @@ final class JG_GBBF_Admin_Page {
 					 *
 					 *   - normal        : Frei waehlbar (Checkbox aktiv).
 					 */
-					$pro_replaced  = ! empty( $entry['pro_replaced'] );
+					$pro_replaced   = ! empty( $entry['pro_replaced'] );
 					$is_user_hidden = isset( $hidden_map[ $entry['name'] ] );
-					$is_hidden     = $is_user_hidden || $pro_replaced;
-					$disabled      = (bool) $entry['protected'] || $pro_replaced;
-					$item_class    = 'jg-gbbf-item'
-						. ( $disabled     ? ' jg-gbbf-item--protected'    : '' )
+					$is_hidden      = $is_user_hidden || $pro_replaced;
+					$disabled       = (bool) $entry['protected'] || $pro_replaced;
+					$item_class     = 'jg-gbbf-item'
+						. ( $disabled ? ' jg-gbbf-item--protected' : '' )
 						. ( $pro_replaced ? ' jg-gbbf-item--pro-replaced' : '' );
 					?>
 					<li class="<?php echo esc_attr( $item_class ); ?>"

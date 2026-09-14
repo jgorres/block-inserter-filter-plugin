@@ -45,9 +45,9 @@ function jg_gbbf_uninstall_cleanup_current_site(): void {
 	global $wpdb;
 
 	// 1) Statisch benannte Optionen sauber via WP-API entfernen,
-	//    damit ein evtl. persistenter Object-Cache mit-invalidiert
-	//    wird (raw DELETE wuerde das nicht tun).
-	//    Aktuelle (jg_gbbf_*) Keys.
+	// damit ein evtl. persistenter Object-Cache mit-invalidiert
+	// wird (raw DELETE wuerde das nicht tun).
+	// Aktuelle (jg_gbbf_*) Keys.
 	$jg_gbbf_options = array(
 		'jg_gbbf_hidden_blocks',
 		'jg_gbbf_hidden_embed_variations',
@@ -69,12 +69,12 @@ function jg_gbbf_uninstall_cleanup_current_site(): void {
 	}
 
 	// 2) Defensiv: saemtliche uebrigen jg_gbbf_*-Eintraege aus
-	//    wp_options via LIKE entfernen. Deckt eventuelle kuenftige
-	//    Optionen sowie Transients (`_transient_jg_gbbf_%` /
-	//    `_transient_timeout_jg_gbbf_%`) ab. Das Praefix jg_gbbf_ ist
-	//    plugin-eindeutig, ein Treffer in fremden Daten ist ausgeschlossen.
-	//    $wpdb->esc_like() escaped die "_"-Wildcards im Plugin-Praefix;
-	//    $wpdb->prepare() bindet die Patterns sauber als Strings.
+	// wp_options via LIKE entfernen. Deckt eventuelle kuenftige
+	// Optionen sowie Transients (`_transient_jg_gbbf_%` /
+	// `_transient_timeout_jg_gbbf_%`) ab. Das Praefix jg_gbbf_ ist
+	// plugin-eindeutig, ein Treffer in fremden Daten ist ausgeschlossen.
+	// $wpdb->esc_like() escaped die "_"-Wildcards im Plugin-Praefix;
+	// $wpdb->prepare() bindet die Patterns sauber als Strings.
 	//
 	// phpcs:disable WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 	$wpdb->query(

@@ -17,6 +17,11 @@
 
 defined( 'ABSPATH' ) || exit;
 
+/**
+ * Block-Filter: reduziert ueber `allowed_block_types_all` die im
+ * Inserter erlaubten Bloecke und entfernt per Editor-Skript die
+ * ausgeblendeten Embed-Varianten.
+ */
 final class JG_GBBF_Block_Filter {
 
 	/**
@@ -58,10 +63,10 @@ final class JG_GBBF_Block_Filter {
 		$auto_hidden = JG_GBBF_Plugin::get_pro_replaced_blocks();
 
 		// Effektive Hide-Liste:
-		//   - $hidden        : explizit vom Redakteur per UI ausgeblendet.
-		//   - $auto_hidden   : automatisch durch GB-Pro-Aktivierung
-		//                      ausgeblendet (Core-Bloecke, fuer die GB Pro
-		//                      eine erweiterte Variante mitbringt).
+		// - $hidden        : explizit vom Redakteur per UI ausgeblendet.
+		// - $auto_hidden   : automatisch durch GB-Pro-Aktivierung
+		// ausgeblendet (Core-Bloecke, fuer die GB Pro
+		// eine erweiterte Variante mitbringt).
 		// Wir fassen beide zusammen, deduplizieren defensiv und filtern
 		// anschliessend einmalig.
 		$effective_hidden = array_values( array_unique( array_merge( $hidden, $auto_hidden ) ) );
