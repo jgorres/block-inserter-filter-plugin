@@ -9,7 +9,7 @@
 defined( 'ABSPATH' ) || define( 'ABSPATH', __DIR__ . '/' );
 
 if ( ! defined( 'JGOR_BIF_VERSION' ) ) {
-	define( 'JGOR_BIF_VERSION', '2.1.0' );
+	define( 'JGOR_BIF_VERSION', '2.1.1' );
 }
 if ( ! defined( 'JGOR_BIF_PLUGIN_FILE' ) ) {
 	define( 'JGOR_BIF_PLUGIN_FILE', __DIR__ . '/block-inserter-filter.php' );

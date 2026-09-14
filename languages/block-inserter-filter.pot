@@ -2,14 +2,14 @@
 # This file is distributed under the GPL v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Block Inserter Filter 2.0.0\n"
+"Project-Id-Version: Block Inserter Filter 2.1.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/block-inserter-filter\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-09-14T11:26:02+00:00\n"
+"POT-Creation-Date: 2026-09-14T12:34:15+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: block-inserter-filter\n"
@@ -61,69 +61,77 @@ msgstr ""
 msgid "Checked blocks are removed from the block inserter for all users. Existing content using hidden blocks remains visible – only inserting new instances is blocked."
 msgstr ""
 
-#: includes/class-jgor-bif-admin-page.php:386
+#: includes/class-jgor-bif-admin-page.php:385
 msgid "Certain core blocks (Paragraph, Heading, List, Image, Group, Columns) always stay available as a safety net and cannot be hidden here."
 msgstr ""
 
-#: includes/class-jgor-bif-admin-page.php:391
+#: includes/class-jgor-bif-admin-page.php:390
 msgid "Search blocks"
 msgstr ""
 
-#: includes/class-jgor-bif-admin-page.php:396
+#: includes/class-jgor-bif-admin-page.php:395
 msgid "Search blocks…"
 msgstr ""
 
-#: includes/class-jgor-bif-admin-page.php:402
+#: includes/class-jgor-bif-admin-page.php:401
 msgid "Choose grouping"
 msgstr ""
 
-#: includes/class-jgor-bif-admin-page.php:405
+#: includes/class-jgor-bif-admin-page.php:404
 msgid "By category"
 msgstr ""
 
-#: includes/class-jgor-bif-admin-page.php:409
+#: includes/class-jgor-bif-admin-page.php:408
 msgid "By namespace"
 msgstr ""
 
-#: includes/class-jgor-bif-admin-page.php:441
+#: includes/class-jgor-bif-admin-page.php:440
 msgid "No blocks found."
 msgstr ""
 
-#: includes/class-jgor-bif-admin-page.php:444
+#: includes/class-jgor-bif-admin-page.php:443
 msgid "Save Settings"
 msgstr ""
 
+#. translators: %d: number of hidden blocks in this group.
+#. translators: %d: number of hidden embed variations in this group.
 #: includes/class-jgor-bif-admin-page.php:478
-#: includes/class-jgor-bif-admin-page.php:582
+#: includes/class-jgor-bif-admin-page.php:609
+#, php-format
+msgid "%d hidden"
+msgstr ""
+
+#: includes/class-jgor-bif-admin-page.php:509
+#: includes/class-jgor-bif-admin-page.php:628
 msgid "Toggle all"
 msgstr ""
 
-#: includes/class-jgor-bif-admin-page.php:532
+#: includes/class-jgor-bif-admin-page.php:564
 msgid "GenerateBlocks Pro is active. This core block is hidden from the inserter automatically because GenerateBlocks Pro provides an extended variant. If GenerateBlocks Pro is deactivated, the core block reappears automatically."
 msgstr ""
 
-#: includes/class-jgor-bif-admin-page.php:533
+#: includes/class-jgor-bif-admin-page.php:565
 msgid "Pro variant active"
 msgstr ""
 
-#: includes/class-jgor-bif-admin-page.php:535
+#: includes/class-jgor-bif-admin-page.php:567
 msgid "protected"
 msgstr ""
 
-#: includes/class-jgor-bif-admin-page.php:542
-#: includes/class-jgor-bif-admin-page.php:608
+#: includes/class-jgor-bif-admin-page.php:574
+#: includes/class-jgor-bif-admin-page.php:655
 msgid "Save"
 msgstr ""
 
-#: includes/class-jgor-bif-admin-page.php:576
+#: includes/class-jgor-bif-admin-page.php:620
 msgid "Embed variations"
 msgstr ""
 
-#: includes/class-jgor-bif-admin-page.php:585
+#: includes/class-jgor-bif-admin-page.php:632
 msgid "Variations of the \"Embed\" block (YouTube, Reddit, Vimeo, …). Checked variations are removed in the editor; the base \"Embed\" block remains available."
 msgstr ""
 
-#: includes/class-jgor-bif-admin-page.php:640
+#: includes/class-jgor-bif-admin-page.php:688
 msgid "Uncategorized"
 msgstr ""
 

@@ -300,14 +300,36 @@
             } );
         }
 
+        /**
+         * "N ausgeblendet" in den Kopfzeilen aller Gruppen neu berechnen.
+         *
+         * Zaehlt die angehakten Checkboxes je Liste (auch gesperrte, also
+         * durch GenerateBlocks Pro automatisch ausgeblendete). Die Vorlage
+         * mit %d liefert der Server uebersetzt per data-label, damit kein
+         * Text im JS steht.
+         */
+        function updateHiddenCounts() {
+            Array.prototype.forEach.call( document.querySelectorAll( '.jgor-bif-group' ), function ( group ) {
+                var label = group.querySelector( '.jgor-bif-group__hidden' );
+                var list  = group.querySelector( '.jgor-bif-list' );
+                if ( ! label || ! list ) {
+                    return;
+                }
+                var checked  = list.querySelectorAll( 'input[type="checkbox"]:checked' ).length;
+                var template = label.getAttribute( 'data-label' ) || '%d';
+                label.textContent = template.replace( '%d', String( checked ) );
+            } );
+        }
+
         // Bei jeder User-Interaktion an einer Checkbox: spiegelbildliche
-        // Checkboxes der anderen Ansicht mitziehen.
+        // Checkboxes der anderen Ansicht mitziehen und Zaehler aktualisieren.
         var syncedCheckboxes = document.querySelectorAll(
             'input[type="checkbox"][name="hidden[]"], input[type="checkbox"][name="hidden_embed[]"]'
         );
         Array.prototype.forEach.call( syncedCheckboxes, function ( box ) {
             box.addEventListener( 'change', function () {
                 syncCheckboxByNameValue( box.name, box.value, box.checked );
+                updateHiddenCounts();
             } );
         } );
 
@@ -351,6 +373,7 @@
                     box.checked = anyUnchecked;
                     syncCheckboxByNameValue( box.name, box.value, anyUnchecked );
                 } );
+                updateHiddenCounts();
             } );
         } );
 

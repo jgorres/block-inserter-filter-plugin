@@ -70,21 +70,48 @@
     margin-bottom: 0.75em;
 }
 
-/* Kopfzeile: Accordion-Button links (nimmt die volle Breite), "Toggle all"
-   rechts. Kein <legend> mehr, damit die geschlossene Gruppe als kompakte
-   Zeile im Rahmen sitzt statt als Beschriftung AUF dem Rahmen. */
+/* Kopfzeile: gleiches Spaltenraster wie die Block-Liste darunter, damit
+   "Toggle all" buendig mit der zweiten Spalte der Eintraege steht. Der
+   Accordion-Button sitzt in Spalte 1. Kein <legend>, damit die
+   geschlossene Gruppe als kompakte Zeile im Rahmen sitzt. */
 .jgor-bif-admin .jgor-bif-group__header {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 6px 1em;
     align-items: center;
-    gap: 0.75em;
     font-weight: 600;
     font-size: 1.05em;
+}
+
+/* "Toggle all" erst sichtbar, wenn die Gruppe aufgeklappt ist. */
+.jgor-bif-admin .jgor-bif-group__toggle[aria-expanded="false"] ~ .jgor-bif-toggle-all {
+    display: none;
+}
+
+.jgor-bif-admin .jgor-bif-group__header .jgor-bif-toggle-all {
+    grid-column: 2;
+    justify-self: start;
+}
+
+/* Trenner + Zaehler der ausgeblendeten Bloecke in der Kopfzeile. */
+.jgor-bif-admin .jgor-bif-group__hidden {
+    color: #50575e;
+    font-weight: 400;
+    font-size: 0.85em;
+}
+
+.jgor-bif-admin .jgor-bif-group__hidden::before {
+    content: "|";
+    margin-right: 0.6em;
+    color: #c3c4c7;
 }
 
 /* Accordion-Kopf: als Button, optisch aber Ueberschrift. */
 .jgor-bif-admin .jgor-bif-group__toggle {
     display: inline-flex;
-    flex: 1 1 auto;
+    grid-column: 1;
+    justify-self: start;
+    max-width: 100%;
     align-items: center;
     gap: 0.6em;
     margin: 0;
@@ -278,10 +305,10 @@
 }
 
 /* Aktionsleiste am Ende jeder Gruppe – enthaelt den lokalen
-   "Speichern"-Button. Rechtsbuendig, dezent abgetrennt. */
+   "Speichern"-Button. Linksbuendig, dezent abgetrennt. */
 .jgor-bif-admin .jgor-bif-group__actions {
     display: flex;
-    justify-content: flex-end;
+    justify-content: flex-start;
     margin-top: 1em;
     padding-top: 0.75em;
     border-top: 1px solid #e6e7e8;
@@ -314,5 +341,11 @@
     }
     .jgor-bif-admin .jgor-bif-list {
         grid-template-columns: 1fr;
+    }
+    .jgor-bif-admin .jgor-bif-group__header {
+        grid-template-columns: 1fr;
+    }
+    .jgor-bif-admin .jgor-bif-group__header .jgor-bif-toggle-all {
+        grid-column: 1;
     }
 }

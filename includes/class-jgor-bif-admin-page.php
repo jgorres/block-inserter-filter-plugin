@@ -382,7 +382,6 @@ final class JGOR_BIF_Admin_Page {
 
 			<p class="description">
 				<?php esc_html_e( 'Checked blocks are removed from the block inserter for all users. Existing content using hidden blocks remains visible – only inserting new instances is blocked.', 'block-inserter-filter' ); ?>
-				<br>
 				<?php esc_html_e( 'Certain core blocks (Paragraph, Heading, List, Image, Group, Columns) always stay available as a safety net and cannot be hidden here.', 'block-inserter-filter' ); ?>
 			</p>
 
@@ -464,6 +463,19 @@ final class JGOR_BIF_Admin_Page {
 		$list_id  = 'jgor-bif-list-' . sanitize_html_class( $group_slug );
 		$panel_id = 'jgor-bif-panel-' . sanitize_html_class( $group_slug );
 		$is_pro_g = ( 'generateblocks-pro' === $group_raw );
+
+		// Anzahl der in dieser Gruppe ausgeblendeten Bloecke (manuell
+		// oder automatisch durch GenerateBlocks Pro) fuer die Kopfzeile.
+		$hidden_in_group = 0;
+		foreach ( $blocks as $entry ) {
+			if ( isset( $hidden_map[ $entry['name'] ] ) || ! empty( $entry['pro_replaced'] ) ) {
+				++$hidden_in_group;
+			}
+		}
+		// Vorlage mit %d; das JS ersetzt den Platzhalter beim Live-Update,
+		// deshalb steht sie zusaetzlich unuebersetzt-frei als data-label.
+		/* translators: %d: number of hidden blocks in this group. */
+		$hidden_template = __( '%d hidden', 'block-inserter-filter' );
 		?>
 		<div class="jgor-bif-group" role="group" data-group="<?php echo esc_attr( $group_slug ); ?>">
 			<div class="jgor-bif-group__header">
@@ -485,6 +497,7 @@ final class JGOR_BIF_Admin_Page {
 					<span class="jgor-bif-group__chevron dashicons dashicons-arrow-right-alt2" aria-hidden="true"></span>
 					<span class="jgor-bif-group__title"><?php echo esc_html( $group_label ); ?></span>
 					<span class="jgor-bif-group__count"><?php echo (int) count( $blocks ); ?></span>
+					<span class="jgor-bif-group__hidden" data-label="<?php echo esc_attr( $hidden_template ); ?>"><?php echo esc_html( sprintf( $hidden_template, (int) $hidden_in_group ) ); ?></span>
 					<?php if ( $is_pro_g ) : ?>
 						<span class="jgor-bif-badge jgor-bif-badge--pro">Pro</span>
 					<?php endif; ?>
@@ -589,8 +602,11 @@ final class JGOR_BIF_Admin_Page {
 		// Alphabetisch nach Anzeigename sortieren.
 		asort( $variations, SORT_NATURAL | SORT_FLAG_CASE );
 
-		$list_id  = 'jgor-bif-list-embed-variations';
-		$panel_id = 'jgor-bif-panel-embed-variations';
+		$list_id         = 'jgor-bif-list-embed-variations';
+		$panel_id        = 'jgor-bif-panel-embed-variations';
+		$hidden_in_group = count( array_intersect_key( $hidden_map, $variations ) );
+		/* translators: %d: number of hidden embed variations in this group. */
+		$hidden_template = __( '%d hidden', 'block-inserter-filter' );
 		?>
 		<div class="jgor-bif-group jgor-bif-group--variations" role="group" data-group="embed-variations">
 			<div class="jgor-bif-group__header">
@@ -603,6 +619,7 @@ final class JGOR_BIF_Admin_Page {
 					<span class="jgor-bif-group__chevron dashicons dashicons-arrow-right-alt2" aria-hidden="true"></span>
 					<span class="jgor-bif-group__title"><?php esc_html_e( 'Embed variations', 'block-inserter-filter' ); ?></span>
 					<span class="jgor-bif-group__count"><?php echo (int) count( $variations ); ?></span>
+					<span class="jgor-bif-group__hidden" data-label="<?php echo esc_attr( $hidden_template ); ?>"><?php echo esc_html( sprintf( $hidden_template, (int) $hidden_in_group ) ); ?></span>
 				</button>
 				<button
 					type="button"

@@ -4,7 +4,7 @@ Tags: gutenberg, blocks, block-editor, inserter, admin
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 8.0
-Stable tag: 2.1.0
+Stable tag: 2.1.1
 License: GPL v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -55,6 +55,11 @@ No. Content remains intact and renders normally on the front-end. Only inserting
 These blocks are hard-protected as a safety net — without them the editor would be practically unusable. If you really need to remove them, use the `allowed_block_types_all` filter in your theme or in a custom plugin.
 
 == Changelog ==
+
+= 2.1.1 =
+* UI: each group header shows how many blocks of that group are currently hidden ("N hidden"), updated live while ticking checkboxes or using "Toggle all".
+* UI: "Toggle all" is only shown while a group is expanded and is aligned with the second column of the block list; the per-group "Save" button is left-aligned.
+* UI: the intro text no longer contains a hard line break.
 
 = 2.1.0 =
 * UI: block groups (category view, namespace view) and the embed variations section are now accordions. All groups start collapsed; a click on the group header opens it. The header is a real button with `aria-expanded` / `aria-controls`, so it works with keyboard and screen readers. Checkboxes in collapsed groups are still submitted with the form.
@@ -153,6 +158,9 @@ These blocks are hard-protected as a safety net — without them the editor woul
 * Initial release.
 
 == Upgrade Notice ==
+
+= 2.1.1 =
+Group headers show the number of hidden blocks; "Toggle all" appears only in expanded groups. No functional changes to filtering.
 
 = 2.1.0 =
 Block groups are now collapsible accordions, all collapsed by default. No functional changes to filtering.

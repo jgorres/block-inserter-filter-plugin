@@ -1,18 +1,15 @@
-# German (de_DE) translation of Block Inserter Filter.
-# Copyright (C) 2026 Jörn Gorres
-# This file is distributed under the same license as the plugin.
 msgid ""
 msgstr ""
 "Project-Id-Version: Block Inserter Filter 2.0.0\n"
 "Report-Msgid-Bugs-To: joern@gorres.com\n"
-"POT-Creation-Date: 2026-09-14 11:26+0000\n"
-"PO-Revision-Date: 2026-09-14 11:26+0000\n"
 "Last-Translator: Jörn Gorres <joern@gorres.com>\n"
 "Language-Team: Jörn Gorres <joern@gorres.com>\n"
-"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-09-14 11:26+0000\n"
+"PO-Revision-Date: 2026-09-14 11:26+0000\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: WP-CLI 2.x\n"
 "X-Domain: block-inserter-filter\n"
@@ -64,72 +61,81 @@ msgstr "Insgesamt registriert: %1$d Blöcke. Aktuell ausgeblendet: %2$d Blöcke 
 msgid "Checked blocks are removed from the block inserter for all users. Existing content using hidden blocks remains visible – only inserting new instances is blocked."
 msgstr "Markierte Blöcke werden für alle Nutzer aus dem Block-Inserter entfernt. Bestehende Inhalte mit ausgeblendeten Blöcken bleiben sichtbar – nur das Einfügen neuer Instanzen ist gesperrt."
 
-#: includes/class-jgor-bif-admin-page.php:386
+#: includes/class-jgor-bif-admin-page.php:385
 msgid "Certain core blocks (Paragraph, Heading, List, Image, Group, Columns) always stay available as a safety net and cannot be hidden here."
 msgstr "Bestimmte Kern-Blöcke (Absatz, Überschrift, Liste, Bild, Gruppe, Spalten) sind als Sicherheitsnetz immer aktiv und können hier nicht deaktiviert werden."
 
-#: includes/class-jgor-bif-admin-page.php:391
+#: includes/class-jgor-bif-admin-page.php:390
 msgid "Search blocks"
 msgstr "Blöcke durchsuchen"
 
-#: includes/class-jgor-bif-admin-page.php:396
+#: includes/class-jgor-bif-admin-page.php:395
 msgid "Search blocks…"
 msgstr "Blöcke durchsuchen…"
 
-#: includes/class-jgor-bif-admin-page.php:402
+#: includes/class-jgor-bif-admin-page.php:401
 msgid "Choose grouping"
 msgstr "Gruppierung wählen"
 
-#: includes/class-jgor-bif-admin-page.php:405
+#: includes/class-jgor-bif-admin-page.php:404
 msgid "By category"
 msgstr "Nach Kategorie"
 
-#: includes/class-jgor-bif-admin-page.php:409
+#: includes/class-jgor-bif-admin-page.php:408
 msgid "By namespace"
 msgstr "Nach Namespace"
 
-#: includes/class-jgor-bif-admin-page.php:441
+#: includes/class-jgor-bif-admin-page.php:440
 msgid "No blocks found."
 msgstr "Keine Blöcke gefunden."
 
-#: includes/class-jgor-bif-admin-page.php:444
+#: includes/class-jgor-bif-admin-page.php:443
 msgid "Save Settings"
 msgstr "Einstellungen speichern"
 
-#: includes/class-jgor-bif-admin-page.php:478
-#: includes/class-jgor-bif-admin-page.php:582
+#: includes/class-jgor-bif-admin-page.php:508
+#: includes/class-jgor-bif-admin-page.php:628
 msgid "Toggle all"
 msgstr "Alle umschalten"
 
-#: includes/class-jgor-bif-admin-page.php:532
+#: includes/class-jgor-bif-admin-page.php:563
 msgid "GenerateBlocks Pro is active. This core block is hidden from the inserter automatically because GenerateBlocks Pro provides an extended variant. If GenerateBlocks Pro is deactivated, the core block reappears automatically."
 msgstr "GenerateBlocks Pro ist aktiv. Dieser Core-Block wird automatisch aus dem Inserter ausgeblendet, weil GenerateBlocks Pro eine erweiterte Variante mitbringt. Wird GenerateBlocks Pro deaktiviert, erscheint der Core-Block automatisch wieder."
 
-#: includes/class-jgor-bif-admin-page.php:533
+#: includes/class-jgor-bif-admin-page.php:564
 msgid "Pro variant active"
 msgstr "Pro-Variante aktiv"
 
-#: includes/class-jgor-bif-admin-page.php:535
+#: includes/class-jgor-bif-admin-page.php:566
 msgid "protected"
 msgstr "geschützt"
 
-#: includes/class-jgor-bif-admin-page.php:542
-#: includes/class-jgor-bif-admin-page.php:608
+#: includes/class-jgor-bif-admin-page.php:573
+#: includes/class-jgor-bif-admin-page.php:655
 msgid "Save"
 msgstr "Speichern"
 
-#: includes/class-jgor-bif-admin-page.php:576
+#: includes/class-jgor-bif-admin-page.php:617
 msgid "Embed variations"
 msgstr "Embed-Varianten"
 
-#: includes/class-jgor-bif-admin-page.php:585
+#: includes/class-jgor-bif-admin-page.php:632
 msgid "Variations of the \"Embed\" block (YouTube, Reddit, Vimeo, …). Checked variations are removed in the editor; the base \"Embed\" block remains available."
 msgstr "Varianten des Blocks „Einbettungen“ (YouTube, Reddit, Vimeo, …). Markierte Varianten werden im Editor entfernt; der Basis-Block „Einbettungen“ bleibt verfügbar."
 
-#: includes/class-jgor-bif-admin-page.php:640
+#: includes/class-jgor-bif-admin-page.php:688
 msgid "Uncategorized"
 msgstr "Ohne Kategorie"
 
 #: includes/class-jgor-bif-plugin.php:192
 msgid "Settings"
 msgstr "Einstellungen"
+
+#. translators: %d: number of hidden blocks in this group.
+#: includes/class-jgor-bif-admin-page.php:496
+#: includes/class-jgor-bif-admin-page.php:498
+#: includes/class-jgor-bif-admin-page.php:619
+#: includes/class-jgor-bif-admin-page.php:621
+#, php-format
+msgid "%d hidden"
+msgstr "%d ausgeblendet"
