@@ -19,14 +19,11 @@ phpstan-bootstrap.php
 .phpcs-cache
 *.zip
 
-# Uebersetzungen: nur de_DE und en_GB werden mitgeliefert. Die uebrigen
-# Sprachen bleiben im Repo und werden ueber translate.wordpress.org
-# (GlotPress) eingereicht, dort entstehen dann die Sprachpakete.
-languages/block-inserter-filter-es_ES.*
-languages/block-inserter-filter-fr_FR.*
-languages/block-inserter-filter-it_IT.*
-languages/block-inserter-filter-ja.*
-languages/block-inserter-filter-nl_NL.*
-languages/block-inserter-filter-pl_PL.*
-languages/block-inserter-filter-pt_BR.*
-languages/block-inserter-filter-ru_RU.*
+# Uebersetzungen: das Plugin-Team von WordPress.org verlangt, dass keine
+# Uebersetzungsdateien mitgeliefert werden (Review vom 16.09.2026). Alle
+# Sprachen bleiben nur im Repo und werden ueber translate.wordpress.org
+# (GlotPress) eingereicht, dort entstehen die Sprachpakete. Ins Paket
+# kommen aus languages/ nur index.php und die .pot-Vorlage.
+languages/*.po
+languages/*.mo
+languages/*.l10n.php

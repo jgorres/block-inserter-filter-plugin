@@ -4,7 +4,7 @@ Tags: gutenberg, blocks, block-editor, inserter, admin
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 8.0
-Stable tag: 2.1.2
+Stable tag: 2.1.3
 License: GPL v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -55,6 +55,9 @@ No. Content remains intact and renders normally on the front-end. Only inserting
 These blocks are hard-protected as a safety net — without them the editor would be practically unusable. If you really need to remove them, use the `allowed_block_types_all` filter in your theme or in a custom plugin.
 
 == Changelog ==
+
+= 2.1.3 =
+* Translations: the plugin package no longer ships any translation files (`.po`, `.mo`, `.l10n.php`), as requested by the WordPress.org plugin review. All languages, including German and British English, are provided through translate.wordpress.org language packs. Only the `.pot` template remains in `languages/`.
 
 = 2.1.2 =
 * Fix: after saving, the settings page showed two success notices — WordPress core adds "Settings saved." itself for pages under Settings when `updated=1` is present. The plugin's own notice is removed.
@@ -162,6 +165,9 @@ These blocks are hard-protected as a safety net — without them the editor woul
 * Initial release.
 
 == Upgrade Notice ==
+
+= 2.1.3 =
+Translation files are no longer bundled; translations are delivered as language packs from translate.wordpress.org. No functional changes.
 
 = 2.1.2 =
 Removes a duplicate "Settings saved." notice. No functional changes.

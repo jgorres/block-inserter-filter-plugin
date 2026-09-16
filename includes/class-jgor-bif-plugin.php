@@ -148,12 +148,14 @@ final class JGOR_BIF_Plugin {
 	 * wird. Initialisiert die Sub-Module.
 	 *
 	 * Hinweis zur Internationalisierung: Quellsprache der Strings ist
-	 * Englisch. Die mitgelieferten Uebersetzungen unter languages/ laedt
-	 * Core seit WordPress 6.7 automatisch ueber den "Domain Path"-Header
-	 * (wp-settings.php registriert den Pfad im Textdomain-Registry);
-	 * load_plugin_textdomain() ist nicht noetig. Sprachpakete von
-	 * translate.wordpress.org haben Vorrang, sobald sie existieren; die
-	 * .po-Dateien sind zugleich die Vorlagen fuer den Import in GlotPress.
+	 * Englisch. Das Release-Paket enthaelt auf Wunsch des WordPress.org-
+	 * Review-Teams keine Uebersetzungsdateien; alle Sprachen kommen als
+	 * Sprachpakete von translate.wordpress.org nach wp-content/languages/
+	 * plugins/ und werden von Core seit WordPress 4.6 automatisch geladen.
+	 * load_plugin_textdomain() ist daher nicht noetig. Die .po-Dateien im
+	 * Entwicklungs-Repo (languages/, per .distignore ausgeschlossen) sind
+	 * die Vorlagen fuer den Import in GlotPress; bei lokaler Entwicklung
+	 * laedt Core sie ueber den "Domain Path"-Header.
 	 */
 	private function __construct() {
 		/*
