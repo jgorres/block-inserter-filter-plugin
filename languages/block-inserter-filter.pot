@@ -2,14 +2,14 @@
 # This file is distributed under the GPL v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Block Inserter Filter 2.1.2\n"
+"Project-Id-Version: Block Inserter Filter 2.1.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/block-inserter-filter\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-09-14T14:21:50+00:00\n"
+"POT-Creation-Date: 2026-09-22T13:00:43+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: block-inserter-filter\n"
@@ -27,11 +27,6 @@ msgstr ""
 #. Author of the plugin
 #: block-inserter-filter.php
 msgid "Jörn Gorres"
-msgstr ""
-
-#. Author URI of the plugin
-#: block-inserter-filter.php
-msgid "https://joern.gorres.com"
 msgstr ""
 
 #: includes/class-jgor-bif-admin-page.php:61
@@ -131,6 +126,6 @@ msgstr ""
 msgid "Uncategorized"
 msgstr ""
 
-#: includes/class-jgor-bif-plugin.php:194
+#: includes/class-jgor-bif-plugin.php:196
 msgid "Settings"
 msgstr ""
