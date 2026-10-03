@@ -1,8 +1,9 @@
 <?php
 /**
  * Plugin Name:       Block Inserter Filter
+ * Plugin URI:        https://github.com/jgorres/block-inserter-filter-plugin
  * Description:       Hides individual Gutenberg blocks and embed variations from the block inserter, site-wide. Configurable per block by administrators, with optional GenerateBlocks integration.
- * Version:           2.1.4
+ * Version:           2.1.5
  * Requires at least: 6.0
  * Requires PHP:      8.0
  * Author:            Jörn Gorres
@@ -13,7 +14,7 @@
  *
  * @package Block_Inserter_Filter
  * @author  Jörn Gorres
- * @version 2.1.4
+ * @version 2.1.5
  */
 
 /*
@@ -28,7 +29,7 @@ defined( 'ABSPATH' ) || exit;
  * Zugriff auf Version, Pfad und URL, ohne staendig __FILE__ und
  * plugin_dir_*() neu auswerten zu muessen.
  */
-define( 'JGOR_BIF_VERSION', '2.1.4' );
+define( 'JGOR_BIF_VERSION', '2.1.5' );
 define( 'JGOR_BIF_PLUGIN_FILE', __FILE__ );
 define( 'JGOR_BIF_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'JGOR_BIF_PLUGIN_URL', plugin_dir_url( __FILE__ ) );

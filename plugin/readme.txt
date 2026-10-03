@@ -4,7 +4,7 @@ Tags: gutenberg, blocks, block-editor, inserter, admin
 Requires at least: 6.0
 Tested up to: 7.1
 Requires PHP: 8.0
-Stable tag: 2.1.4
+Stable tag: 2.1.5
 License: GPL v2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -55,6 +55,9 @@ No. Content remains intact and renders normally on the front-end. Only inserting
 These blocks are hard-protected as a safety net — without them the editor would be practically unusable. If you really need to remove them, use the `allowed_block_types_all` filter in your theme or in a custom plugin.
 
 == Changelog ==
+
+= 2.1.5 =
+* Plugin header: `Plugin URI` links to the source code repository on GitHub. No code changes.
 
 = 2.1.4 =
 * Plugin header: removed `Tested up to` (declared in `readme.txt` only) and `Author URI`, as requested by the WordPress.org plugin review. No code changes.
@@ -168,6 +171,9 @@ These blocks are hard-protected as a safety net — without them the editor woul
 * Initial release.
 
 == Upgrade Notice ==
+
+= 2.1.5 =
+Plugin header: link to the source code repository. No functional changes.
 
 = 2.1.4 =
 Plugin header cleanup only. No functional changes.

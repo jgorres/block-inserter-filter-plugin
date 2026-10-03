@@ -9,13 +9,13 @@
 defined( 'ABSPATH' ) || define( 'ABSPATH', __DIR__ . '/' );
 
 if ( ! defined( 'JGOR_BIF_VERSION' ) ) {
-	define( 'JGOR_BIF_VERSION', '2.1.4' );
+	define( 'JGOR_BIF_VERSION', '2.1.5' );
 }
 if ( ! defined( 'JGOR_BIF_PLUGIN_FILE' ) ) {
-	define( 'JGOR_BIF_PLUGIN_FILE', __DIR__ . '/block-inserter-filter.php' );
+	define( 'JGOR_BIF_PLUGIN_FILE', __DIR__ . '/plugin/block-inserter-filter.php' );
 }
 if ( ! defined( 'JGOR_BIF_PLUGIN_DIR' ) ) {
-	define( 'JGOR_BIF_PLUGIN_DIR', __DIR__ . '/' );
+	define( 'JGOR_BIF_PLUGIN_DIR', __DIR__ . '/plugin/' );
 }
 if ( ! defined( 'JGOR_BIF_PLUGIN_URL' ) ) {
 	define( 'JGOR_BIF_PLUGIN_URL', 'https://example.com/wp-content/plugins/block-inserter-filter/' );

@@ -1,29 +1,18 @@
-# Nicht in den SVN-Export / das Release-ZIP uebernehmen
-.git
-.gitignore
+# Files and directories of plugin/ that stay out of the release ZIP and the
+# SVN export. The list lives next to build.sh, not inside plugin/: a hidden
+# file in the plugin folder makes Plugin Check warn on development sites,
+# which load that folder through a symlink.
 .distignore
 .DS_Store
 Thumbs.db
 *.swp
-.idea
-.vscode
-vendor
-node_modules
-composer.json
-composer.lock
-phpcs.xml
-phpcs.xml.dist
-phpstan.neon
-phpstan.neon.dist
-phpstan-bootstrap.php
-.phpcs-cache
 *.zip
 
-# Uebersetzungen: das Plugin-Team von WordPress.org verlangt, dass keine
-# Uebersetzungsdateien mitgeliefert werden (Review vom 16.09.2026). Alle
-# Sprachen bleiben nur im Repo und werden ueber translate.wordpress.org
-# (GlotPress) eingereicht, dort entstehen die Sprachpakete. Ins Paket
-# kommen aus languages/ nur index.php und die .pot-Vorlage.
+# Translations: the WordPress.org plugin team rejects packages with bundled
+# translation files (review of 16.09.2026). Languages are handled through
+# translate.wordpress.org; from languages/ only index.php and the .pot
+# template are shipped.
 languages/*.po
 languages/*.mo
+languages/*.json
 languages/*.l10n.php

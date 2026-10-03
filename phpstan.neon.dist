@@ -11,13 +11,14 @@ parameters:
 	level: 6
 
 	paths:
-		- block-inserter-filter.php
-		- uninstall.php
-		- includes
+		- plugin
 
 	excludePaths:
-		- vendor
-		- languages
+		- plugin/languages (?)
+
+	# Zusätzliche Stubs (Ordner darf leer sein)
+	scanDirectories:
+		- stubs
 
 	# Konstanten, die die Hauptdatei zur Laufzeit definiert
 	bootstrapFiles:

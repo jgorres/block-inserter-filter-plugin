@@ -1,0 +1,276 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Block Inserter Filter 2.1.4 Readme\n"
+"Last-Translator: Jörn Gorres <joern@gorres.com>\n"
+"Language-Team: Jörn Gorres <joern@gorres.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2026-09-29 12:00+0000\n"
+"Language: de_DE_formal\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Hide individual Gutenberg blocks and embed variations from the block inserter, site-wide."
+msgstr "Blendet einzelne Gutenberg-Blöcke und Embed-Varianten websiteweit aus dem Block-Inserter aus."
+
+msgid "Block Inserter Filter"
+msgstr "Block Inserter Filter"
+
+msgid "These blocks are hard-protected as a safety net — without them the editor would be practically unusable. If you really need to remove them, use the <code>allowed_block_types_all</code> filter in your theme or in a custom plugin."
+msgstr "Diese Blöcke sind als Sicherheitsnetz fest geschützt – ohne sie wäre der Editor praktisch unbenutzbar. Wenn Sie sie wirklich entfernen müssen, nutzen Sie den Filter <code>allowed_block_types_all</code> in Ihrem Theme oder in einem eigenen Plugin."
+
+msgid "No. Content remains intact and renders normally on the front-end. Only inserting new instances from the block inserter is blocked."
+msgstr "Nein. Inhalte bleiben erhalten und werden im Frontend normal dargestellt. Nur das Einfügen neuer Instanzen über den Block-Inserter ist gesperrt."
+
+msgid "Why can't I hide \"Paragraph\" or \"Image\"?"
+msgstr "Warum kann ich „Absatz“ oder „Bild“ nicht ausblenden?"
+
+msgid "Will existing posts that use hidden blocks be destroyed?"
+msgstr "Werden vorhandene Beiträge zerstört, die ausgeblendete Blöcke verwenden?"
+
+msgid "Configure the plugin under Settings → Hide Blocks."
+msgstr "Konfigurieren Sie das Plugin unter Einstellungen → Blöcke ausblenden."
+
+msgid "Activate the plugin under Plugins."
+msgstr "Aktivieren Sie das Plugin unter Plugins."
+
+msgid "Upload the plugin folder to <code>wp-content/plugins/</code> or install the ZIP via Plugins → Add New → Upload Plugin."
+msgstr "Laden Sie den Plugin-Ordner nach <code>wp-content/plugins/</code> hoch oder installieren Sie die ZIP-Datei über Plugins → Neues Plugin hinzufügen → Plugin hochladen."
+
+msgid "Defense in depth: capability check (<code>manage_options</code>), nonce validation, whitelist sanitization on save, consistent output escaping."
+msgstr "Mehrstufige Absicherung: Berechtigungsprüfung (<code>manage_options</code>), Nonce-Prüfung, Bereinigung gegen eine Freigabeliste beim Speichern, durchgängiges Escaping der Ausgabe."
+
+msgid "GenerateBlocks is not required. If it is installed, the plugin adds a few conveniences:"
+msgstr "GenerateBlocks ist nicht erforderlich. Ist es installiert, ergänzt das Plugin einige Annehmlichkeiten:"
+
+msgid "Block Inserter Filter lets administrators hide individual Gutenberg blocks from the block inserter for the whole site — Core blocks, theme blocks and blocks of any plugin — without writing any code. It controls what editors can <em>insert</em>; it does not touch existing content and has no effect on the front end."
+msgstr "Mit Block Inserter Filter blenden Administratoren einzelne Gutenberg-Blöcke websiteweit aus dem Block-Inserter aus – Core-Blöcke, Theme-Blöcke und Blöcke beliebiger Plugins – ohne eine Zeile Code. Das Plugin steuert, was Redakteure <em>einfügen</em> können; vorhandene Inhalte bleiben unberührt, und im Frontend hat es keine Auswirkung."
+
+msgid "Core blocks that GenerateBlocks Pro replaces with an extended variant are hidden automatically while Pro is active and reappear when it is deactivated."
+msgstr "Core-Blöcke, die GenerateBlocks Pro durch eine erweiterte Variante ersetzt, werden automatisch ausgeblendet, solange Pro aktiv ist, und erscheinen nach dessen Deaktivierung wieder."
+
+msgid "GenerateBlocks Pro blocks are marked with a Pro badge."
+msgstr "Blöcke von GenerateBlocks Pro sind mit einem Pro-Badge gekennzeichnet."
+
+msgid "GenerateBlocks and GenerateBlocks Pro blocks are listed in separate groups."
+msgstr "Blöcke von GenerateBlocks und GenerateBlocks Pro werden in getrennten Gruppen aufgeführt."
+
+msgid "No external dependencies, no tracking, no front-end database load."
+msgstr "Keine externen Abhängigkeiten, kein Tracking, keine Datenbanklast im Frontend."
+
+msgid "Existing content using hidden blocks remains visible — only the insertion of new instances is blocked."
+msgstr "Vorhandene Inhalte mit ausgeblendeten Blöcken bleiben sichtbar – nur das Einfügen neuer Instanzen ist gesperrt."
+
+msgid "Protection list: core blocks (paragraph, heading, list, image, group, columns) are always available as a safety net and cannot be hidden."
+msgstr "Schutzliste: Core-Blöcke (Absatz, Überschrift, Liste, Bild, Gruppe, Spalten) sind als Sicherheitsnetz immer verfügbar und lassen sich nicht ausblenden."
+
+msgid "\"Toggle all\" per group."
+msgstr "„Alle umschalten“ je Gruppe."
+
+msgid "Live search across all blocks and embed variations."
+msgstr "Live-Suche über alle Blöcke und Embed-Varianten."
+
+msgid "Embed variations (YouTube, Reddit, Vimeo, TikTok, Bluesky, …) can be hidden individually."
+msgstr "Embed-Varianten (YouTube, Reddit, Vimeo, TikTok, Bluesky, …) lassen sich einzeln ausblenden."
+
+msgid "Group blocks either by block category (as in the editor) or by namespace."
+msgstr "Blöcke wahlweise nach Block-Kategorie (wie im Editor) oder nach Namensraum gruppieren."
+
+msgid "Works with every registered block type: Core, theme and plugin blocks."
+msgstr "Funktioniert mit jedem registrierten Blocktyp: Core-, Theme- und Plugin-Blöcke."
+
+msgid "Clear admin screen under \"Settings → Hide Blocks\"."
+msgstr "Übersichtliche Admin-Seite unter „Einstellungen → Blöcke ausblenden“."
+
+msgid "Security"
+msgstr "Sicherheit"
+
+msgid "Optional GenerateBlocks integration"
+msgstr "Optionale GenerateBlocks-Integration"
+
+msgid "Features"
+msgstr "Funktionen"
+
+msgid "Initial release."
+msgstr "Erste Veröffentlichung."
+
+msgid "The live search now also covers embed variations."
+msgstr "Die Live-Suche erfasst jetzt auch Embed-Varianten."
+
+msgid "Filter <code>gbba_embed_variations</code> for extending the variation list."
+msgstr "Filter <code>gbba_embed_variations</code> zum Erweitern der Variantenliste."
+
+msgid "New section: embed variations (YouTube, Reddit, Vimeo, TikTok, Bluesky, …) can now be removed individually from the editor. Technically via <code>wp.blocks.unregisterBlockVariation()</code>."
+msgstr "Neuer Abschnitt: Embed-Varianten (YouTube, Reddit, Vimeo, TikTok, Bluesky, …) lassen sich jetzt einzeln aus dem Editor entfernen. Technisch über <code>wp.blocks.unregisterBlockVariation()</code>."
+
+msgid "GenerateBlocks Free and GenerateBlocks Pro are shown in separate groups (previously combined)."
+msgstr "GenerateBlocks Free und GenerateBlocks Pro werden in getrennten Gruppen angezeigt (bisher zusammengefasst)."
+
+msgid "Statistics: the number of hidden embed variations is now counted and shown in the intro."
+msgstr "Statistik: Die Anzahl der ausgeblendeten Embed-Varianten wird jetzt gezählt und in der Einleitung angezeigt."
+
+msgid "UX: Pro badge only once in the group heading; redundant per-block Pro badges and the intro badge removed."
+msgstr "UX: Pro-Badge nur noch einmal in der Gruppenüberschrift; überflüssige Pro-Badges je Block und das Badge in der Einleitung entfernt."
+
+msgid "UX: \"Save\" button at the end of every group — no more long scrolling needed."
+msgstr "UX: Button „Speichern“ am Ende jeder Gruppe – langes Scrollen entfällt."
+
+msgid "Fix: blocks without a declared category (for example GenerateBlocks inner blocks such as <code>loop-item</code>, <code>query-page-numbers</code>, <code>query-no-results</code>) no longer end up under \"Uncategorized\" but in the group of their own namespace."
+msgstr "Fix: Blöcke ohne deklarierte Kategorie (zum Beispiel innere GenerateBlocks-Blöcke wie <code>loop-item</code>, <code>query-page-numbers</code>, <code>query-no-results</code>) landen nicht mehr unter „Ohne Kategorie“, sondern in der Gruppe ihres eigenen Namensraums."
+
+msgid "Block icons are now displayed between the checkbox and the block name on the settings page — also for embed variations. Rendering via <code>wp.blockEditor.BlockIcon</code>. The block-editor assets are loaded on the settings page for this purpose."
+msgstr "Block-Icons werden jetzt auf der Einstellungsseite zwischen Checkbox und Blockname angezeigt – auch bei Embed-Varianten. Darstellung über <code>wp.blockEditor.BlockIcon</code>. Dafür werden die Block-Editor-Assets auf der Einstellungsseite geladen."
+
+msgid "Diagnostic hint in the browser console when block icons cannot be resolved."
+msgstr "Diagnosehinweis in der Browserkonsole, wenn Block-Icons nicht aufgelöst werden können."
+
+msgid "Fix: block icons are now reliably rendered. On the settings page, WordPress core blocks are now explicitly registered client-side via <code>wp.blockLibrary.registerCoreBlocks()</code>; previously they were loosely loaded but not present in the block-type registry."
+msgstr "Fix: Block-Icons werden jetzt zuverlässig dargestellt. Auf der Einstellungsseite werden die WordPress-Core-Blöcke nun clientseitig explizit über <code>wp.blockLibrary.registerCoreBlocks()</code> registriert; bisher waren sie zwar lose geladen, fehlten aber in der Blocktyp-Registry."
+
+msgid "UX: in the category view, the block namespace (e.g. <code>core/paragraph</code>) is no longer shown as a slug tag. It still appears in the namespace view and on embed variations."
+msgstr "UX: In der Kategorieansicht wird der Block-Namensraum (z. B. <code>core/paragraph</code>) nicht mehr als Slug-Tag angezeigt. In der Namensraumansicht und bei Embed-Varianten erscheint er weiterhin."
+
+msgid "UX: tighter column grid — minimum column width 280 px (was 340 px). On 1920 px monitors this yields roughly 6 columns, on 1440 px monitors 4 columns."
+msgstr "UX: engeres Spaltenraster – Mindestspaltenbreite 280 px (bisher 340 px). Auf 1920-px-Monitoren ergibt das etwa 6 Spalten, auf 1440-px-Monitoren 4 Spalten."
+
+msgid "UX: \"Settings\" link in the WordPress plugins list — direct jump from Plugins to the plugin configuration page."
+msgstr "UX: Link „Einstellungen“ in der WordPress-Pluginliste – direkter Sprung von Plugins zur Konfigurationsseite des Plugins."
+
+msgid "<code>readme.txt</code>: translated the Short Description and the <code>== Description ==</code> block to English; switched the <code>Contributors</code> entry to a valid WordPress.org format."
+msgstr "<code>readme.txt</code>: Kurzbeschreibung und den Block <code>== Description ==</code> ins Englische übersetzt; den Eintrag <code>Contributors</code> auf ein gültiges WordPress.org-Format umgestellt."
+
+msgid "<code>uninstall.php</code>: renamed the local multisite loop variables <code>$sites</code> / <code>$site</code> to <code>$gbba_sites</code> / <code>$gbba_site</code> (fixes the <code>NonPrefixedVariableFound</code> warning)."
+msgstr "<code>uninstall.php</code>: Die lokalen Variablen der Multisite-Schleife <code>$sites</code> / <code>$site</code> in <code>$gbba_sites</code> / <code>$gbba_site</code> umbenannt (behebt die Warnung <code>NonPrefixedVariableFound</code>)."
+
+msgid "Marked the <code>do_action( 'enqueue_block_editor_assets' )</code> call with a clear <code>phpcs:ignore</code> plus explanation — the Core hook is fired deliberately so that other plugins/themes register their block assets."
+msgstr "Den Aufruf <code>do_action( 'enqueue_block_editor_assets' )</code> mit einem eindeutigen <code>phpcs:ignore</code> samt Erklärung markiert – der Core-Hook wird absichtlich ausgelöst, damit andere Plugins/Themes ihre Block-Assets registrieren."
+
+msgid "<code>$_POST['hidden']</code> and <code>$_POST['hidden_embed']</code> are now additionally filtered through <code>array_map( 'sanitize_text_field', … )</code> before the whitelist validation (fixes the <code>InputNotSanitized</code> warning)."
+msgstr "<code>$_POST['hidden']</code> und <code>$_POST['hidden_embed']</code> werden vor der Prüfung gegen die Freigabeliste jetzt zusätzlich durch <code>array_map( 'sanitize_text_field', … )</code> gefiltert (behebt die Warnung <code>InputNotSanitized</code>)."
+
+msgid "Removed the superfluous <code>load_plugin_textdomain()</code> call in <code>class-gbba-plugin.php</code> — WordPress loads translations automatically via the <code>Domain Path</code> header since 4.6."
+msgstr "Den überflüssigen Aufruf von <code>load_plugin_textdomain()</code> in <code>class-gbba-plugin.php</code> entfernt – WordPress lädt Übersetzungen seit 4.6 automatisch über den Header <code>Domain Path</code>."
+
+msgid "Plugin Check compliance:"
+msgstr "Konformität mit Plugin Check:"
+
+msgid "Follow-up fix to 1.3.5: <code>array_map( 'sanitize_text_field', wp_unslash( $_POST[...] ) )</code> is now placed directly in the same expression as the <code>$_POST</code> access — WPCS evaluates the <code>InputNotSanitized</code> sniff line-by-line, so a sanitization step on the following line was not picked up."
+msgstr "Nachbesserung zu 1.3.5: <code>array_map( 'sanitize_text_field', wp_unslash( $_POST[...] ) )</code> steht jetzt direkt im selben Ausdruck wie der Zugriff auf <code>$_POST</code> – WPCS wertet den Sniff <code>InputNotSanitized</code> zeilenweise aus, daher wurde ein Bereinigungsschritt in der Folgezeile nicht erkannt."
+
+msgid "UX: Legacy / render-only blocks are no longer listed in the admin screen. Some plugins (for example GenerateBlocks 2.x for its <code>generateblocks/container</code>) keep an old block registered as a pure server-side renderer so that existing posts continue to render after a refactor. Such blocks never appear in the inserter and therefore cannot be hidden in any meaningful way; previously they were listed anyway, leading to duplicate entries (for example two \"Container\" rows side by side — one being the new Element block, the other the legacy Container renderer). Detection heuristic: empty <code>attributes</code> schema combined with no declared block category. Pro blocks are unaffected, because they are consistently registered via <code>block.json</code> and therefore always carry both attributes and a category."
+msgstr "UX: Legacy-Blöcke bzw. reine Render-Blöcke werden auf der Admin-Seite nicht mehr aufgeführt. Manche Plugins (zum Beispiel GenerateBlocks 2.x für seinen <code>generateblocks/container</code>) halten einen alten Block als reinen serverseitigen Renderer registriert, damit vorhandene Beiträge nach einem Refactoring weiterhin dargestellt werden. Solche Blöcke erscheinen nie im Inserter und lassen sich daher nicht sinnvoll ausblenden; bisher wurden sie trotzdem gelistet, was zu doppelten Einträgen führte (zum Beispiel zwei Zeilen „Container“ nebeneinander – eine für den neuen Element-Block, die andere für den Legacy-Container-Renderer). Erkennungsheuristik: leeres <code>attributes</code>-Schema in Kombination mit fehlender Block-Kategorie. Pro-Blöcke sind nicht betroffen, da sie durchgängig über <code>block.json</code> registriert werden und daher immer sowohl Attribute als auch eine Kategorie besitzen."
+
+msgid "Critical fix: every block and embed variation is rendered twice in the settings page DOM — once in the category view and once in the namespace view. Both share <code>name=\"hidden[]\"</code> (respectively <code>name=\"hidden_embed[]\"</code>), and the HTML5 <code>hidden</code> attribute hides the inactive view visually but does <strong>not</strong> exclude its inputs from form submission. Toggling checkboxes in only one view therefore caused the other view to silently re-send the old state, which made the \"Hide all\" / \"Show all\" toggle look broken: after saving, all checkboxes appeared checked again, even though they had just been unchecked. The admin script now mirrors every checkbox change (manual click or \"Toggle all\" button) onto the twin checkbox with the same <code>name</code>/<code>value</code> in the opposite view, so both views stay in sync and only one state is submitted. Existing data is safe; users who experienced wrongly-hidden blocks should open the settings page once after the update, click \"Toggle all\" until the affected groups are emptied, save, and reload the editor."
+msgstr "Kritischer Fix: Jeder Block und jede Embed-Variante wird im DOM der Einstellungsseite zweimal dargestellt – einmal in der Kategorieansicht und einmal in der Namensraumansicht. Beide teilen sich <code>name=\"hidden[]\"</code> (bzw. <code>name=\"hidden_embed[]\"</code>), und das HTML5-Attribut <code>hidden</code> blendet die inaktive Ansicht zwar optisch aus, schließt ihre Eingabefelder aber <strong>nicht</strong> vom Absenden des Formulars aus. Wurden Checkboxen nur in einer Ansicht umgeschaltet, sendete die andere Ansicht daher unbemerkt den alten Zustand erneut, wodurch der Umschalter „Alle ausblenden“ / „Alle anzeigen“ defekt wirkte: Nach dem Speichern erschienen alle Checkboxen wieder markiert, obwohl sie gerade abgewählt worden waren. Das Admin-Script spiegelt jetzt jede Änderung einer Checkbox (manueller Klick oder Button „Alle umschalten“) auf die Zwillings-Checkbox mit demselben <code>name</code>/<code>value</code> in der anderen Ansicht, sodass beide Ansichten synchron bleiben und nur ein Zustand gesendet wird. Vorhandene Daten sind sicher; Benutzer, bei denen fälschlich Blöcke ausgeblendet waren, sollten die Einstellungsseite nach dem Update einmal öffnen, „Alle umschalten“ anklicken, bis die betroffenen Gruppen geleert sind, speichern und den Editor neu laden."
+
+msgid "Internal: replaced direct uses of <code>GBBA_Plugin::PROTECTED_BLOCKS</code> with the new helper <code>GBBA_Plugin::get_protected_blocks()</code>, which dynamically removes the Pro-replaced entries from the protection list. <code>GBBA_Plugin::is_generateblocks_pro_active()</code> exposes the detection (uses the <code>GENERATEBLOCKS_PRO_VERSION</code> constant defined by GB Pro itself, no extra plugin-list lookup)."
+msgstr "Intern: Direkte Verwendungen von <code>GBBA_Plugin::PROTECTED_BLOCKS</code> durch den neuen Helfer <code>GBBA_Plugin::get_protected_blocks()</code> ersetzt, der die von Pro ersetzten Einträge dynamisch aus der Schutzliste entfernt. <code>GBBA_Plugin::is_generateblocks_pro_active()</code> stellt die Erkennung bereit (nutzt die von GB Pro selbst definierte Konstante <code>GENERATEBLOCKS_PRO_VERSION</code>, kein zusätzlicher Blick in die Pluginliste)."
+
+msgid "Feature: when GenerateBlocks Pro is active, the Core blocks <code>core/heading</code> and <code>core/image</code> are no longer in the protection list and can be hidden from the inserter. They are shown with a new \"GB Pro Variante\" badge (instead of \"geschützt\"), with a hover tooltip explaining that GenerateBlocks Pro provides an extended variant of the block. If GenerateBlocks Pro is not active, both blocks remain protected and keep the \"geschützt\" badge as before, so the editor stays safe to use on installations without the Pro plugin."
+msgstr "Funktion: Ist GenerateBlocks Pro aktiv, stehen die Core-Blöcke <code>core/heading</code> und <code>core/image</code> nicht mehr in der Schutzliste und lassen sich aus dem Inserter ausblenden. Diese erhalten ein neues Badge „GB Pro Variante“ (statt „geschützt“) mit einem Tooltip bei Mauszeigerkontakt, der erklärt, dass GenerateBlocks Pro eine erweiterte Variante des Blocks bereitstellt. Ist GenerateBlocks Pro nicht aktiv, bleiben beide Blöcke wie bisher geschützt und behalten das Badge „geschützt“, damit der Editor auf Installationen ohne das Pro-Plugin sicher nutzbar bleibt."
+
+msgid "Internal: <code>get_protected_blocks()</code> reverted to a thin wrapper around the <code>PROTECTED_BLOCKS</code> constant (always full list). The Pro-aware logic now lives exclusively in <code>get_pro_replaced_blocks()</code>, which is consumed both by the inserter filter and by the admin renderer."
+msgstr "Intern: <code>get_protected_blocks()</code> wieder auf einen dünnen Wrapper um die Konstante <code>PROTECTED_BLOCKS</code> zurückgeführt (immer die vollständige Liste). Die Pro-abhängige Logik liegt jetzt ausschließlich in <code>get_pro_replaced_blocks()</code>, das sowohl vom Inserter-Filter als auch vom Admin-Renderer genutzt wird."
+
+msgid "Behavior change for Core blocks that GenerateBlocks Pro replaces (currently <code>core/heading</code> and <code>core/image</code>): they are now <strong>automatically hidden</strong> from the block inserter as soon as GenerateBlocks Pro is active. The earlier 1.3.9 behavior (Pro active = user may opt in to hiding) was reversed because the Pro variants are meant to fully replace the Core blocks while Pro is loaded. The block-inserter filter (<code>GBBA_Block_Filter::filter_blocks</code>) now merges the user-configured hide list with the auto-hidden list returned by <code>GBBA_Plugin::get_pro_replaced_blocks()</code> and applies both in one pass. The settings page shows the affected entries as checked + disabled, with the new \"Pro-Variante aktiv\" badge and a tooltip explaining the auto-hide. As soon as GenerateBlocks Pro is deactivated, the blocks fall back to the regular \"geschützt\" badge and reappear in the inserter — no manual cleanup needed."
+msgstr "Verhaltensänderung bei Core-Blöcken, die GenerateBlocks Pro ersetzt (derzeit <code>core/heading</code> und <code>core/image</code>): Diese werden jetzt aus dem Block-Inserter <strong>automatisch ausgeblendet</strong>, sobald GenerateBlocks Pro aktiv ist. Das frühere Verhalten aus 1.3.9 (Pro aktiv = Benutzer darf das Ausblenden selbst wählen) wurde umgekehrt, weil die Pro-Varianten die Core-Blöcke vollständig ersetzen sollen, solange Pro geladen ist. Der Block-Inserter-Filter (<code>GBBA_Block_Filter::filter_blocks</code>) führt jetzt die vom Benutzer konfigurierte Ausblendliste mit der automatischen Ausblendliste aus <code>GBBA_Plugin::get_pro_replaced_blocks()</code> zusammen und wendet beide in einem Durchgang an. Die Einstellungsseite zeigt die betroffenen Einträge als markiert und deaktiviert, mit dem neuen Badge „Pro-Variante aktiv“ und einem Tooltip, der das automatische Ausblenden erklärt. Sobald GenerateBlocks Pro deaktiviert wird, erhalten die Blöcke wieder das reguläre Badge „geschützt“ und erscheinen erneut im Inserter – ohne manuelles Aufräumen."
+
+msgid "<code>languages/index.php</code>, <code>assets/index.php</code>, <code>includes/index.php</code> and the root <code>index.php</code> now use a proper <code>defined( 'ABSPATH' ) || exit;</code> guard instead of the bare \"Silence is golden\" stub."
+msgstr "<code>languages/index.php</code>, <code>assets/index.php</code>, <code>includes/index.php</code> und die <code>index.php</code> im Stammverzeichnis verwenden jetzt einen echten <code>defined( 'ABSPATH' ) || exit;</code>-Schutz statt des bloßen „Silence is golden“-Platzhalters."
+
+msgid "<code>Plugin URI</code> removed from the main PHP file header (no dedicated plugin landing page)."
+msgstr "<code>Plugin URI</code> aus dem Header der Haupt-PHP-Datei entfernt (keine eigene Plugin-Seite)."
+
+msgid "<code>readme.txt</code>: Installation, FAQ and the older Changelog entries (v1.0.0 – v1.3.6) translated to English. Non-standard header fields (<code>Author</code>, <code>Author URI</code>, <code>Plugin URI</code>) removed from the readme header block — they belong in the PHP plugin header only. <code>Contributors</code> slug switched to the WordPress.org user name <code>jgorres</code>. New <code>== Upgrade Notice ==</code> section added."
+msgstr "<code>readme.txt</code>: Installation, FAQ und die älteren Changelog-Einträge (v1.0.0 – v1.3.6) ins Englische übersetzt. Nicht standardkonforme Header-Felder (<code>Author</code>, <code>Author URI</code>, <code>Plugin URI</code>) aus dem Readme-Header entfernt – sie gehören nur in den PHP-Plugin-Header. Den <code>Contributors</code>-Slug auf den WordPress.org-Benutzernamen <code>jgorres</code> umgestellt. Neuen Abschnitt <code>== Upgrade Notice ==</code> ergänzt."
+
+msgid "<code>uninstall.php</code>: now also removes the second option <code>gbba_hidden_embed_variations</code> (added in v1.1.0 but previously not cleaned up); adds a defensive <code>LIKE 'gbba_%'</code> cleanup that covers any future plugin options and <code>_transient_gbba_*</code> / <code>_transient_timeout_gbba_*</code> entries. Multisite loop preserved."
+msgstr "<code>uninstall.php</code>: entfernt jetzt auch die zweite Option <code>gbba_hidden_embed_variations</code> (in v1.1.0 hinzugefügt, bisher aber nicht aufgeräumt); ergänzt eine defensive <code>LIKE 'gbba_%'</code>-Bereinigung, die künftige Plugin-Optionen sowie Einträge <code>_transient_gbba_*</code> / <code>_transient_timeout_gbba_*</code> abdeckt. Multisite-Schleife beibehalten."
+
+msgid "The plugin overview screen (<code>wp-admin/plugins.php</code>) showed the plugin as \"GenerateBlocks – Block-Filter (Zusatz)\" via a scoped <code>all_plugins</code> filter, so it sorted directly under \"GenerateBlocks\". (Removed again in 1.6.0.)"
+msgstr "Die Plugin-Übersicht (<code>wp-admin/plugins.php</code>) zeigte das Plugin über einen eingegrenzten <code>all_plugins</code>-Filter als „GenerateBlocks – Block-Filter (Zusatz)“ an, sodass es direkt unter „GenerateBlocks“ einsortiert wurde. (In 1.6.0 wieder entfernt.)"
+
+msgid "<strong>Rename:</strong> plugin slug, folder name, main file and Text Domain changed to <code>gb-block-filter</code>; the displayed Plugin Name is now \"Block-Filter für GenerateBlocks\". Existing settings (hidden blocks, hidden embed variations) are preserved because the option names (<code>gbba_*</code> prefix) remain unchanged. WordPress may auto-deactivate the plugin during the slug change — reactivate it manually under Plugins."
+msgstr "<strong>Umbenennung:</strong> Plugin-Slug, Ordnername, Hauptdatei und Text-Domain in <code>gb-block-filter</code> geändert; der angezeigte Plugin-Name lautet jetzt „Block-Filter für GenerateBlocks“. Vorhandene Einstellungen (ausgeblendete Blöcke, ausgeblendete Embed-Varianten) bleiben erhalten, da die Optionsnamen (Präfix <code>gbba_</code>) unverändert sind. WordPress deaktiviert das Plugin beim Wechsel des Slugs unter Umständen automatisch – aktivieren Sie es dann manuell unter Plugins."
+
+msgid "Plugin Check compliance fix: shortened the 1.4.0 Upgrade Notice text to stay under the <code>upgrade_notice_limit</code> of 300 characters. No code or behavioural changes."
+msgstr "Fix für die Plugin-Check-Konformität: den Text der Upgrade Notice zu 1.4.0 gekürzt, damit er unter dem <code>upgrade_notice_limit</code> von 300 Zeichen bleibt. Keine Änderungen an Code oder Verhalten."
+
+msgid "Uninstall: <code>uninstall.php</code> now removes both prefix families (<code>gbba_*</code> and <code>jg_gbbf_*</code>) plus the network-wide sweep sentinel, so no leftover rows remain even if the plugin is deleted right after the update."
+msgstr "Deinstallation: <code>uninstall.php</code> entfernt jetzt beide Präfixfamilien (<code>gbba_*</code> und <code>jg_gbbf_*</code>) sowie die Markierung des netzwerkweiten Durchlaufs, sodass keine Reste bleiben, selbst wenn das Plugin direkt nach dem Update gelöscht wird."
+
+msgid "Migration: one-shot routine on <code>admin_init</code> copies the two existing options <code>gbba_hidden_blocks</code> and <code>gbba_hidden_embed_variations</code> to <code>jg_gbbf_hidden_blocks</code> and <code>jg_gbbf_hidden_embed_variations</code> (only when the new key is still empty, to preserve any value written between the update and the first admin page load). Legacy keys are deleted afterwards. Multisite installations get an additional network sweep from the main site so subsites are migrated even if no admin visits them."
+msgstr "Migration: Eine einmalige Routine auf <code>admin_init</code> kopiert die beiden vorhandenen Optionen <code>gbba_hidden_blocks</code> und <code>gbba_hidden_embed_variations</code> nach <code>jg_gbbf_hidden_blocks</code> und <code>jg_gbbf_hidden_embed_variations</code> (nur, wenn der neue Schlüssel noch leer ist, damit ein zwischen Update und erstem Aufruf einer Admin-Seite geschriebener Wert erhalten bleibt). Die alten Schlüssel werden anschließend gelöscht. Multisite-Installationen erhalten zusätzlich einen Netzwerkdurchlauf von der Hauptwebsite aus, damit Unterwebsites auch dann migriert werden, wenn kein Administrator sie aufruft."
+
+msgid "Class files in <code>includes/</code> renamed from <code>class-gbba-*.php</code> to <code>class-jg-gbbf-*.php</code>."
+msgstr "Klassendateien in <code>includes/</code> von <code>class-gbba-*.php</code> in <code>class-jg-gbbf-*.php</code> umbenannt."
+
+msgid "Refactor: prefix scheme corrected to <code>jg_gbbf_</code> / <code>JG_GBBF_</code> / <code>.jg-gbbf-*</code>. The previous code prefix was <code>gbba_</code> / <code>GBBA_</code> (from the original plugin slug <code>generateblocks-bloecke-ausblenden</code>), which no longer matched the current slug <code>gb-block-filter</code>. All globals — constants, classes, top-level functions, options, asset handles, CSS classes, body classes — are renamed accordingly."
+msgstr "Refactoring: Präfixschema auf <code>jg_gbbf_</code> / <code>JG_GBBF_</code> / <code>.jg-gbbf-*</code> korrigiert. Das bisherige Code-Präfix war <code>gbba_</code> / <code>GBBA_</code> (vom ursprünglichen Plugin-Slug <code>generateblocks-bloecke-ausblenden</code>) und passte nicht mehr zum aktuellen Slug <code>gb-block-filter</code>. Alle globalen Bezeichner – Konstanten, Klassen, Top-Level-Funktionen, Optionen, Asset-Handles, CSS-Klassen, Body-Klassen – sind entsprechend umbenannt."
+
+msgid "Declared compatibility with WordPress 7.0 (<code>Tested up to</code>). No code changes."
+msgstr "Kompatibilität mit WordPress 7.0 deklariert (<code>Tested up to</code>). Keine Code-Änderungen."
+
+msgid "Declared compatibility with WordPress 7.1 (<code>Tested up to</code>)."
+msgstr "Kompatibilität mit WordPress 7.1 deklariert (<code>Tested up to</code>)."
+
+msgid "Multisite: <code>get_sites()</code> calls now pass <code>number =&gt; 0</code>, so networks with more than 100 sites are fully migrated and cleaned up."
+msgstr "Multisite: <code>get_sites()</code>-Aufrufe übergeben jetzt <code>number =&gt; 0</code>, sodass Netzwerke mit mehr als 100 Websites vollständig migriert und aufgeräumt werden."
+
+msgid "Uninstall: the catch-all <code>LIKE 'gbba_%'</code> cleanup was removed; the two known legacy option keys are still deleted by name. The generic four-letter prefix could have matched options of other plugins."
+msgstr "Deinstallation: Die pauschale <code>LIKE 'gbba_%'</code>-Bereinigung wurde entfernt; die beiden bekannten Legacy-Optionsschlüssel werden weiterhin namentlich gelöscht. Das generische vierbuchstabige Präfix hätte Optionen anderer Plugins treffen können."
+
+msgid "Fix: the plugin's own editor script no longer runs on the plugin's settings page, so icons of hidden embed variations render correctly there."
+msgstr "Fix: Das eigene Editor-Script des Plugins läuft nicht mehr auf der Einstellungsseite des Plugins, sodass die Icons ausgeblendeter Embed-Varianten dort korrekt dargestellt werden."
+
+msgid "Removed the <code>all_plugins</code> display-name override on <code>wp-admin/plugins.php</code>. The plugin is now listed under its real name everywhere."
+msgstr "Die Überschreibung des Anzeigenamens über <code>all_plugins</code> auf <code>wp-admin/plugins.php</code> entfernt. Das Plugin wird jetzt überall unter seinem echten Namen aufgeführt."
+
+msgid "Fix: when another plugin sets <code>allowed_block_types_all</code> to <code>false</code> (no blocks allowed at all), that restriction is now passed through unchanged instead of being replaced by the full block registry minus the hidden blocks."
+msgstr "Fix: Setzt ein anderes Plugin <code>allowed_block_types_all</code> auf <code>false</code> (gar keine Blöcke erlaubt), wird diese Einschränkung jetzt unverändert durchgereicht, statt durch die vollständige Block-Registry abzüglich der ausgeblendeten Blöcke ersetzt zu werden."
+
+msgid "Housekeeping: JS global <code>jgorBifEditorData</code>, console output removed from <code>admin.js</code>, unused localisation removed, tabs instead of spaces in the class files, <code>.distignore</code> added for SVN exports."
+msgstr "Aufräumarbeiten: JS-Global <code>jgorBifEditorData</code>, Konsolenausgaben aus <code>admin.js</code> entfernt, ungenutzte Lokalisierung entfernt, Tabs statt Leerzeichen in den Klassendateien, <code>.distignore</code> für SVN-Exporte ergänzt."
+
+msgid "Internationalisation: the source language of all user-facing strings, the Plugin Name and the Description is now English. A German (<code>de_DE</code>) translation is provided in <code>languages/</code> (<code>.pot</code>, <code>.po</code>, <code>.mo</code>, <code>.l10n.php</code>). WordPress 6.7 and newer load the bundled files automatically via the <code>Domain Path</code> header; WordPress.org language packs take precedence once they exist."
+msgstr "Internationalisierung: Die Quellsprache aller sichtbaren Texte, des Plugin-Namens und der Beschreibung ist jetzt Englisch. Eine deutsche Übersetzung (<code>de_DE</code>) liegt in <code>languages/</code> bei (<code>.pot</code>, <code>.po</code>, <code>.mo</code>, <code>.l10n.php</code>). WordPress 6.7 und neuer laden die mitgelieferten Dateien automatisch über den Header <code>Domain Path</code>; Sprachpakete von WordPress.org haben Vorrang, sobald sie existieren."
+
+msgid "Uninstall removes the current keys, both legacy key families and the migration sentinels."
+msgstr "Die Deinstallation entfernt die aktuellen Schlüssel, beide Legacy-Schlüsselfamilien und die Migrationsmarkierungen."
+
+msgid "Settings page slug is now <code>jgor-bif-hide-blocks</code> (<code>options-general.php?page=jgor-bif-hide-blocks</code>)."
+msgstr "Der Slug der Einstellungsseite lautet jetzt <code>jgor-bif-hide-blocks</code> (<code>options-general.php?page=jgor-bif-hide-blocks</code>)."
+
+msgid "<strong>Prefix:</strong> all globals renamed from <code>jg_gbbf_</code> / <code>JG_GBBF_</code> / <code>.jg-gbbf-*</code> to <code>jgor_bif_</code> / <code>JGOR_BIF_</code> / <code>.jgor-bif-*</code>. A one-shot migration on <code>admin_init</code> copies the settings from the previous option keys (<code>jg_gbbf_*</code>, or <code>gbba_*</code> from versions before 1.5.0) to <code>jgor_bif_hidden_blocks</code> and <code>jgor_bif_hidden_embed_variations</code> and removes the old keys; Multisite networks get a network-wide sweep. No data loss."
+msgstr "<strong>Präfix:</strong> Alle globalen Bezeichner von <code>jg_gbbf_</code> / <code>JG_GBBF_</code> / <code>.jg-gbbf-*</code> in <code>jgor_bif_</code> / <code>JGOR_BIF_</code> / <code>.jgor-bif-*</code> umbenannt. Eine einmalige Migration auf <code>admin_init</code> kopiert die Einstellungen aus den bisherigen Optionsschlüsseln (<code>jg_gbbf_*</code> oder <code>gbba_*</code> aus Versionen vor 1.5.0) nach <code>jgor_bif_hidden_blocks</code> und <code>jgor_bif_hidden_embed_variations</code> und entfernt die alten Schlüssel; Multisite-Netzwerke erhalten einen netzwerkweiten Durchlauf. Kein Datenverlust."
+
+msgid "<strong>Rename:</strong> the plugin is now \"Block Inserter Filter\" (slug, folder, main file and Text Domain <code>block-inserter-filter</code>). The previous name \"Block Filter for GenerateBlocks\" was misleading — the plugin filters any Gutenberg block, GenerateBlocks is only an optional integration. WordPress deactivates the plugin during the folder change; reactivate it under Plugins."
+msgstr "<strong>Umbenennung:</strong> Das Plugin heißt jetzt „Block Inserter Filter“ (Slug, Ordner, Hauptdatei und Text-Domain <code>block-inserter-filter</code>). Der bisherige Name „Block Filter for GenerateBlocks“ war irreführend – das Plugin filtert beliebige Gutenberg-Blöcke, GenerateBlocks ist nur eine optionale Integration. WordPress deaktiviert das Plugin beim Wechsel des Ordners; aktivieren Sie es unter Plugins erneut."
+
+msgid "UI: while searching, groups with matches open automatically; clearing the search collapses them again."
+msgstr "UI: Während der Suche öffnen sich Gruppen mit Treffern automatisch; wird die Suche geleert, klappen sie wieder zu."
+
+msgid "UI: block groups (category view, namespace view) and the embed variations section are now accordions. All groups start collapsed; a click on the group header opens it. The header is a real button with <code>aria-expanded</code> / <code>aria-controls</code>, so it works with keyboard and screen readers. Checkboxes in collapsed groups are still submitted with the form."
+msgstr "UI: Blockgruppen (Kategorieansicht, Namensraumansicht) und der Abschnitt Embed-Varianten sind jetzt Akkordeons. Alle Gruppen starten eingeklappt; ein Klick auf die Gruppenüberschrift öffnet sie. Die Überschrift ist ein echter Button mit <code>aria-expanded</code> / <code>aria-controls</code> und funktioniert daher mit Tastatur und Screenreader. Checkboxen in eingeklappten Gruppen werden weiterhin mit dem Formular gesendet."
+
+msgid "Translations: German (<code>de_DE</code>) and British English (<code>en_GB</code>) ship with the plugin; further languages (es_ES, fr_FR, it_IT, ja, nl_NL, pl_PL, pt_BR, ru_RU) are maintained in the development repository and submitted through translate.wordpress.org, where language packs are generated."
+msgstr "Übersetzungen: Deutsch (<code>de_DE</code>) und britisches Englisch (<code>en_GB</code>) werden mit dem Plugin ausgeliefert; weitere Sprachen (es_ES, fr_FR, it_IT, ja, nl_NL, pl_PL, pt_BR, ru_RU) werden im Entwicklungs-Repository gepflegt und über translate.wordpress.org eingereicht, wo Sprachpakete erzeugt werden."
+
+msgid "UI: the intro text no longer contains a hard line break."
+msgstr "UI: Der Einleitungstext enthält keinen harten Zeilenumbruch mehr."
+
+msgid "UI: \"Toggle all\" is only shown while a group is expanded and is aligned with the second column of the block list; the per-group \"Save\" button is left-aligned."
+msgstr "UI: „Alle umschalten“ wird nur bei aufgeklappter Gruppe angezeigt und ist an der zweiten Spalte der Blockliste ausgerichtet; der Button „Speichern“ je Gruppe ist linksbündig."
+
+msgid "UI: each group header shows how many blocks of that group are currently hidden (\"N hidden\"), updated live while ticking checkboxes or using \"Toggle all\"."
+msgstr "UI: Jede Gruppenüberschrift zeigt, wie viele Blöcke der Gruppe derzeit ausgeblendet sind („N ausgeblendet“), live aktualisiert beim Setzen von Häkchen oder über „Alle umschalten“."
+
+msgid "Fix: after saving, the settings page showed two success notices — WordPress core adds \"Settings saved.\" itself for pages under Settings when <code>updated=1</code> is present. The plugin's own notice is removed."
+msgstr "Fix: Nach dem Speichern zeigte die Einstellungsseite zwei Erfolgsmeldungen – WordPress-Core ergänzt bei Seiten unter Einstellungen selbst „Einstellungen gespeichert.“, sobald <code>updated=1</code> vorhanden ist. Die eigene Meldung des Plugins ist entfernt."
+
+msgid "Translations: the plugin package no longer ships any translation files (<code>.po</code>, <code>.mo</code>, <code>.l10n.php</code>), as requested by the WordPress.org plugin review. All languages, including German and British English, are provided through translate.wordpress.org language packs. Only the <code>.pot</code> template remains in <code>languages/</code>."
+msgstr "Übersetzungen: Das Plugin-Paket enthält keine Übersetzungsdateien mehr (<code>.po</code>, <code>.mo</code>, <code>.l10n.php</code>), wie vom WordPress.org-Plugin-Review gefordert. Alle Sprachen, einschließlich Deutsch und britischem Englisch, werden über Sprachpakete von translate.wordpress.org bereitgestellt. In <code>languages/</code> verbleibt nur die Vorlage <code>.pot</code>."
+
+msgid "Plugin header: removed <code>Tested up to</code> (declared in <code>readme.txt</code> only) and <code>Author URI</code>, as requested by the WordPress.org plugin review. No code changes."
+msgstr "Plugin-Header: <code>Tested up to</code> (nur noch in <code>readme.txt</code> deklariert) und <code>Author URI</code> entfernt, wie vom WordPress.org-Plugin-Review gefordert. Keine Code-Änderungen."
+
