@@ -1,0 +1,15 @@
+# Dependabot: woechentliche Pruefung der Abhaengigkeiten.
+# Grundlage: Massnahmenliste des Projekts wordpress-hardening (P4,
+# Lieferkette) und docs/betrieb.md, Abschnitt 6.
+version: 2
+updates:
+  - package-ecosystem: "composer"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "06:00"
+      timezone: "Europe/Berlin"
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "composer"
